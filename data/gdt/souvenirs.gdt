@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.4" name="souvenirs" frequency="1" startobs="1" endobs="84" type="cross-section">
+<description>Data imported from CSV file 'souvenirs.csv', 2021-06-20 17:33
+</description>
+<variables count="2">
+<variable name="Month"
+/>
+<variable name="Sales"
+/>
+</variables>
+<observations count="84" labels="false">
+<obs>6209 1664.81 </obs>
+<obs>6240 2397.53 </obs>
+<obs>6268 2840.71 </obs>
+<obs>6299 3547.29 </obs>
+<obs>6329 3752.96 </obs>
+<obs>6360 3714.74 </obs>
+<obs>6390 4349.61 </obs>
+<obs>6421 3566.34 </obs>
+<obs>6452 5021.82 </obs>
+<obs>6482 6423.48 </obs>
+<obs>6513 7600.6 </obs>
+<obs>6543 19756.21 </obs>
+<obs>6574 2499.81 </obs>
+<obs>6605 5198.24 </obs>
+<obs>6634 7225.14 </obs>
+<obs>6665 4806.03 </obs>
+<obs>6695 5900.88 </obs>
+<obs>6726 4951.34 </obs>
+<obs>6756 6179.12 </obs>
+<obs>6787 4752.15 </obs>
+<obs>6818 5496.43 </obs>
+<obs>6848 5835.1 </obs>
+<obs>6879 12600.08 </obs>
+<obs>6909 28541.72 </obs>
+<obs>6940 4717.02 </obs>
+<obs>6971 5702.63 </obs>
+<obs>6999 9957.58 </obs>
+<obs>7030 5304.78 </obs>
+<obs>7060 6492.43 </obs>
+<obs>7091 6630.8 </obs>
+<obs>7121 7349.62 </obs>
+<obs>7152 8176.62 </obs>
+<obs>7183 8573.17 </obs>
+<obs>7213 9690.5 </obs>
+<obs>7244 15151.84 </obs>
+<obs>7274 34061.01 </obs>
+<obs>7305 5921.1 </obs>
+<obs>7336 5814.58 </obs>
+<obs>7364 12421.25 </obs>
+<obs>7395 6369.77 </obs>
+<obs>7425 7609.12 </obs>
+<obs>7456 7224.75 </obs>
+<obs>7486 8121.22 </obs>
+<obs>7517 7979.25 </obs>
+<obs>7548 8093.06 </obs>
+<obs>7578 8476.7 </obs>
+<obs>7609 17914.66 </obs>
+<obs>7639 30114.41 </obs>
+<obs>7670 4826.64 </obs>
+<obs>7701 6470.23 </obs>
+<obs>7729 9638.77 </obs>
+<obs>7760 8821.17 </obs>
+<obs>7790 8722.37 </obs>
+<obs>7821 10209.48 </obs>
+<obs>7851 11276.55 </obs>
+<obs>7882 12552.22 </obs>
+<obs>7913 11637.39 </obs>
+<obs>7943 13606.89 </obs>
+<obs>7974 21822.11 </obs>
+<obs>8004 45060.69 </obs>
+<obs>8035 7615.03 </obs>
+<obs>8066 9849.69 </obs>
+<obs>8095 14558.4 </obs>
+<obs>8126 11587.33 </obs>
+<obs>8156 9332.56 </obs>
+<obs>8187 13082.09 </obs>
+<obs>8217 16732.78 </obs>
+<obs>8248 19888.61 </obs>
+<obs>8279 23933.38 </obs>
+<obs>8309 25391.35 </obs>
+<obs>8340 36024.8 </obs>
+<obs>8370 80721.71 </obs>
+<obs>8401 10243.24 </obs>
+<obs>8432 11266.88 </obs>
+<obs>8460 21826.84 </obs>
+<obs>8491 17357.33 </obs>
+<obs>8521 15997.79 </obs>
+<obs>8552 18601.53 </obs>
+<obs>8582 26155.15 </obs>
+<obs>8613 28586.52 </obs>
+<obs>8644 30505.41 </obs>
+<obs>8674 30821.33 </obs>
+<obs>8705 46634.38 </obs>
+<obs>8735 104660.67 </obs>
+</observations>
+</gretldata>

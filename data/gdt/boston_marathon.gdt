@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.4" name="boston_marathon" frequency="1" startobs="1" endobs="265" type="cross-section">
+<description>Data imported from CSV file 'boston_marathon.csv', 2021-06-20 17:33
+</description>
+<variables count="5">
+<variable name="Event"
+ discrete="true"
+/>
+<variable name="Year"
+/>
+<variable name="Champion"
+ discrete="true"
+/>
+<variable name="Country"
+ discrete="true"
+/>
+<variable name="Time"
+/>
+</variables>
+<observations count="265" labels="false">
+<obs>1 1897 1 1 10510 </obs>
+<obs>1 1898 2 2 9720 </obs>
+<obs>1 1899 3 1 10478 </obs>
+<obs>1 1900 4 2 9584 </obs>
+<obs>1 1901 4 2 8963 </obs>
+<obs>1 1902 5 1 9792 </obs>
+<obs>1 1903 6 1 9689 </obs>
+<obs>1 1904 7 1 9484 </obs>
+<obs>1 1905 8 1 9505 </obs>
+<obs>1 1906 9 1 9945 </obs>
+<obs>1 1907 10 2 8664 </obs>
+<obs>1 1908 11 1 8743 </obs>
+<obs>1 1909 12 1 10416 </obs>
+<obs>1 1910 13 2 8932 </obs>
+<obs>1 1911 14 1 8499 </obs>
+<obs>1 1912 15 1 8478 </obs>
+<obs>1 1913 16 1 8714 </obs>
+<obs>1 1914 17 2 8701 </obs>
+<obs>1 1915 18 2 9101 </obs>
+<obs>1 1916 19 1 8836 </obs>
+<obs>1 1917 20 1 8917 </obs>
+<obs>1 1918 21 1 8693 </obs>
+<obs>1 1919 22 1 8953 </obs>
+<obs>1 1920 23 3 8971 </obs>
+<obs>1 1921 24 1 8337 </obs>
+<obs>1 1922 14 1 8290 </obs>
+<obs>1 1923 14 1 8627 </obs>
+<obs>1 1924 14 1 8980 </obs>
+<obs>1 1925 25 1 9180 </obs>
+<obs>1 1926 26 2 8740 </obs>
+<obs>1 1927 14 1 9622 </obs>
+<obs>1 1928 14 1 9427 </obs>
+<obs>1 1929 26 2 9188 </obs>
+<obs>1 1930 14 1 9288 </obs>
+<obs>1 1931 27 1 10005 </obs>
+<obs>1 1932 28 4 9216 </obs>
+<obs>1 1933 29 1 9061 </obs>
+<obs>1 1934 30 2 9173 </obs>
+<obs>1 1935 31 1 9127 </obs>
+<obs>1 1936 32 1 9220 </obs>
+<obs>1 1937 33 2 9200 </obs>
+<obs>1 1938 29 1 9334 </obs>
+<obs>1 1939 32 1 8931 </obs>
+<obs>1 1940 34 2 8908 </obs>
+<obs>1 1941 29 1 9038 </obs>
+<obs>1 1942 35 1 8811 </obs>
+<obs>1 1943 34 2 8905 </obs>
+<obs>1 1944 34 2 9110 </obs>
+<obs>1 1945 31 1 9040 </obs>
+<obs>1 1946 36 3 8967 </obs>
+<obs>1 1947 37 5 8739 </obs>
+<obs>1 1948 34 2 9062 </obs>
+<obs>1 1949 38 6 9110 </obs>
+<obs>1 1950 39 5 9159 </obs>
+<obs>1 1951 40 7 8865 </obs>
+<obs>1 1952 41 8 9113 </obs>
+<obs>1 1953 42 7 8331 </obs>
+<obs>1 1954 43 9 8439 </obs>
+<obs>1 1955 44 7 8302 </obs>
+<obs>1 1956 45 9 8054 </obs>
+<obs>1 1957 46 1 8405 </obs>
+<obs>1 1958 47 10 8754 </obs>
+<obs>1 1959 48 9 8562 </obs>
+<obs>1 1960 49 9 8454 </obs>
+<obs>1 1961 48 9 8619 </obs>
+<obs>1 1962 48 9 8628 </obs>
+<obs>1 1963 50 11 8338 </obs>
+<obs>1 1964 50 11 8399 </obs>
+<obs>1 1965 51 7 8193 </obs>
+<obs>1 1966 52 7 8231 </obs>
+<obs>1 1967 53 12 8145 </obs>
+<obs>1 1968 54 1 8537 </obs>
+<obs>1 1969 55 7 8029 </obs>
+<obs>1 1970 56 13 7830 </obs>
+<obs>1 1971 57 14 8325 </obs>
+<obs>1 1972 58 9 8139 </obs>
+<obs>1 1973 59 1 8163 </obs>
+<obs>1 1974 60 15 8019 </obs>
+<obs>1 1975 61 1 7795 </obs>
+<obs>1 1976 62 1 8419 </obs>
+<obs>1 1977 63 2 8086 </obs>
+<obs>1 1978 61 1 7813 </obs>
+<obs>1 1979 61 1 7767 </obs>
+<obs>1 1980 61 1 7931 </obs>
+<obs>1 1981 64 7 7766 </obs>
+<obs>1 1982 65 1 7732 </obs>
+<obs>1 1983 66 1 7740 </obs>
+<obs>1 1984 67 13 7834 </obs>
+<obs>1 1985 67 13 8045 </obs>
+<obs>1 1986 68 16 7671 </obs>
+<obs>1 1987 64 7 7910 </obs>
+<obs>1 1988 69 17 7723 </obs>
+<obs>1 1989 70 18 7746 </obs>
+<obs>1 1990 71 19 7699 </obs>
+<obs>1 1991 69 17 7866 </obs>
+<obs>1 1992 69 17 7694 </obs>
+<obs>1 1993 72 17 7773 </obs>
+<obs>1 1994 72 17 7635 </obs>
+<obs>1 1995 72 17 7762 </obs>
+<obs>1 1996 73 17 7755 </obs>
+<obs>1 1997 74 17 7834 </obs>
+<obs>1 1998 73 17 7654 </obs>
+<obs>1 1999 75 17 7792 </obs>
+<obs>1 2000 76 17 7787 </obs>
+<obs>1 2001 77 20 7783 </obs>
+<obs>1 2002 78 17 7742 </obs>
+<obs>1 2003 79 17 7811 </obs>
+<obs>1 2004 80 17 7837 </obs>
+<obs>1 2005 81 18 7905 </obs>
+<obs>1 2006 79 17 7634 </obs>
+<obs>1 2007 79 17 8053 </obs>
+<obs>1 2008 79 17 7666 </obs>
+<obs>1 2009 82 18 7722 </obs>
+<obs>1 2010 83 17 7552 </obs>
+<obs>1 2011 84 17 7382 </obs>
+<obs>1 2012 85 17 7960 </obs>
+<obs>1 2013 86 18 7822 </obs>
+<obs>1 2014 87 1 7717 </obs>
+<obs>1 2015 86 18 7757 </obs>
+<obs>1 2016 88 18 7965 </obs>
+<obs>1 2017 89 17 7777 </obs>
+<obs>1 2018 90 7 8158 </obs>
+<obs>1 2019 91 17 7677 </obs>
+<obs>2 1975 92 1 10680 </obs>
+<obs>2 1976 93 21 NA </obs>
+<obs>2 1977 92 1 9618 </obs>
+<obs>2 1978 94 1 8817 </obs>
+<obs>2 1979 95 1 9539 </obs>
+<obs>2 1980 96 1 6900 </obs>
+<obs>2 1981 97 1 7241 </obs>
+<obs>2 1982 98 1 6691 </obs>
+<obs>2 1983 98 1 6430 </obs>
+<obs>2 1984 99 2 7520 </obs>
+<obs>2 1985 94 1 6334 </obs>
+<obs>2 1986 99 2 6205 </obs>
+<obs>2 1987 99 2 6942 </obs>
+<obs>2 1988 100 22 6199 </obs>
+<obs>2 1989 101 22 5764 </obs>
+<obs>2 1990 100 22 5393 </obs>
+<obs>2 1991 98 1 5444 </obs>
+<obs>2 1992 98 1 5188 </obs>
+<obs>2 1993 98 1 4937 </obs>
+<obs>2 1994 102 23 4883 </obs>
+<obs>2 1995 103 23 5159 </obs>
+<obs>2 1996 102 23 5414 </obs>
+<obs>2 1997 103 23 5294 </obs>
+<obs>2 1998 103 23 4912 </obs>
+<obs>2 1999 103 23 4896 </obs>
+<obs>2 2000 103 23 5612 </obs>
+<obs>2 2001 104 24 5112 </obs>
+<obs>2 2002 104 24 4999 </obs>
+<obs>2 2003 104 24 5312 </obs>
+<obs>2 2004 104 24 4707 </obs>
+<obs>2 2005 104 24 5051 </obs>
+<obs>2 2006 104 24 5129 </obs>
+<obs>2 2007 105 7 5356 </obs>
+<obs>2 2008 104 24 5209 </obs>
+<obs>2 2009 104 24 5609 </obs>
+<obs>2 2010 104 24 5213 </obs>
+<obs>2 2011 105 7 4730 </obs>
+<obs>2 2012 106 2 4705 </obs>
+<obs>2 2013 107 7 5065 </obs>
+<obs>2 2014 104 24 4836 </obs>
+<obs>2 2015 108 23 5393 </obs>
+<obs>2 2016 108 23 5046 </obs>
+<obs>2 2017 108 23 4684 </obs>
+<obs>2 2018 108 23 6386 </obs>
+<obs>2 2019 109 1 4896 </obs>
+<obs>3 1972 110 1 11426 </obs>
+<obs>3 1973 111 1 11159 </obs>
+<obs>3 1974 112 1 10031 </obs>
+<obs>3 1975 113 4 9744 </obs>
+<obs>3 1976 114 1 10030 </obs>
+<obs>3 1977 112 1 10113 </obs>
+<obs>3 1978 115 1 9892 </obs>
+<obs>3 1979 116 1 9315 </obs>
+<obs>3 1980 117 2 9268 </obs>
+<obs>3 1981 118 12 8806 </obs>
+<obs>3 1982 119 4 8973 </obs>
+<obs>3 1983 116 1 8563 </obs>
+<obs>3 1984 120 12 8968 </obs>
+<obs>3 1985 121 1 9246 </obs>
+<obs>3 1986 122 25 8695 </obs>
+<obs>3 1987 123 26 8721 </obs>
+<obs>3 1988 123 26 8670 </obs>
+<obs>3 1989 122 25 8673 </obs>
+<obs>3 1990 123 26 8724 </obs>
+<obs>3 1991 124 27 8658 </obs>
+<obs>3 1992 125 28 8623 </obs>
+<obs>3 1993 125 29 8727 </obs>
+<obs>3 1994 126 4 8505 </obs>
+<obs>3 1995 126 4 8711 </obs>
+<obs>3 1996 126 4 8832 </obs>
+<obs>3 1997 127 18 8783 </obs>
+<obs>3 1998 127 18 8601 </obs>
+<obs>3 1999 127 18 8605 </obs>
+<obs>3 2000 128 17 8771 </obs>
+<obs>3 2001 128 17 8633 </obs>
+<obs>3 2002 129 17 8443 </obs>
+<obs>3 2003 130 29 8720 </obs>
+<obs>3 2004 128 17 8667 </obs>
+<obs>3 2005 128 17 8713 </obs>
+<obs>3 2006 131 17 8618 </obs>
+<obs>3 2007 132 29 8958 </obs>
+<obs>3 2008 133 18 8725 </obs>
+<obs>3 2009 134 17 9136 </obs>
+<obs>3 2010 135 18 8771 </obs>
+<obs>3 2011 136 17 8556 </obs>
+<obs>3 2012 137 17 9110 </obs>
+<obs>3 2013 131 17 8785 </obs>
+<obs>3 2014 138 18 8399 </obs>
+<obs>3 2015 139 17 8695 </obs>
+<obs>3 2016 140 18 8959 </obs>
+<obs>3 2017 141 17 8512 </obs>
+<obs>3 2018 142 1 9594 </obs>
+<obs>3 2019 143 18 8611 </obs>
+<obs>4 1966 144 1 12100 </obs>
+<obs>4 1967 144 1 12437 </obs>
+<obs>4 1968 144 1 12600 </obs>
+<obs>4 1969 145 1 12166 </obs>
+<obs>4 1970 145 1 11107 </obs>
+<obs>4 1971 145 1 11310 </obs>
+<obs>5 1977 146 1 13731 </obs>
+<obs>5 1978 147 1 13955 </obs>
+<obs>5 1979 148 1 12476 </obs>
+<obs>5 1980 149 1 10144 </obs>
+<obs>5 1981 150 1 9521 </obs>
+<obs>5 1982 151 1 7963 </obs>
+<obs>5 1983 152 1 8827 </obs>
+<obs>5 1984 152 1 10611 </obs>
+<obs>5 1985 151 1 7526 </obs>
+<obs>5 1986 151 1 7768 </obs>
+<obs>5 1987 151 1 8395 </obs>
+<obs>5 1988 151 1 7844 </obs>
+<obs>5 1989 153 30 6606 </obs>
+<obs>5 1990 154 1 6197 </obs>
+<obs>5 1991 154 1 6162 </obs>
+<obs>5 1992 154 1 5812 </obs>
+<obs>5 1993 154 1 5690 </obs>
+<obs>5 1994 154 1 5662 </obs>
+<obs>5 1995 154 1 6042 </obs>
+<obs>5 1996 154 1 6776 </obs>
+<obs>5 1997 155 16 6868 </obs>
+<obs>5 1998 155 16 6079 </obs>
+<obs>5 1999 155 16 6143 </obs>
+<obs>5 2000 154 1 7252 </obs>
+<obs>5 2001 155 16 6834 </obs>
+<obs>5 2002 156 23 6357 </obs>
+<obs>5 2003 157 1 6887 </obs>
+<obs>5 2004 158 1 5993 </obs>
+<obs>5 2005 158 1 6465 </obs>
+<obs>5 2006 156 23 6222 </obs>
+<obs>5 2007 159 7 6810 </obs>
+<obs>5 2008 159 7 6512 </obs>
+<obs>5 2009 159 7 6877 </obs>
+<obs>5 2010 159 7 6212 </obs>
+<obs>5 2011 159 7 5646 </obs>
+<obs>5 2012 160 1 5856 </obs>
+<obs>5 2013 161 1 6324 </obs>
+<obs>5 2014 161 1 5706 </obs>
+<obs>5 2015 161 1 6774 </obs>
+<obs>5 2016 161 1 6136 </obs>
+<obs>5 2017 162 23 5297 </obs>
+<obs>5 2018 161 1 7479 </obs>
+<obs>5 2019 162 23 5659 </obs>
+</observations>
+<string-tables count="3">
+<valstrings owner="Event" count="5">"Men's open division" "Men's wheelchair" "Women's open champion" "Women's pioneer era" "Women's wheelchair" </valstrings>
+<valstrings owner="Champion" count="162">"John J. McDermott" "Ronald J. MacDonald" "Lawrence Brignolia" "John P. Caffery" "Sammy A. Mellor" "John C. Lorden" "Michael Spring" "Frederick Lorz" "Timothy Ford" "Thomas Longboat" "Thomas P. Morrissey" "Henri Renaud" "Fred L. Cameron" "Clarence H. DeMar" "Michael J. Ryan" "Fritz Carlson" "James Duffy" "Edouard Fabre" "Arthur V. Roth" "William J. (Bill) Kennedy" "Camp Devens Divisional Team" "Carl W. A. Linder" "Peter Trivoulidas" "Frank T. Zuna" "Charles L. (Chuck) Mellor" "John C. Miles" "James P. Henigan" "Paul de Bruyn" "Leslie S. Pawson" "Dave Komonen" "John A. Kelley" "Ellison M. Brown" "Walter Young" "Gerard Cote" "Bernard Joseph (Joe) Smith" "Stylianos Kyriakides" "Yun Bok Suh" "Karl Gosta Leandersson" "Ki-Yong Ham" "Shigeki Tanaka" "Doroteo Flores" "Keizo Yamada" "Veikko Karvonen" "Hideo Hamamura" "Antti Viskari" "John J. Kelley" "Franjo Mihalic" "Eino Oksanen" "Paavo Kotila" "Aurele Vandendriessche" "Morio Shigematsu" "Kenji Kimihara" "David C. McKenzie" "Amby Burfoot" "Yoshiaki Unetani" "Ron Hill" "Alvaro Mejia" "Olavi Suomalainen" "Jon Anderson" "Neil Cusack" "Bill Rodgers" "Jack Fultz" "Jerome Drayton" "Toshihiko Seko" "Alberto Salazar" "Greg A. Meyer" "Geoff Smith" "Robert de Castella" "Ibrahim Hussein" "Abebe Mekonnen" "Gelindo Bordin" "Cosmas Ndeti" "Moses Tanui" "Lameck Aguta" "Joseph Chebet" "Elijah Lagat" "Lee Bong-Ju" "Rodgers Rop" "Robert Kipkoech Cheruiyot" "Timothy Cherigat" "Hailu Negussie" "Deriba Merga" "Robert Kiprono Cheruiyot" "Geoffrey Mutai" "Wesley Korir" "Lelisa Desisa" "Mebrahtom &quot;&quot;Meb&quot;&quot; Keflezighi" "Lemi Berhanu" "Geoffrey Kirui" "Yuki Kawauchi" "Lawrence Cherono" "Robert Hall" "No Contestants" "George Murray" "Kenneth Archer" "Curt Brinkman" "Jim Martinson" "Jim Knaub" "Andre Viger" "Mustapha Badid" "Philippe Couprie" "Heinz Frei" "Franz Nietlispach" "Ernst Van Dyk" "Masazumi Soejima" "Joshua Cassidy" "Hiroyuki Yamamoto" "Marcel Hug" "Daniel Romanchuk" "Nina Kuscsik" "Jacqueline A. Hansen" "Michiko (Miki) Gorman" "Liane Winter" "Kim Merritt" "Gayle S. Barron" "Joan Benoit" "Jacqueline Gareau" "Allison Roe" "Charlotte Teske" "Lorraine Moller" "Lisa Larsen-Weidenbach" "Ingrid Kristiansen" "Rosa Mota" "Wanda Panfil" "Olga Markova" "Uta Pippig" "Fatuma Roba" "Catherine Ndereba" "Margaret Okayo" "Svetlana Zakharova" "Rita Jeptoo" "Lidiya Grigoryeva" "Dire Tune" "Salina Kosgei" "Teyba Erkesso" "Caroline Kilel" "Sharon Cherop" "Buzunesh Deba" "Caroline Rotich" "Atsede Baysa" "Edna Kiplagat" "Desiree Linden" "Worknesh Degefa" "Roberta (Bobbi) Gibb" "Sara Mae Berman" "Sharon Rahn" "Susan Shapiro" "Sheryl Bair" "Sharon Limpert" "Candace Cable" "Candace Cable-Brookes" "Sherry Ramsey" "Connie Hansen" "Jean Driscoll" "Louise Sauvage" "Edith Hunkeler" "Christina Ripp" "Cheri Blauwet" "Wakako Tsuchida" "Shirley Reilly" "Tatyana McFadden" "Manuela Schar" </valstrings>
+<valstrings owner="Country" count="30">"United States" "Canada" "Greece" "Germany" "Korea" "Sweden" "Japan" "Guatemala" "Finland" "Yugoslavia" "Belgium" "New Zealand" "England" "Colombia" "Ireland" "Australia" "Kenya" "Ethiopia" "Italy" "South Korea" "empty string" "France" "Switzerland" "South Africa" "Norway" "Portugal" "Poland" "Comm. Ind. States" "Russia" "Denmark" </valstrings>
+</string-tables>
+</gretldata>

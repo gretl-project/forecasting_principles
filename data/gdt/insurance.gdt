@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.4" name="insurance" frequency="1" startobs="1" endobs="40" type="cross-section">
+<description>Data imported from CSV file 'insurance.csv', 2021-06-20 17:33
+</description>
+<variables count="3">
+<variable name="Month"
+/>
+<variable name="Quotes"
+/>
+<variable name="TVadverts"
+/>
+</variables>
+<observations count="40" labels="false">
+<obs>11688 12.97065 7.212725 </obs>
+<obs>11719 15.38714 9.44357 </obs>
+<obs>11747 13.22957 7.53425 </obs>
+<obs>11778 12.97065 7.212725 </obs>
+<obs>11808 15.38714 9.44357 </obs>
+<obs>11839 11.72288 6.415215 </obs>
+<obs>11869 10.06177 5.80699 </obs>
+<obs>11900 10.82279 6.2036 </obs>
+<obs>11931 13.28707 7.58643 </obs>
+<obs>11961 14.57832 8.004935 </obs>
+<obs>11992 15.60542 8.83498 </obs>
+<obs>12022 15.93515 8.957255 </obs>
+<obs>12053 16.99486 9.53299 </obs>
+<obs>12084 16.87821 9.39295 </obs>
+<obs>12112 16.45128 8.91856 </obs>
+<obs>12143 15.28118 8.37412 </obs>
+<obs>12173 15.88901 9.844505 </obs>
+<obs>12204 15.67747 9.84939 </obs>
+<obs>12234 13.2878 8.40273 </obs>
+<obs>12265 12.64484 7.920675 </obs>
+<obs>12296 11.82771 7.436085 </obs>
+<obs>12326 9.69184 6.34049 </obs>
+<obs>12357 10.30415 6.939995 </obs>
+<obs>12387 11.38253 6.9771 </obs>
+<obs>12418 12.95149 8.010201 </obs>
+<obs>12449 13.63092 9.56546 </obs>
+<obs>12478 9.12098 6.27251 </obs>
+<obs>12509 8.39468 5.707495 </obs>
+<obs>12539 12.30076 7.96354 </obs>
+<obs>12570 13.84831 8.494221 </obs>
+<obs>12600 15.96246 9.789085 </obs>
+<obs>12631 14.19738 8.692825 </obs>
+<obs>12662 12.85922 8.05723 </obs>
+<obs>12692 12.08837 7.588995 </obs>
+<obs>12723 12.93375 8.244881 </obs>
+<obs>12753 11.72235 6.67554 </obs>
+<obs>12784 15.47126 9.219604 </obs>
+<obs>12815 18.43898 10.9638 </obs>
+<obs>12843 17.49186 10.45629 </obs>
+<obs>12874 14.49168 8.7286 </obs>
+</observations>
+</gretldata>

@@ -1,0 +1,49 @@
+clear
+set verbose off
+
+include logging.gfn
+
+# Retrieve enviroment variables
+FILE_RDA = getenv("FILE_RDA")
+DIR_RDA = getenv("DIR_RDA")
+DIR_CSV = getenv("DIR_CSV")
+DIR_GDT = getenv("DIR_GDT")
+
+if !nelem(FILE_RDA)
+    Error("You must provide a file name.")
+    quit
+endif
+
+# Prepare
+FILE_CSV = strsub(FILE_RDA, ".rda", ".csv")
+FILE_CSV = strsub(FILE_CSV, DIR_RDA, DIR_CSV)
+FILE_GDT = strsub(FILE_RDA, ".rda", ".gdt")
+FILE_GDT = strsub(FILE_GDT, DIR_RDA, DIR_GDT)
+
+
+Info("Call R to load rda-file and store it as csv.")
+
+foreign language=R
+    FILE_RDA = Sys.getenv("FILE_RDA")
+    DIR_RDA = Sys.getenv("DIR_RDA")
+    DIR_CSV = Sys.getenv("DIR_CSV")
+
+    # Prepare filename for csv
+    FILE_CSV = sub(".rda", ".csv", FILE_RDA)
+    FILE_CSV = sub(DIR_RDA, DIR_CSV, FILE_CSV)
+
+    df <- get(load(FILE_RDA))
+    write.csv(df, file=FILE_CSV)
+
+    # Sys.setenv(FILE_CSV = FILE_CSV) # gets destroyed once R session quits
+end foreign
+
+
+Info(sprintf("Load csv file '%s'", FILE_CSV))
+open "@FILE_CSV" --preserve --quiet
+
+
+Info(sprintf("Store dataset as gdt file '%s'", FILE_GDT))
+store "@FILE_GDT"
+
+quit
