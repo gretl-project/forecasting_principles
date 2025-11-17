@@ -1,0 +1,43 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/regression-intro.html
+
+#==============================================
+# Example: US consumption expenditure
+# https://otexts.com/fpp3/regression-intro.html#example-us-consumption-expenditure
+#==============================================
+
+open us_change.csv  # *.csv or *.gdt file
+setobs 4 1970:1 --time-series
+
+ols Consumption const Income
+series yhat = $yhat  # fitted values
+
+gnuplot Consumption yhat --with-lines --time-series --output=display \
+ {set grid; set key outside below;
+  set ylabel "Pct. change";}
+
+gnuplot Consumption Income --fit=linear --output=display \
+    {set grid;
+     set title "US Consumption vs. Income";
+     set ylabel "Consumption (quarterly % change)";
+     set xlabel "Income (quarterly % change)";}
+
+
+
+#==============================================
+# Example: Multiple regression US consumption expenditure
+# https://otexts.com/fpp3/regression-intro.html#multiple-linear-regression
+#==============================================
+
+list L = Production Savings Income
+tsplots L --output=display
+
+# Correlation matrix
+list L = Consumption Income Production Savings Income
+corr L --triangle --plot=display
+
+# Pair plot
+# pkg install PairPlot  # install PairPlot package if not already installed
+include PairPlot.gfn    # Load PairPlot functions
+PairPlot(L)
