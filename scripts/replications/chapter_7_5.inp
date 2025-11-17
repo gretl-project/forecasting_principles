@@ -1,0 +1,36 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/selecting-predictors.html
+
+#==============================================
+# Example: US consumption expenditure
+# https://otexts.com/fpp3/selecting-predictors.html#example-us-consumption
+# We are not directly replicating the example here, but just show how to conduct a stepwise regression in gretl.
+#==============================================
+
+open us_change.csv  # *.csv or *.gdt file
+setobs 4 1970:1 --time-series
+
+# BACKWARD selection of regressors
+##
+ols Consumption const Income Production Unemployment Savings
+# the regressor with the greatest two-sided P-value is chosen for omission-until
+# there is no candidate whose P-value is greater than α
+omit --auto=0.05
+
+##
+# The “best” candidate at each step is then that whose omission gives the greatest improvement
+# (reduction) in the selected criterion—until there is no candidate whose omission gives an
+# improvement, when the algorithm halts.
+ols Consumption const Income Production Unemployment Savings
+omit --auto=AIC
+
+
+# FORWARD selection of regressors
+list Candidates = Income Production Unemployment Savings
+## Start with a minimal model
+ols Consumption const
+## At each step the method determines which candidate offers the greatest improvement
+# in fit according to the specified criterion (here AIC)
+add Candidates --auto=AIC
+
