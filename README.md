@@ -4,9 +4,13 @@ Gretl replication files for the book "Forecasting: Principles and Practice (3rd 
 
 The book is online available at [Otexts.com/fpp3/](https://otexts.com/fpp3/ "Forecasting: Principles and Practice").
 
-# Chapter Replications
+## Data files
+The data files used in the replication scripts are available in the `data/` folder. There are CSV files as well as Gretl data files (`*.gdt`). Both formats can be opened directly in Gretl.
 
-## Chapter 7
+
+## Chapter Replications
+
+### Chapter 7
 
 [7.1 The linear model](https://otexts.com/fpp3/regression-intro.html) -- [Gretl replication file](scripts/replications/chapter_7_1.inp)
 
