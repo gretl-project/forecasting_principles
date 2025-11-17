@@ -1,0 +1,25 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/least-squares.html
+
+#==============================================
+# Example: US consumption expenditure
+# https://otexts.com/fpp3/least-squares.html#example-us-consumption-expenditure-2
+#==============================================
+
+open us_change.csv  # *.csv or *.gdt file
+setobs 4 1970:1 --time-series
+
+ols Consumption const Income Production Unemployment Savings
+series yhat = $yhat  # fitted values
+
+gnuplot Consumption yhat --with-lines --time-series --output=display \
+ {set grid; set key outside below;
+  set title "Percent change in US consumption expenditure";}
+
+gnuplot yhat Consumption --fit=linear --output=display \
+ {set grid; set key outside below;
+  set title "Percent change in US consumption expenditure";
+  set ylabel "Fitted (predicted values)";
+  set xlabel "Data (actual values)";}
+
