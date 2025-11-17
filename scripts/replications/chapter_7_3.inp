@@ -1,0 +1,77 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/regression-evaluation.html
+
+#==============================================
+# Example: US consumption expenditure
+# https://otexts.com/fpp3/least-squares.html#example-us-consumption-expenditure-2
+#==============================================
+
+open us_change.csv  # *.csv or *.gdt file
+setobs 4 1970:1 --time-series
+
+ols Consumption const Income Production Unemployment Savings
+series yhat = $yhat  # fitted values
+series uhat = $uhat  # residuals
+
+# Test on no autocorrelation
+modtest 10 --autocorr
+
+# Visualization of residuals
+gnuplot uhat --with-lp --time-series --output=display \
+ {set grid; set key outside below;
+  set ylabel "Innovation residuals";
+  set title "";}
+
+# (P)ACF
+corrgm uhat 24 --plot=display
+
+# Histogramm
+freq uhat --plot=display
+
+# Scatterplot of residuals vs. each predictor
+list L = Income Production Unemployment Savings
+scatters uhat ; L --output=display
+
+# Fig: 7.10 Scatterplots of residuals versus fitted values.
+gnuplot uhat yhat --output=display \
+ {set grid; set key outside below;
+  set ylabel "Residuals";
+  set xlabel "Fitted values";
+  set title "";}
+
+
+#==============================================
+# Example: Spurious regression
+# https://otexts.com/fpp3/regression-evaluation.html#spurious-regression
+#==============================================
+
+open aus_airpassengers.gdt
+setobs 1 1970 --time-series
+smpl Year <= 2011 --restrict --permanent
+
+# left-join of another annual dataset with identical sample
+append guinea_rice.gdt
+
+strings MyPlots = array(3)
+gnuplot Passengers --time-series --with-lines --outbuf=MyPlots[1] \
+  {set title "Air transport: Australia";}
+gnuplot Production --time-series --with-lines --outbuf=MyPlots[2] \
+  {set title "Rice production: Guinea";}
+gnuplot Passengers Production --fit=none --outbuf=MyPlots[3] \
+  {set ylabel "Air passengers"; set xlabel "Rice production";}
+
+gridplot MyPlots --cols=3 --width=900 --height=400 --output=display
+
+# Regression of unrelated series
+ols Passengers const Production
+series uhat = $uhat
+gnuplot uhat --with-lp --time-series --output=display \
+ {set grid; set key outside below;
+  set ylabel "Innovation residuals";
+  set title "Residuals from spurious regression";}
+
+# (P)ACF
+corrgm uhat 16 --plot=display
+# Histogramm
+freq uhat --plot=display
