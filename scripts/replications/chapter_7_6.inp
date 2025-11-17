@@ -1,0 +1,106 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/forecasting-regression.html#forecasting-regression
+
+
+#==============================================
+# Example: Australian quarterly beer production
+# https://otexts.com/fpp3/forecasting-regression.html#example-australian-quarterly-beer-production-2
+#==============================================
+
+# Requires local file
+open aus_production.csv  # *.csv or *.gdt file
+# Alternatively, open dataset from URL:
+# open "https://raw.githubusercontent.com/gretl-project/forecasting_principles/refs/heads/main/data/csv/aus_production.csv"
+
+setobs 4 1956:1 --time-series
+
+# Remove all observations before 1992:1 permanently
+smpl obs >= 1992:1 --restrict --permanent
+
+# Run regression
+list Seasonals = seasonals(1)  # omit first quarter
+ols Beer const time Seasonals
+
+# Add 8 new observations
+dataset addobs 8
+
+# Create forecast and standard deviation of forecast
+fcast forecast --out-of-sample
+series forecast_sd = $fcse
+print forecast forecast_sd --byobs
+
+# Create foreasting plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_90_pct = critical(t, $nobs, 0.05)
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+bundle b1 = _(center="forecast", width="forecast_sd", factor=critical_90_pct, style="fill",
+  color="cyan", title="90% interval")
+bundle b2 = _(center="forecast", width="forecast_sd", factor=critical_95_pct, style="fill",
+              color="red", title="95% interval")
+bundles B = defarray(b1, b2)
+
+gnuplot Beer forecast --time-series --with-lines --bands=B --output=display \
+ {set grid; set key outside below;
+  set title "Forecasts of beer production using regression";
+  set xlabel "Quarter"; set ylabel "Megalitres";}
+
+
+
+
+
+#==============================================
+# Example: Scenario based forecasting
+# https://otexts.com/fpp3/forecasting-regression.html#scenario-based-forecasting
+#==============================================
+
+open us_change.csv  # *.csv or *.gdt file
+setobs 4 1970:1 --time-series
+
+ols Consumption const Income Savings Unemployment
+matrix coeff = $coeff
+
+dataset addobs 4
+smpl $tmax-3 $tmax  # set sample to new observations only
+
+# Define different scenarios for the predictor variables
+## Increase scenario
+series Income_increase = 1
+series Savings_increase = 0.5
+series Unemployment_increase = 0
+## Decrease scenario
+series Income_decrease = -1
+series Savings_decrease = -0.5
+series Unemployment_decrease = 0
+
+list X_increase = const Income_increase Savings_increase Unemployment_increase
+list X_decrease = const Income_decrease Savings_decrease Unemployment_decrease
+
+# Compute scenario forecasts
+series forecast_increase = lincomb(X_increase, coeff)
+series forecast_decrease = lincomb(X_decrease, coeff)
+
+setinfo forecast_increase --graph-name="Increase"
+setinfo forecast_decrease --graph-name="Decrease"
+
+# Plot forecasts
+smpl 170 $tmax
+list L = Consumption forecast_increase forecast_decrease
+
+# TODO: Currently forecast intervals are missing here
+gnuplot L --time-series --with-lines --single-yaxis --output=display  \
+ {set grid; set key bottom left;
+  set title "US Consumption";
+  set xlabel "Quarter"; set ylabel "Pct. change";
+  set linetype 1 lw 1.5 lc rgb "black";
+  set linetype 2 lw 2 lc rgb "blue";
+  set linetype 3 lw 2 lc rgb "red";}
+
+
+
+#==============================================
+# TODO: This example is not yet replicated
+# Example: Prediction intervals
+# https://otexts.com/fpp3/forecasting-regression.html#prediction-intervals-2
+#==============================================
