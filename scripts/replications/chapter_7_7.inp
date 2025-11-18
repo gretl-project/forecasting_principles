@@ -1,0 +1,142 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/selecting-predictors.html
+
+#==============================================
+# Example: US consumption expenditure
+# https://otexts.com/fpp3/selecting-predictors.html#example-us-consumption
+# We are not directly replicating the example here, but just show how to conduct a stepwise regression in gretl.
+#==============================================
+
+boston_marathon.gdt  # *.csv or *.gdt file
+setobs 1 1897 --time-series
+
+series Minutes = Time / 60
+genr time  # create linear trend
+
+# restrict sample to years with reliable data
+smpl Year >= 1924 && Event == "Men's open division" --restrict --permanent
+
+#==============================================
+# Linear trend regression
+#==============================================
+ols Minutes const time
+series yhat = $yhat # fitted values
+series uhat = $uhat  # residuals
+
+# Create gridplot
+strings Plots = array(2)
+
+gnuplot Minutes yhat --with-lines --time-series --outbuf=Plots[1] \
+ {set grid;
+  set title "Boston Marathon Winning Times";
+  set xlabel "Year";
+  set ylabel "Minutes";
+  set key top right;}
+
+gnuplot uhat --with-lines --time-series --outbuf=Plots[2] \
+ {set grid;
+  set title "Residuals from a linear trend";
+  set xlabel "Year";
+  set ylabel "Minutes";
+  set key top right;}
+
+gridplot Plots --rows=2 --width=900 --output=display
+
+
+#==============================================
+# Non-linear trend regressions
+#==============================================
+
+# Some preparation
+series trainset = 1
+dataset addobs 10   # Add 8 new observations
+smpl trainset == 1 --restrict # restrict sample to training set only
+
+# Fitting a linear trend
+ols Minutes const time
+matrix coeff_trend = $coeff
+list xlist_trend = $xlist
+series yhat_trend = $yhat
+fcast fc_trend --out-of-sample
+smpl full
+series fcse_trend = $fcse  # standard deviation of forecast
+smpl trainset == 1 --restrict
+
+# Fitting an exponential trend
+ols log(Minutes) const time
+series yhat_exp_trend = exp($yhat)
+matrix coeff_exp_trend = $coeff
+list xlist_exp_trend = $xlist
+fcast fc_exp_trend --out-of-sample
+smpl full
+series fcse_exp_trend = $fcse
+smpl trainset == 1 --restrict
+
+# Fitting an piecewise linear trend with knots in
+# 1950 and 1980 by means of interaction terms
+smpl full   # set full sample for series creation
+series const_1924_1949 = (Year < 1950)
+series const_1950_1979 = (Year >= 1950 && Year < 1980)
+series const_1980 = (Year >= 1980)
+series trend_1924_1949 = time * const_1924_1949
+series trend_1950_1979 = time * const_1950_1979
+series trend_1980 = time * const_1980
+smpl trainset == 1 --restrict
+
+## Actual regression
+ols Minutes const_1924_1949 const_1950_1979 const_1980 \
+    trend_1924_1949 trend_1950_1979 trend_1980
+matrix coeff_piecewise_trend = $coeff
+list xlist_piecewise_trend = $xlist
+series yhat_piecewise_trend = $yhat
+fcast fc_piecewise_trend --out-of-sample
+smpl full
+series fcse_piecewise_trend = $fcse
+smpl trainset == 1 --restrict
+
+# Plot actuals with trends
+## Set graph names for legend
+setinfo yhat_trend --graph-name="linear"
+setinfo yhat_exp_trend --graph-name="exponential"
+setinfo yhat_piecewise_trend --graph-name="piecewise linear"
+
+
+## Prepare forecast intervals
+bundles B = defarray()
+bundle btrend = _(center="fc_trend", width="fcse_trend", factor=1.96, style="fill")
+btrend.color = "#DC1763E6"
+
+bundle bexp = _(center="fc_exp_trend", width="fcse_exp_trend", factor=1.96, style="fill")
+bexp.color = "#DCE70D2D"
+
+bundle bpiecewise = _(center="fc_piecewise_trend", width="fcse_piecewise_trend", factor=1.96, style="fill")
+bpiecewise.color = "#DC1CDB3D"
+
+bundles B = defarray(btrend, bexp, bpiecewise)
+
+smpl full
+
+gnuplot yhat_trend yhat_exp_trend yhat_piecewise_trend Minutes \
+  --with-lines --time-series --bands=B --output=display \
+  { set key top right; set grid;
+    set title "Boston marathon winning times";
+    set ylabel "Minutes";
+    set linetype 1 lw 2 lc rgb "blue";
+    set linetype 2 lw 2 lc rgb "red";
+    set linetype 3 lw 2 lc rgb "green";
+    set linetype 4 lw 2 lc rgb "black";
+    set yrange [110:170];
+}
+
+
+
+
+
+
+
+
+
+
+
+
