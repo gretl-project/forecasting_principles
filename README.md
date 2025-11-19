@@ -21,3 +21,7 @@ The data files used in the replication scripts are available in the `data/` fold
 [7.4 Some useful predictors](https://otexts.com/fpp3/useful-predictors.html) -- [Gretl replication file](scripts/replications/chapter_7_4.inp)
 
 [7.5 Selecting predictors](https://otexts.com/fpp3/selecting-predictors.html) -- [Gretl replication file](scripts/replications/chapter_7_5.inp)
+
+[7.6 Forecasting with regression](https://otexts.com/fpp3/forecasting-regression.html) -- [Gretl replication file](scripts/replications/chapter_7_6.inp)
+
+[7.7 Non-linear regression](https://otexts.com/fpp3/nonlinear-regression.html) -- [Gretl replication file](scripts/replications/chapter_7_7.inp)
