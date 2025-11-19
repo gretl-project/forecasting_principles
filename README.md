@@ -7,6 +7,7 @@ The book is online available at [Otexts.com/fpp3/](https://otexts.com/fpp3/ "For
 ## Data files
 The data files used in the replication scripts are available in the `data/` folder. There are CSV files as well as Gretl data files (`*.gdt`). Both formats can be opened directly in Gretl.
 
+[Link to data folder](data/)
 
 ## Chapter Replications
 
