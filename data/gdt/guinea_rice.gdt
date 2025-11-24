@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gretldata SYSTEM "gretldata.dtd">
 
-<gretldata version="1.5" name="guinea_rice" frequency="1" n="42" startobs="1" endobs="42" type="cross-section">
+<gretldata version="1.5" name="guinea_rice" frequency="1" n="42" startobs="1970" endobs="2011" type="time-series">
 <description>Data imported from CSV file 'guinea_rice.csv', 2025-11-24 16:19
 </description>
 <variables count="2">
