@@ -1,0 +1,31 @@
+set verbose off
+
+#==============================================
+# Replicate Ch. 10.2 -  Regression with ARIMA errors
+# https://otexts.com/fpp3/regarima.html
+#==============================================
+
+open us_change.gdt
+
+gnuplot Consumption Income --time-series --with-lines --output=display \
+ {set grid; set title "US consumption and personal income";
+  set xlabel ""; set ylabel "Quarterly % change"; set key top right;}
+
+
+# Fit regression with ARIMA errors
+## Automatically find optimal ARIMA errors
+arima 4 0 4 ; Consumption Income const --lagselect
+
+## Proceed with the ARIMA(1,0,2) as in the book
+arima 1 0 2 ; Consumption Income const  # yields almost the same estimates
+
+## Get ARIMA residuals
+series uhat = $uhat
+
+## Evaluate residuals
+gnuplot uhat --time-series --with-lines --output=display \
+ {set grid; set title "ARIMA residuals";
+  set xlabel "Year"; set ylabel "Residuals";}
+
+corrgm uhat 24 --plot=display
+freq uhat --normal --plot=display
