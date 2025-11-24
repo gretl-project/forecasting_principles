@@ -1,0 +1,115 @@
+set verbose off
+
+#==============================================
+# Replicate Ch. 10.3 - Forecasting
+# https://otexts.com/fpp3/forecasting.html
+#==============================================
+
+open us_change.gdt
+
+#==============================================
+# Example: US personal consumption and income
+# https://otexts.com/fpp3/forecasting.html#example-us-personal-consumption-and-income-1
+#==============================================
+
+# pkg install naiveFC  # uncomment if the package is not installed
+include naiveFC.gfn
+
+# Mean forecast
+bundle opt = empty	# set specific options
+scalar opt.h = 8    # forecast horizon
+bundle Model = naiveFC(Income, "meanFC", opt)
+naivePlot(&Model)
+
+
+#==========================================
+# Example: Forecasting electricity demand
+# https://otexts.com/fpp3/forecasting.html#example-forecasting-electricity-demand
+#==========================================
+
+open vic_elec_daily.gdt
+
+## Construct weekday series
+series wd = weekday($obsdate)
+wd = wd == 0 ? 7 : wd  # from Monday = 1 to Sunday = 7
+
+## Construct categorical series
+series day_category = (wd <= 5) ? 1 : 2 # weekday=1, weekend=2
+day_category = (Holiday == 1) ? 3 : day_category # holiday=3
+stringify(day_category, defarray("Weekday", "Weekend", "Holiday"))
+print wd Holiday day_category --byobs --range=1:20
+
+# Restrict sample to 2014
+smpl 2014-01-01 2014-12-31
+
+# Factorized scatter plot for 2014
+gnuplot Demand Temperature day_category --factorized --output=display \
+  {set grid; set title "Victoria electricity demand daily data in 2014";
+   set xlabel "Maximum daily temperature"; set ylabel "Electricity demand (GW)";
+   set key top left;}
+
+# Time-series plot for 2014
+tsplots Demand Temperature --output=display
+
+smpl full
+
+# ARIMA regression model
+## Create transformed series
+series Temperature_sq = Temperature^2
+series working_day = (wd <= 5) ? 1 : 0
+print Temperature Temperature_sq working_day --byobs --range=1:5
+
+## Estimate an ARIMA(2,1,2)(2,0,0)[7] model
+arima 2 1 2 ; 2 0 0 ; Demand const Temperature Temperature_sq working_day
+
+## Store residuals
+series uhat = $uhat
+tsplots uhat --output=display
+corrgm uhat 28 --plot=display --silent
+freq uhat --normal --silent --plot=display
+
+
+# Add 14 new observations
+series trainset = 1  # indicator for current dataset
+dataset addobs 14
+smpl !ok(trainset) --restrict  # restrict to new observations
+series trainset = 0
+
+## Update weekday series for new period
+smpl trainset == 0 --restrict --replace
+
+series wd = weekday($obsdate)
+wd = wd == 0 ? 7 : wd  # from Monday = 1 to Sunday = 7
+series working_day = (wd <= 5) ? 1 : 0
+
+series Holidays = 0     # we assume no holidays
+series Temperature = 26 #
+series Temperature_sq = Temperature^2
+
+## Scenario forecasting
+### Re-estimate the ARIMA model again
+smpl trainset == 1 --restrict --replace
+arima 2 1 2 ; 2 0 0 ; Demand const Temperature Temperature_sq working_day
+fcast --dynamic --out-of-sample
+
+# Store point forecast and associated standard error
+smpl full
+series fc = $fcast
+series fcse = $fcse
+
+# Create forecast plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_80_pct = critical(t, $nobs, 0.1)
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
+  color="cyan", title="80% interval")
+bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
+              color="orange", title="95% interval")
+bundles B = defarray(b1, b2)
+
+smpl 2014-07-01 $tmax
+gnuplot Demand fc --time-series --with-lines --bands=B --output=display \
+ {set grid; set key bottom left;
+  set title "Daily electricity demand: Victoria";
+  set xlabel ""; set ylabel "GW";}
