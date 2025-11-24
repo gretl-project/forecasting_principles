@@ -30,3 +30,18 @@ The data files used in the replication scripts are available in the `data/` fold
 [7.6 Forecasting with regression](https://otexts.com/fpp3/forecasting-regression.html) -- [Gretl replication file](scripts/replications/chapter_7_6.inp)
 
 [7.7 Non-linear regression](https://otexts.com/fpp3/nonlinear-regression.html) -- [Gretl replication file](scripts/replications/chapter_7_7.inp)
+
+
+### Chapter 9
+
+[9.1 Stationarity and differencing](https://otexts.com/fpp3/stationarity.html) -- [Gretl replication file](scripts/replications/chapter_9_1.inp)
+
+[9.3 Autoregressive models](https://otexts.com/fpp3/AR.html) -- [Gretl replication file](scripts/replications/chapter_9_3.inp)
+
+[9.4 Moving average models](https://otexts.com/fpp3/MA.html) -- [Gretl replication file](scripts/replications/chapter_9_4.inp)
+
+[9.5 Non-seasonal ARIMA models](https://otexts.com/fpp3/non-seasonal-arima.html) -- [Gretl replication file](scripts/replications/chapter_9_5.inp)
+
+[9.9 Seasonal ARIMA models](https://otexts.com/fpp3/seasonal-arima.html) -- [Gretl replication file](scripts/replications/chapter_9_9.inp)
+
+[9.10 ARIMA and ETS models -- NOT IMPLEMENTED, YET](https://otexts.com/fpp3/arima-ets.html) -- [Gretl replication file](scripts/replications/chapter_9_10.inp)
