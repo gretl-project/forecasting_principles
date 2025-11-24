@@ -1,0 +1,65 @@
+set verbose off
+# Replicate Ch. 9.1
+# https://otexts.com/fpp3/stationarity.html
+
+#==============================================
+# https://otexts.com/fpp3/stationarity.html#stationarity
+#==============================================
+
+#==========================================
+# EXAMPLE: Differencing
+#==========================================
+open gafa_stock.gdt
+
+smpl Symbol == "GOOG" --restrict --permanent
+
+series d_Close = diff(Close)  # first difference of Close price
+
+# Plot original and differenced series
+print Close d_Close --byobs --range=1:5  # print first 5 observations of Close and d_Close
+gnuplot Close d_Close --with-lines --time-series --y2axis=d_Close --output=display
+
+# (P)ACF plots
+corrgm Close 24 --plot=display --silent
+corrgm d_Close 24 --plot=display --silent
+
+
+#==============================================
+# Example: Seasonal differencing
+# https://otexts.com/fpp3/stationarity.html#seasonal-differencing
+# We do not have access to the antidiabetic sales data used in the book. We will
+# use the aus_production dataset instead.
+#==============================================
+open aus_production.gdt
+
+series log_Electricity = log(Electricity)
+series d4_Electricity = sdiff(log_Electricity) # seasonal difference (lag 4 for quarterly data)
+series d1_d4_Electricity = diff(d4_Electricity) # first difference of seasonal difference
+
+setinfo Electricity --graph-name="Electricity production"
+setinfo log_Electricity --graph-name="Log electricity production"
+setinfo d4_Electricity --graph-name="Annual change in log electricity"
+setinfo d1_d4_Electricity --graph-name="Doubly diff. log electricity"
+
+# Plot the series
+list L = Electricity log_Electricity d4_Electricity d1_d4_Electricity
+tsplots L --output=display
+
+
+#==============================================
+# Example: Unit root tests
+# https://otexts.com/fpp3/stationarity.html#unit-root-tests
+#==============================================
+open gafa_stock.gdt
+smpl Symbol == "GOOG" --restrict --permanent
+
+# KPSS test
+scalar ORDER = 8
+## test the level
+kpss ORDER Close
+
+## test the 1st difference
+kpss ORDER Close --difference
+
+## test the seasonal difference
+kpss ORDER Close --difference --seasonals
