@@ -1,5 +1,7 @@
 set verbose off
-# Replicate Ch. 9.4
+
+#==============================================
+# Replicate Ch. 9.4 - Moving Average Models
 # https://otexts.com/fpp3/MA.html
 #==============================================
 
