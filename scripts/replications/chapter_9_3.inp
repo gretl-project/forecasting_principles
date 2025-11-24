@@ -1,0 +1,23 @@
+set verbose off
+# Replicate Ch. 9.1
+# https://otexts.com/fpp3/stationarity.html
+#==============================================
+
+#==========================================
+# EXAMPLE: AR(1) and AR(2) processes simulation
+#==========================================
+nulldata 100    # create empty dataset with 100 observations
+setobs 1 1 --time-series
+set seed 1234  # for reproducibility
+
+# AR(1)
+series y_AR1 = 0   # initialize series
+y_AR1 = 18 - 0.8 * y_AR1(-1) + normal(0,1)
+
+# AR(2)
+series y_AR2 = 0   # initialize series
+y_AR2 = 8 + 1.3 * y_AR2(-1) - 0.7 * y_AR2(-2) + normal(0,1)
+
+# Plot the series
+list L = y_AR1 y_AR2
+tsplots L --output=display
