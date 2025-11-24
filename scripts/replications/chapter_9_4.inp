@@ -1,0 +1,27 @@
+set verbose off
+# Replicate Ch. 9.4
+# https://otexts.com/fpp3/MA.html
+#==============================================
+
+#==========================================
+# EXAMPLE: MA(1) and MA(2) processes simulation
+#==========================================
+nulldata 100    # create empty dataset with 100 observations
+setobs 1 1 --time-series
+set seed 1234  # for reproducibility
+
+series e = normal()				# innovations
+
+# MA(1)
+series y_MA1 = 20 + e + 0.8 * e(-1)
+
+# MA(2)
+series y_MA2 = e + e(-1) + 0.8*e(-2)
+
+# Plot the series
+setinfo e --graph-name="Innovations"
+setinfo y_MA1 --graph-name="MA(1)"
+setinfo y_MA2 --graph-name="MA(2)"
+
+list L = e y_MA1 y_MA2
+tsplots L --output=display
