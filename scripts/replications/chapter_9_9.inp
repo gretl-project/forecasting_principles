@@ -1,0 +1,81 @@
+set verbose off
+
+#==============================================
+# Replicate Ch. 9.9 - Seasonal ARIMA models
+# https://otexts.com/fpp3/seasonal-arima.html
+#==============================================
+
+open us_employment.gdt
+smpl Title == "Leisure and Hospitality" --restrict --permanent
+setobs 12 1939:1 --time-series
+
+smpl obs >= 2001:1 --restrict --permanent
+
+series d12_Employed = sdiff(Employed)  # seasonal difference
+series d_d12_Employed = diff(d12_Employed)  # first difference of seasonal difference
+
+gnuplot Employed --time-series --with-lines --output=display \
+ {set grid; set title "US Leisure and Hospitality Employment";
+  set xlabel "Year"; set ylabel "Number of Employed (Thousands)";}
+
+gnuplot d12_Employed --time-series --with-lines --output=display \
+ {set grid; set title "Seasonally Differenced";
+  set xlabel "Year"; set ylabel "Employment (Thousands)";}
+
+# PACF and ACF plots
+corrgm d12_Employed 36 --plot=display
+corrgm d_d12_Employed 36 --plot=display
+
+
+# Fit different seasonal ARIMA models
+matrix info_crits = {}  # empty matrix to store information criteria
+
+## arima(0,1,2)(0,1,1)
+arima 0 1 2 ; 0 1 1 ; Employed const
+info_crits |= $aic ~ $bic ~ $lnl   # store AIC, BIC, and log-likelihood
+
+## arima(2,1,0)(0,1,1)
+arima 2 1 0 ; 0 1 1 ; Employed const
+info_crits |= $aic ~ $bic ~ $lnl
+
+## automatic selection
+arima 2 1 2 ; 2 1 2 ; Employed const --lagselect
+## Selected by AIC and BIC
+arima 2 1 0 ; 1 1 1 ; Employed const
+info_crits |= $aic ~ $bic ~ $lnl
+series uhat = $uhat  # store residuals
+
+cnameset(info_crits, defarray("AIC", "BIC", "LogLikelihood"))
+rnameset(info_crits, defarray("M1", "M2", "M3"))
+print info_crits
+
+# Evaluate residuals of auto-ARIMA model
+tsplots uhat --output=display
+corrgm uhat 36 --plot=display
+freq uhat --normal --plot=display
+
+# Forecast
+dataset addobs 36
+fcast --dynamic --out-of-sample
+
+# Store point forecast and associated standard error
+smpl full
+series fc = $fcast
+series fcse = $fcse
+
+# Create forecast plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_80_pct = critical(t, $nobs, 0.1)
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
+  color="cyan", title="80% interval")
+bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
+              color="red", title="95% interval")
+bundles B = defarray(b1, b2)
+
+smpl 2010:1 $tmax
+gnuplot Employed fc --time-series --with-lines --bands=B --output=display \
+ {set grid; set key outside below;
+  set title "US employment: leisure and hospitality";
+  set xlabel ""; set ylabel "Number of people (millions)";}
