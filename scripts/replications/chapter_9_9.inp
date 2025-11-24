@@ -79,3 +79,91 @@ gnuplot Employed fc --time-series --with-lines --bands=B --output=display \
  {set grid; set key outside below;
   set title "US employment: leisure and hospitality";
   set xlabel ""; set ylabel "Number of people (millions)";}
+
+
+#==========================================
+# Example: Test set evaluation:
+# https://otexts.com/fpp3/seasonal-arima.html#example-corticosteroid-drug-sales-in-australia
+# We do not have access to the original dataset, so we will use the US employment data
+# for demonstration purposes.
+#==========================================
+
+open us_employment.gdt
+smpl Title == "Leisure and Hospitality" --restrict --permanent
+setobs 12 1939:1 --time-series
+
+series log_Employed = log(Employed)
+smpl obs >= 2001:1 --restrict --permanent
+
+# Training set: up to June 2017
+series istrainset = (obs <= 2017:6)   # indicator for training set
+print istrainset --byobs
+smpl istrainset == 1 --restrict       # restrict the sample to training set
+
+# Fit seasonal ARIMA models on training set
+## Model 1: ARIMA(3,0,1)(1,1,1)
+arima 3 0 1 ; 1 1 1 ; log_Employed const
+fcast arima301111 --dynamic --out-of-sample
+
+## Model 2: ARIMA(2,1,2)(0,1,1)
+arima 2 1 2 ; 0 1 1 ; log_Employed const
+fcast arima212011 --dynamic --out-of-sample
+
+## Model 3: ARIMA(3,0,1)(1,1,0)
+arima 3 0 1 ; 1 1 0 ; log_Employed const
+fcast arima301110 --dynamic --out-of-sample
+
+# Plot forecasts vs actuals
+smpl 2016:1 $tmax
+list L = log_Employed arima301111 arima212011 arima301110
+
+gnuplot L --time-series --with-lines --single-yaxis --output=display \
+ {set grid; set key top left;}
+
+# Compute accuracy metrics for out-of-sample forecasts
+list FC = arima301111 arima212011 arima301110
+smpl FC --no-missing
+
+print "Accuracy metrics for out-of-sample forecasts:"
+matrix acc_metrics = fcstats(log_Employed, FC)
+cnameset(acc_metrics, defarray("M1", "M2", "M3"))
+printf "%12.5f\n", acc_metrics
+print "Best performing model is Model 1 (ARIMA(3,0,1)(1,1,1)) based on RMSE and MAE."
+
+# Re-estimate model 1 on training set and show forecast intervals, too
+## Model 1: ARIMA(3,0,1)(1,1,1)
+smpl istrainset == 1 --restrict --replace
+arima 3 0 1 ; 1 1 1 ; log_Employed const
+smpl full
+series fc = $fcast
+series fcse = $fcse
+
+# Create forecast plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_80_pct = critical(t, $nobs, 0.1)
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
+  color="cyan", title="80% interval")
+bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
+              color="red", title="95% interval")
+bundles B = defarray(b1, b2)
+
+smpl ($tmax-60) $tmax
+gnuplot log_Employed fc --time-series --with-lines --bands=B --output=display \
+ {set grid; set key outside below;
+  set title "Log of US employment: leisure and hospitality";
+  set xlabel ""; set ylabel "Log of number of people (millions)";}
+
+
+
+
+
+
+
+
+
+
+
+
+
