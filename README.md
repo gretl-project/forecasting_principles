@@ -45,3 +45,9 @@ The data files used in the replication scripts are available in the `data/` fold
 [9.9 Seasonal ARIMA models](https://otexts.com/fpp3/seasonal-arima.html) -- [Gretl replication file](scripts/replications/chapter_9_9.inp)
 
 [9.10 ARIMA and ETS models -- NOT IMPLEMENTED, YET](https://otexts.com/fpp3/arima-ets.html) -- [Gretl replication file](scripts/replications/chapter_9_10.inp)
+
+
+### Chapter 10 Dynamic regression models
+
+[10.2 Regression with ARIMA errors using Gretl](https://otexts.com/fpp3/regarima.html) -- [Gretl replication file](scripts/replications/chapter_10_2.inp)
+[10.3 Forecasting](https://otexts.com/fpp3/forecasting.html) -- [Gretl replication file](scripts/replications/chapter_10_3.inp)
