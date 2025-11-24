@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gretldata SYSTEM "gretldata.dtd">
 
-<gretldata version="1.4" name="us_gasoline" frequency="1" startobs="1" endobs="1355" type="cross-section">
-<description>Data imported from CSV file 'us_gasoline.csv', 2021-06-20 17:33
+<gretldata version="1.5" name="us_gasoline" frequency="1" n="1355" startobs="1" endobs="1355" type="cross-section">
+<description>Data imported from CSV file 'us_gasoline.csv', 2025-11-24 16:19
 </description>
 <variables count="2">
 <variable name="Week"

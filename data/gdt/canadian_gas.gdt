@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gretldata SYSTEM "gretldata.dtd">
 
-<gretldata version="1.4" name="canadian_gas" frequency="1" startobs="1" endobs="542" type="cross-section">
-<description>Data imported from CSV file 'canadian_gas.csv', 2021-06-20 17:33
+<gretldata version="1.5" name="canadian_gas" frequency="1" n="542" startobs="1" endobs="542" type="cross-section">
+<description>Data imported from CSV file 'canadian_gas.csv', 2025-11-24 16:19
 </description>
 <variables count="2">
 <variable name="Month"

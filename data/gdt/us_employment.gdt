@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gretldata SYSTEM "gretldata.dtd">
 
-<gretldata version="1.4" name="us_employment" frequency="1" startobs="1" endobs="143412" type="cross-section">
-<description>Data imported from CSV file 'us_employment.csv', 2021-06-20 17:33
+<gretldata version="1.5" name="us_employment" frequency="1" n="143412" startobs="1" endobs="143412" type="cross-section">
+<description>Data imported from CSV file 'us_employment.csv', 2025-11-24 16:19
 </description>
 <variables count="4">
 <variable name="Month"

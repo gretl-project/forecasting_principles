@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gretldata SYSTEM "gretldata.dtd">
 
-<gretldata version="1.4" name="bank_calls" frequency="1" startobs="1" endobs="27716" type="cross-section">
-<description>Data imported from CSV file 'bank_calls.csv', 2021-06-20 17:33
+<gretldata version="1.5" name="bank_calls" frequency="1" n="27716" startobs="1" endobs="27716" type="cross-section">
+<description>Data imported from CSV file 'bank_calls.csv', 2025-11-24 16:19
 </description>
 <variables count="2">
 <variable name="DateTime"
