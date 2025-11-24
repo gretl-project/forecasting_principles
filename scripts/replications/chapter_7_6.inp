@@ -30,7 +30,7 @@ fcast forecast --out-of-sample
 series forecast_sd = $fcse
 print forecast forecast_sd --byobs
 
-# Create foreasting plot with prediction intervals
+# Create forecast plot with prediction intervals
 ## Compute critical values of t-distribution
 scalar critical_90_pct = critical(t, $nobs, 0.05)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
