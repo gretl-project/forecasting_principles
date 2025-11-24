@@ -1,0 +1,58 @@
+set verbose off
+
+#==============================================
+# Replicate Ch. 9.5 - Non-seasonal ARIMA models
+# https://otexts.com/fpp3/non-seasonal-arima.html
+#==============================================
+
+#==========================================
+# EXAMPLE:
+# We do not have access to Egyptian export data used in the book,
+# so we will use the built-in 'prices' dataset to demonstrate
+# non-seasonal ARIMA modeling.
+#==========================================
+
+open prices.gdt
+
+series d_copper = diff(copper)  # first difference to achieve stationarity
+
+setinfo copper --graph-name="Copper Prices"
+setinfo d_copper --graph-name="Differenced Copper Prices"
+
+tsplots copper d_copper --output=display
+
+
+# ACF and PACF plots
+corrgm d_copper 12 --plot=display
+
+# Automatic ARMA selection
+## Assess various lag combinations
+arma 4 0 4 ; d_copper const --lagselect
+
+## BIC criteria selects an ARMA(2,1)
+arma 2 0 1 ; d_copper const
+
+# Add new observations and conduct forecast
+dataset addobs 10
+fcast --dynamic --out-of-sample
+
+# Store point forecast and associated standard error
+smpl full
+series fc = $fcast
+series fcse = $fcse
+
+# Create forecast plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_80_pct = critical(t, $nobs, 0.1)
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
+  color="cyan", title="80% interval")
+bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
+              color="red", title="95% interval")
+bundles B = defarray(b1, b2)
+
+gnuplot d_copper fc --time-series --with-lines --bands=B --output=display \
+ {set grid; set key outside below;
+  set title "Copper";
+  set xlabel "Year"; set ylabel "Price";}
