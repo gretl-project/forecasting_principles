@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="pelt" frequency="1" n="91" startobs="1845" endobs="1935" type="time-series">
+<description>Data imported from CSV file 'pelt.csv', 2025-12-09 22:05
+</description>
+<variables count="2">
+<variable name="Hare"
+/>
+<variable name="Lynx"
+/>
+</variables>
+<observations count="91" labels="false">
+<obs>19580 30090 </obs>
+<obs>19600 45150 </obs>
+<obs>19610 49150 </obs>
+<obs>11990 39520 </obs>
+<obs>28040 21230 </obs>
+<obs>58000 8420 </obs>
+<obs>74600 5560 </obs>
+<obs>75090 5080 </obs>
+<obs>88480 10170 </obs>
+<obs>61280 19600 </obs>
+<obs>74670 32910 </obs>
+<obs>88060 34380 </obs>
+<obs>68510 29590 </obs>
+<obs>32190 21300 </obs>
+<obs>12640 13690 </obs>
+<obs>21490 7650 </obs>
+<obs>30350 4080 </obs>
+<obs>2180 4090 </obs>
+<obs>152650 14330 </obs>
+<obs>148360 38220 </obs>
+<obs>85810 60780 </obs>
+<obs>41410 70770 </obs>
+<obs>14750 72770 </obs>
+<obs>2280 42680 </obs>
+<obs>5910 16390 </obs>
+<obs>9950 9830 </obs>
+<obs>10440 5800 </obs>
+<obs>70640 5260 </obs>
+<obs>50120 18910 </obs>
+<obs>50130 30950 </obs>
+<obs>101250 31180 </obs>
+<obs>97120 46340 </obs>
+<obs>86510 45770 </obs>
+<obs>72170 44150 </obs>
+<obs>38320 36330 </obs>
+<obs>10110 12030 </obs>
+<obs>7740 12600 </obs>
+<obs>9670 18340 </obs>
+<obs>43120 35140 </obs>
+<obs>52210 43770 </obs>
+<obs>134850 65690 </obs>
+<obs>134860 79350 </obs>
+<obs>103790 51650 </obs>
+<obs>46100 32590 </obs>
+<obs>15030 22450 </obs>
+<obs>24200 16160 </obs>
+<obs>41650 14120 </obs>
+<obs>52340 20380 </obs>
+<obs>53780 33330 </obs>
+<obs>70400 46000 </obs>
+<obs>85810 51410 </obs>
+<obs>56690 46430 </obs>
+<obs>16590 33680 </obs>
+<obs>6160 18010 </obs>
+<obs>2300 8860 </obs>
+<obs>12820 7130 </obs>
+<obs>4720 9470 </obs>
+<obs>4730 14860 </obs>
+<obs>37220 31470 </obs>
+<obs>69720 60570 </obs>
+<obs>57780 63510 </obs>
+<obs>28680 54700 </obs>
+<obs>23370 6300 </obs>
+<obs>21540 3410 </obs>
+<obs>26340 5440 </obs>
+<obs>53100 11650 </obs>
+<obs>68480 20350 </obs>
+<obs>75580 32880 </obs>
+<obs>57920 39550 </obs>
+<obs>40970 43360 </obs>
+<obs>24950 40830 </obs>
+<obs>12590 30360 </obs>
+<obs>4970 17180 </obs>
+<obs>4500 6820 </obs>
+<obs>11210 3190 </obs>
+<obs>56600 3520 </obs>
+<obs>69630 9940 </obs>
+<obs>77740 20300 </obs>
+<obs>80530 31990 </obs>
+<obs>73380 42360 </obs>
+<obs>36930 49080 </obs>
+<obs>4640 53990 </obs>
+<obs>2540 52250 </obs>
+<obs>1800 37700 </obs>
+<obs>2390 19140 </obs>
+<obs>4230 6980 </obs>
+<obs>19520 8310 </obs>
+<obs>82110 16010 </obs>
+<obs>89760 24820 </obs>
+<obs>81660 29700 </obs>
+<obs>15760 35400 </obs>
+</observations>
+</gretldata>
