@@ -1,0 +1,57 @@
+set verbose off
+
+#==============================================
+# Replicate Ch. 10.4 - Forecasting
+# https://otexts.com/fpp3/stochastic-and-deterministic-trends.html
+#==============================================
+
+open aus_airpassengers.gdt
+
+# Example: Air transport passengers Australia
+gnuplot Passengers --time-series --with-lines --output=display \
+ { set ylabel "Passengers (millions)";
+   set title "Total annual air passengers";
+   set grid;}
+
+   
+# Add 20 new observations
+series trainset = 1  # indicator for current dataset
+dataset addobs 20    # actually adding new observations
+
+smpl trainset == 1 --restrict  # restrict to training set
+
+# deterministic trend model
+arima 1 0 0 ; Passengers time
+fcast --dynamic --out-of-sample
+smpl full
+series fc_det = $fcast
+series fcse_det = $fcse
+
+# stochastic trend model
+smpl trainset == 1 --restrict
+arima 0 1 0 ; Passengers
+fcast --dynamic --out-of-sample
+smpl full
+series fc_stoch = $fcast
+series fcse_stoch = $fcse
+
+
+# Create forecast plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+bundle b1 = _(center="fc_det", width="fcse_det", factor=critical_95_pct,
+              style="fill", color="#DCE70D2D", title="95%")
+bundle b2 = _(center="fc_stoch", width="fcse_stoch", factor=critical_95_pct,
+              style="fill", color="#DC1763E6", title="")
+bundles B = defarray(b1, b2)
+
+smpl full
+
+gnuplot Passengers fc_det fc_stoch --time-series --with-lines --bands=B --output=display \
+ {set grid; set key top left;
+  set title "Forecasts from trend models";
+  set xlabel ""; set ylabel "Air passengers (millions)";
+  set linetype 1 lw 2 lc rgb "black";
+  set linetype 2 lw 2 lc rgb "red";
+  set linetype 3 lw 2 lc rgb "blue";}

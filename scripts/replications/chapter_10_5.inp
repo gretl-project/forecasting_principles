@@ -1,0 +1,76 @@
+set verbose off
+
+#==============================================
+# Replicate Ch. 10.5 - Dynamic harmonic regression
+# https://otexts.com/fpp3/dhr.html
+#==============================================
+open aus_retail.gdt
+
+# Download and install user-contributed package
+# pkg install basis_functions  # EXECUTE ONLY ONCE
+
+include basis_functions.gfn  # load package
+#help basis_functions
+
+# Construct year series
+series year, month, day
+isoconv($obsdate, &year, &month, &day)
+print year --byobs --range=1:10
+
+smpl Industry == "Cafes, restaurants and takeaway food services" --restrict
+smpl year >= 2004 && year <= 2018 --restrict --permanent
+
+# Add one cross-sectional unit for aggregate data across all States
+dataset addobs 1
+strings statenames = strvals(State)
+statenames += "All"
+stringify(State, statenames)
+
+# Sum up turnover over all states
+series Turnover_sum = pxsum(Turnover)
+smpl State == "All" --restrict --permanent
+setobs 12 2004:1 --time-series
+series trainset = 1  # indicator for current dataset
+   
+# Add 24 new observations at the end
+dataset addobs 24    # actually adding new observations
+
+# Create forecast plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+# Run ARIMA models with different K for Fourier terms
+strings Plots = array(6)
+
+loop i=1..6
+    smpl full
+    list F = fourier($i)
+    
+    smpl trainset == 1 --restrict --replace  # restrict to training set
+    # NOTE: We do not model the logarithm here!
+    # We model a AR(1)
+    arima 1 0 0 ; Turnover_sum F --quiet
+
+    scalar aic = $aic
+    printf "ARIMA + K=%d, AIC=%.2f\n", $i, aic
+
+	fcast --dynamic --out-of-sample --quiet
+	smpl full
+	series fc = $fcast
+	series fcse = $fcse
+
+    bundle B = _(center="fc", width="fcse", factor=critical_95_pct,
+      style="fill", color="#DCE70D2D", title="95%")
+      
+    string title = sprintf("K = %d, AIC = %.2f", $i, aic)
+    
+   	gnuplot Turnover_sum fc --time-series --with-lines --band=B --outbuf=Plots[i] \
+	 {set grid; set key top left;
+	  set title "@title";
+	  set xlabel ""; set ylabel "";
+	  set linetype 1 lw 2 lc rgb "black";
+	  set linetype 2 lw 2 lc rgb "red";}
+endloop
+
+gridplot Plots --rows=3 --width=1000 --height=900 --output=display
+
