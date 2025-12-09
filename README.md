@@ -52,3 +52,7 @@ The data files used in the replication scripts are available in the `data/` fold
 [10.2 Regression with ARIMA errors using Gretl](https://otexts.com/fpp3/regarima.html) -- [Gretl replication file](scripts/replications/chapter_10_2.inp)
 
 [10.3 Forecasting](https://otexts.com/fpp3/forecasting.html) -- [Gretl replication file](scripts/replications/chapter_10_3.inp)
+
+[10.4 Forecasting](https://otexts.com/fpp3/stochastic-and-deterministic-trends.html) -- [Gretl replication file](scripts/replications/chapter_10_4.inp)
+
+[10.5 Forecasting](https://otexts.com/fpp3/dhr.html) -- [Gretl replication file](scripts/replications/chapter_10_5.inp)
