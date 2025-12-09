@@ -1,7 +1,7 @@
 set verbose off
 
 #==============================================
-# Replicate Ch. 10.4 - Forecasting
+# Replicate Ch. 10.4 - Stochastic and deterministic trends
 # https://otexts.com/fpp3/stochastic-and-deterministic-trends.html
 #==============================================
 
