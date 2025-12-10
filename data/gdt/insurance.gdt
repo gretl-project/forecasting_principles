@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gretldata SYSTEM "gretldata.dtd">
 
-<gretldata version="1.5" name="insurance" frequency="1" n="40" startobs="1" endobs="40" type="cross-section">
+<gretldata version="1.5" name="insurance" frequency="12" n="40" startobs="2002:01" endobs="2005:04" type="time-series">
 <description>Data imported from CSV file 'insurance.csv', 2025-11-24 16:19
 </description>
 <variables count="3">
