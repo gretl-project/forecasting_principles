@@ -36,7 +36,7 @@ scalar critical_90_pct = critical(t, $nobs, 0.05)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
 
 bundle b1 = _(center="forecast", width="forecast_sd", factor=critical_90_pct, style="fill",
-  color="cyan", title="90% interval")
+              color="cyan", title="90% interval")
 bundle b2 = _(center="forecast", width="forecast_sd", factor=critical_95_pct, style="fill",
               color="red", title="95% interval")
 bundles B = defarray(b1, b2)
