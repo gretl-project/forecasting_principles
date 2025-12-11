@@ -23,8 +23,8 @@ gnuplot d12_Employed --time-series --with-lines --output=display \
   set xlabel "Year"; set ylabel "Employment (Thousands)";}
 
 # PACF and ACF plots
-corrgm d12_Employed 36 --plot=display
-corrgm d_d12_Employed 36 --plot=display
+corrgm d12_Employed 36 --silent --plot=display
+corrgm d_d12_Employed 36 --silent --plot=display
 
 
 # Fit different seasonal ARIMA models
@@ -52,7 +52,7 @@ print info_crits
 # Evaluate residuals of auto-ARIMA model
 tsplots uhat --output=display
 corrgm uhat 36 --plot=display
-freq uhat --normal --plot=display
+freq uhat --normal --silent --plot=display
 
 # Forecast
 dataset addobs 36
@@ -69,12 +69,13 @@ scalar critical_80_pct = critical(t, $nobs, 0.1)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
 
 bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
-  color="cyan", title="80% interval")
+              color="#DCE70D2D", title="80% interval")
 bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
-              color="red", title="95% interval")
+              color="#DC1763E6", title="95% interval")
 bundles B = defarray(b1, b2)
 
 smpl 2010:1 $tmax
+
 gnuplot Employed fc --time-series --with-lines --bands=B --output=display \
  {set grid; set key outside below;
   set title "US employment: leisure and hospitality";
@@ -144,26 +145,14 @@ scalar critical_80_pct = critical(t, $nobs, 0.1)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
 
 bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
-  color="cyan", title="80% interval")
+              color="#DCE70D2D", title="80% interval")
 bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
-              color="red", title="95% interval")
+              color="#DC1763E6", title="95% interval")
 bundles B = defarray(b1, b2)
 
 smpl ($tmax-60) $tmax
+
 gnuplot log_Employed fc --time-series --with-lines --bands=B --output=display \
  {set grid; set key outside below;
   set title "Log of US employment: leisure and hospitality";
   set xlabel ""; set ylabel "Log of number of people (millions)";}
-
-
-
-
-
-
-
-
-
-
-
-
-
