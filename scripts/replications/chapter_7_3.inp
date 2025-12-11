@@ -7,7 +7,7 @@ set verbose off
 # https://otexts.com/fpp3/least-squares.html#example-us-consumption-expenditure-2
 #==============================================
 
-open us_change.csv  # *.csv or *.gdt file
+open us_change.gdt  # *.csv or *.gdt file
 setobs 4 1970:1 --time-series
 
 ols Consumption const Income Production Unemployment Savings
@@ -24,10 +24,10 @@ gnuplot uhat --with-lp --time-series --output=display \
   set title "";}
 
 # (P)ACF
-corrgm uhat 24 --plot=display
+corrgm uhat 24 --silent --plot=display
 
-# Histogramm
-freq uhat --plot=display
+# Histogram
+freq uhat --silent --plot=display
 
 # Scatterplot of residuals vs. each predictor
 list L = Income Production Unemployment Savings
@@ -66,12 +66,13 @@ gridplot MyPlots --cols=3 --width=900 --height=400 --output=display
 # Regression of unrelated series
 ols Passengers const Production
 series uhat = $uhat
+
 gnuplot uhat --with-lp --time-series --output=display \
  {set grid; set key outside below;
   set ylabel "Innovation residuals";
   set title "Residuals from spurious regression";}
 
 # (P)ACF
-corrgm uhat 16 --plot=display
-# Histogramm
-freq uhat --plot=display
+corrgm uhat 16 --silent --plot=display
+# Histogram
+freq uhat --silent --plot=display
