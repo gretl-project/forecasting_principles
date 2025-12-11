@@ -23,7 +23,7 @@ tsplots copper d_copper --output=display
 
 
 # ACF and PACF plots
-corrgm d_copper 12 --plot=display
+corrgm d_copper 12 --silent --plot=display
 
 # Automatic ARMA selection
 ## Assess various lag combinations
@@ -47,9 +47,9 @@ scalar critical_80_pct = critical(t, $nobs, 0.1)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
 
 bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
-  color="cyan", title="80% interval")
+              color="#DCE70D2D", title="80% interval")
 bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
-              color="red", title="95% interval")
+              color="#DC1763E6", title="95% interval")
 bundles B = defarray(b1, b2)
 
 gnuplot d_copper fc --time-series --with-lines --bands=B --output=display \
