@@ -103,15 +103,15 @@ setinfo yhat_piecewise_trend --graph-name="piecewise linear"
 
 
 ## Prepare forecast intervals
-bundles B = defarray()
-bundle btrend = _(center="fc_trend", width="fcse_trend", factor=1.96, style="fill")
-btrend.color = "#DC1763E6"
+bundle btrend = _(center="fc_trend", width="fcse_trend", factor=1.96, style="fill",
+                  color = "#DC1763E6")
 
-bundle bexp = _(center="fc_exp_trend", width="fcse_exp_trend", factor=1.96, style="fill")
-bexp.color = "#DCE70D2D"
+bundle bexp = _(center="fc_exp_trend", width="fcse_exp_trend", factor=1.96,
+                style="fill", color = "#DCE70D2D")
 
-bundle bpiecewise = _(center="fc_piecewise_trend", width="fcse_piecewise_trend", factor=1.96, style="fill")
-bpiecewise.color = "#DC1CDB3D"
+bundle bpiecewise = _(center="fc_piecewise_trend",
+                      width="fcse_piecewise_trend", factor=1.96, style="fill",
+                      color = "#DC1CDB3D")
 
 bundles B = defarray(btrend, bexp, bpiecewise)
 
@@ -126,8 +126,7 @@ gnuplot yhat_trend yhat_exp_trend yhat_piecewise_trend Minutes \
     set linetype 2 lw 2 lc rgb "red";
     set linetype 3 lw 2 lc rgb "green";
     set linetype 4 lw 2 lc rgb "black";
-    set yrange [110:170];
-}
+    set yrange [110:170];}
 
 
 
