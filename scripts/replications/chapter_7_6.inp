@@ -26,22 +26,22 @@ ols Beer const time Seasonals
 dataset addobs 8
 
 # Create forecast and standard deviation of forecast
-fcast forecast --out-of-sample
-series forecast_sd = $fcse
-print forecast forecast_sd --byobs
+fcast fc --out-of-sample
+series fcse = $fcse
+print fc fcse --byobs
 
 # Create forecast plot with prediction intervals
 ## Compute critical values of t-distribution
-scalar critical_90_pct = critical(t, $nobs, 0.05)
+scalar critical_80_pct = critical(t, $nobs, 0.1)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
 
-bundle b1 = _(center="forecast", width="forecast_sd", factor=critical_90_pct, style="fill",
-              color="cyan", title="90% interval")
-bundle b2 = _(center="forecast", width="forecast_sd", factor=critical_95_pct, style="fill",
+bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
+              color="cyan", title="80% interval")
+bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
               color="red", title="95% interval")
 bundles B = defarray(b1, b2)
 
-gnuplot Beer forecast --time-series --with-lines --bands=B --output=display \
+gnuplot Beer fc --time-series --with-lines --bands=B --output=display \
  {set grid; set key outside below;
   set title "Forecasts of beer production using regression";
   set xlabel "Quarter"; set ylabel "Megalitres";}
@@ -55,15 +55,21 @@ gnuplot Beer forecast --time-series --with-lines --bands=B --output=display \
 # https://otexts.com/fpp3/forecasting-regression.html#scenario-based-forecasting
 #==============================================
 
-open us_change.csv  # *.csv or *.gdt file
+open us_change.gdt  # *.csv or *.gdt file
 setobs 4 1970:1 --time-series
 
+# Add 4 future observations
+series trainset = 1
+dataset addobs 4
+series trainset = misszero(trainset)  # set zero for missing future values
+
+# Restrict data to training set
+smpl trainset == 1 --restrict
 ols Consumption const Income Savings Unemployment
 matrix coeff = $coeff
 
-dataset addobs 4
-smpl $tmax-3 $tmax  # set sample to new observations only
-
+# Activate future
+smpl trainset == 0 --restrict --replace
 # Define different scenarios for the predictor variables
 ## Increase scenario
 series Income_increase = 1
