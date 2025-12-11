@@ -103,12 +103,13 @@ scalar critical_80_pct = critical(t, $nobs, 0.1)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
 
 bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
-  color="cyan", title="80% interval")
+              color="#DCE70D2D", title="80% interval")
 bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
-              color="orange", title="95% interval")
+              color="#DC1763E6", title="95% interval")
 bundles B = defarray(b1, b2)
 
 smpl 2014-07-01 $tmax
+
 gnuplot Demand fc --time-series --with-lines --bands=B --output=display \
  {set grid; set key bottom left;
   set title "Daily electricity demand: Victoria";
