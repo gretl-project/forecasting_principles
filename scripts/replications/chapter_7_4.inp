@@ -1,13 +1,14 @@
 set verbose off
+#==============================================
 # Replicate
 # https://otexts.com/fpp3/useful-predictors.html#example-australian-quarterly-beer-production-1
+#==============================================
 
 # =============
 # Exercise 1: Load data and set sample
 # =============
-
 # Requires local file
-open aus_production.csv
+open aus_production.gdt
 
 # Alternatively, open dataset from URL:
 # open "https://raw.githubusercontent.com/gretl-project/forecasting_principles/refs/heads/main/data/csv/aus_production.csv"
@@ -151,7 +152,7 @@ print fc_stats
 
 
 ##################
-# Repliziere
+# Replicate
 # https://otexts.com/fpp3/forecasting-regression.html#example-australian-quarterly-beer-production-2
 ##################
 
@@ -168,8 +169,8 @@ series forecast_sd = $fcse
 print forecast forecast_sd --byobs
 
 # Create foreasting plot with prediction intervals
-bundle b2 = _(center="forecast", width="forecast_sd", factor=1.96, style="fill")
-b2.title = "95% interval"
+bundle B = _(center="forecast", width="forecast_sd", factor=1.96,
+              style="fill", title = "95% interval")
 
-gnuplot Beer forecast --time-series --with-lines --band=b2 \
+gnuplot Beer forecast --time-series --with-lines --band=B \
  {set grid; set key outside below;}
