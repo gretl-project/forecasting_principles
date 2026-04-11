@@ -135,8 +135,8 @@ gnuplot L --time-series --with-lines --output=display \
 # Comparison forecast errors
 series fcerror_seasonmodel = Beer - forecast_seasonmodel
 
-gnuplot fcerror_seasonmodel--time-series --with-lines --output=display
-  {set grid;}
+gnuplot fcerror_seasonmodel --time-series --with-lines \
+  --output=display {set grid;}
 
 # Distribution of forecast errors
 boxplot fcerror_seasonmodel --output=display
