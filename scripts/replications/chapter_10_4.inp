@@ -13,7 +13,7 @@ gnuplot Passengers --time-series --with-lines --output=display \
    set title "Total annual air passengers";
    set grid;}
 
-   
+
 # Add 20 new observations
 series trainset = 1  # indicator for current dataset
 dataset addobs 20    # actually adding new observations
