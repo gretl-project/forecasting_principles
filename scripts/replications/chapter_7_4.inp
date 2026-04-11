@@ -170,7 +170,8 @@ print forecast forecast_sd --byobs
 
 # Create foreasting plot with prediction intervals
 bundle B = _(center="forecast", width="forecast_sd", factor=1.96,
-              style="fill", title = "95% interval")
+             style="fill", title = "95% interval")
 
 gnuplot Beer forecast --time-series --with-lines --band=B \
+  --output=display \
  {set grid; set key outside below;}
