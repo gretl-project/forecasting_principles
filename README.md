@@ -15,6 +15,14 @@ The data files used in the replication scripts are available in the `data/` fold
 
 ## Chapter Replications
 
+### Chapter 5 A forecaster's toolbox
+
+[5.1 A tidy forecasting workflow](https://otexts.com/fpp3/a-tidy-forecasting-workflow.html) -- [Gretl replication file](scripts/replications/chapter_5_1.inp)
+
+[5.2 Some simple forecasting methods](https://otexts.com/fpp3/simple-methods.html) -- [Gretl replication file](scripts/replications/chapter_5_2.inp)
+
+[5.3 Fitted values and residuals](https://otexts.com/fpp3/residuals.html) -- [Gretl replication file](scripts/replications/chapter_5_3.inp)
+
 ### Chapter 7 Time series regression models
 
 [7.1 The linear model](https://otexts.com/fpp3/regression-intro.html) -- [Gretl replication file](scripts/replications/chapter_7_1.inp)
