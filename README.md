@@ -23,6 +23,9 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [5.3 Fitted values and residuals](https://otexts.com/fpp3/residuals.html) -- [Gretl replication file](scripts/replications/chapter_5_3.inp)
 
+[5.4 Residual diagnostics](https://otexts.com/fpp3/diagnostics.html) -- [Gretl replication file](scripts/replications/chapter_5_4.inp)
+
+
 ### Chapter 7 Time series regression models
 
 [7.1 The linear model](https://otexts.com/fpp3/regression-intro.html) -- [Gretl replication file](scripts/replications/chapter_7_1.inp)
