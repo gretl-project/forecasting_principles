@@ -1,0 +1,55 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/diagnostics.html
+
+
+open gafa_stock.gdt
+
+smpl Symbol == "GOOG" --restrict --permanent  # Select google time-series
+smpl 2015-01-02 2015-12-31 --permanent
+
+gnuplot Close --with-lines --time-series --output=display \
+  {set title "Google daily closing stock prices in 2015";
+   set grid; set xlabel "USD";}
+
+# ==================
+# Fit a naive model
+# ==================
+arima 0 1 0 ; Close --nc --quiet
+series uhat = $uhat
+
+# Ljung-Box test up to 10 lags
+modtest 10 --autocorr
+
+# Plot residuals
+gnuplot uhat --with-lines --time-series --output=display \
+  {set title "Residuals from the naïve method";
+   set grid; set xlabel "USD";}
+
+# Histogram
+freq uhat --normal --plot=display
+
+# ACF of residuals
+corrgm uhat 28 --acf-only --quiet --plot=display
+
+
+# ==================
+# Fit a drift model
+# ==================
+arima 0 1 0 ; Close const --quiet
+series uhat = $uhat
+
+# Ljung-Box test up to 10 lags
+modtest 10 --autocorr
+
+# Plot residuals
+gnuplot uhat --with-lines --time-series --output=display \
+  {set title "Residuals from the drift method";
+   set grid; set xlabel "USD";}
+
+# Histogram
+freq uhat --normal --plot=display
+
+# ACF of residuals
+corrgm uhat 28 --acf-only --quiet --plot=display
+
