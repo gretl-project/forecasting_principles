@@ -1,0 +1,131 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/accuracy.html
+
+# Set your local path to the dataset
+open "./data/aus_production.gdt"
+
+# Remove all observations before 1992:1 permanently
+smpl obs >= 1992:1 --restrict --permanent
+
+# General parameters
+scalar HORIZON = 10
+series TARGET = Beer  # target series
+
+# Construct binary series for distingzising between train/test sets
+series istrain = FALSE
+smpl 1992:1 2007:4
+series istrain = TRUE
+smpl full
+
+# Activate training set
+smpl istrain == TRUE --restrict
+matrix Forecasts = empty  # empty matrix holding point forecasts
+
+
+function matrix meanFC (const series y,
+                        const int horizon[1::])
+    /* Mean forecast. All available observations of "y" are used for
+    computing the mean. */
+
+    scalar avg = mean(y)
+    matrix ret = avg * ones(horizon)
+
+    return ret
+end function
+
+function matrix rwFC (const series y,
+                      const int horizon[1::])
+    /* Random-Walk forecast. */
+
+    # Retrieve the last observation value
+    matrix ret = y[$t2] * ones(horizon)
+
+    return ret
+end function
+
+function matrix rwdriftFC (const series y,
+                           const int horizon[1::])
+    /* Random-Walk forecast plus Drift. */
+
+    # Retrieve the last observation value
+    scalar delta_t1_t2 = y[$t2] - y[$t1]
+    scalar mean_delta = delta_t1_t2 / ($nobs -1)
+    matrix ret = y[$t2] .+ seq(1,horizon)' .* mean_delta
+
+    return ret
+end function
+
+function matrix smeanFC (const series y,
+                         const int horizon[1::])
+    /* Seasonal mean forecast. */
+
+    scalar periodicity = $pd  # 4=quarterly, 7= daily etc.
+    series year, month, day
+    isoconv($obsdate, &year, &month, &day)
+    if $pd == 4 # quarterly
+        series quarter = 1
+        quarter = contains(month, {4, 5, 6}) ? 2 : quarter
+        quarter = contains(month, {7, 8, 9}) ? 3 : quarter
+        quarter = contains(month, {10, 11, 12}) ? 4 : quarter
+    endif
+
+    series factor = month
+    if $pd == 4 # quarterly
+        series factor = quarter
+    elif $pd == 12 # monthly
+        series factor = month
+    elif contains($pd, {5,6,7} # daily
+        series factor = weekday($obsdate)
+    endif
+
+    # Mean values per period
+    matrix table = aggregate(y, factor, "mean")
+    matrix ret = mshape(NA, horizon, 1)  # store point forecasts
+    scalar last_factor_value = factor[$t2]
+    # first quarter/month to fill up
+    scalar tofill = last_factor_value == rows(table) ? 1 : \
+                    (1 + last_factor_value)
+
+    loop i=1..horizon
+        ret[i] = table[tofill, end]
+        if tofill >= $pd  # e.g. month=12 -> switch back to 1
+            tofill = 1
+        else
+            tofill++
+        endif
+    endloop
+
+    return ret
+end function
+
+# Random-Walk + Drift
+Forecasts ~= rwdriftFC(TARGET, HORIZON)
+
+# Mean forecast
+Forecasts ~= meanFC(TARGET, HORIZON)
+
+# Random-Walk
+Forecasts ~= rwFC(TARGET, HORIZON)
+
+# Seasonal mean
+# NOTE: In the book the seasonal naive is computed, instead
+Forecasts ~= smeanFC(TARGET, HORIZON)
+
+# Add column names to matrix
+strings clabels = defarray("drift", "mean", "rw", "smean")
+cnameset(Forecasts, clabels)
+
+# Create series out of point forecasts
+smpl istrain == FALSE --restrict --replace # activate test set
+list FC = mat2list(Forecasts)
+
+# Forecast Evaluation
+# ===================
+matrix fc_stats = fcstats(TARGET, Forecasts)
+cnameset(fc_stats, clabels)
+print "Forecast statistics:"
+printf "%12.3f\n", fc_stats
+
+
+# NOTE: Google stock price example is not replicated
