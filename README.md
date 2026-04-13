@@ -25,6 +25,7 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [5.4 Residual diagnostics](https://otexts.com/fpp3/diagnostics.html) -- [Gretl replication file](scripts/replications/chapter_5_4.inp)
 
+[5.8 Evaluating point forecast accuracy](https://otexts.com/fpp3/accuracy.html) -- [Gretl replication file](scripts/replications/chapter_5_8.inp)
 
 ### Chapter 7 Time series regression models
 
