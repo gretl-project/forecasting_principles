@@ -1,0 +1,211 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/simple-methods.html
+
+
+# Set your local path to the dataset
+#open aus_production.gdt
+
+# Remove all observations before 1970:1 permanently
+smpl obs >= 1970:1 --restrict --permanent
+
+series Bricks_mean = mean(Bricks)
+
+# ==========================================
+# OLS on intercept regression == Mean method
+# ==========================================
+# Restrict to sample with valid observations
+smpl Bricks --no-missing
+
+ols Bricks const --simple
+# Create forecast and standard deviation of forecast
+smpl full
+fcast fc_mean --out-of-sample
+
+gnuplot Bricks Bricks_mean fc_mean --time-series --with-lines --output=display \
+ {set grid; set key outside below;
+  set title "Clay brick production in Australia";
+  set xlabel "Quarter"; set ylabel "Bricks";
+  set linetype 1 lc rgb "black";
+  set linetype 2 lc rgb "blue" lw 2 dt 2;
+  set linetype 3 lc rgb "blue" lw 2 dt 1;}
+  
+
+# ==========================================
+# Random-Walk without drift == Naive method
+# ==========================================
+# Restrict to sample with valid observations
+smpl Bricks --no-missing --replace
+
+arima 0 1 0 ; Bricks --nc --quiet
+# Create forecast and standard deviation of forecast
+smpl full
+fcast fc_rw --out-of-sample
+
+gnuplot Bricks fc_rw --time-series --with-lines --output=display \
+ {set grid; set key outside below;
+  set title "Clay brick production in Australia";
+  set xlabel "Quarter"; set ylabel "Bricks";
+  set linetype 1 lc rgb "black";
+  set linetype 2 lc rgb "blue" lw 2 dt 1;}
+  
+
+# ==========================================
+# Seasonal mean
+# ==========================================
+function matrix smeanFC (const series y,
+                         const int horizon[1::])
+    /* Seasonal mean forecast. */
+
+    scalar periodicity = $pd  # 4=quarterly, 7= daily etc.
+    series year, month, day
+    isoconv($obsdate, &year, &month, &day)
+    if $pd == 4 # quarterly
+        series quarter = 1
+        quarter = contains(month, {4, 5, 6}) ? 2 : quarter
+        quarter = contains(month, {7, 8, 9}) ? 3 : quarter
+        quarter = contains(month, {10, 11, 12}) ? 4 : quarter
+    endif
+    
+    series factor = month
+    if $pd == 4 # quarterly
+        series factor = quarter
+    elif $pd == 12 # monthly
+        series factor = month
+    elif contains($pd, {5,6,7} # daily
+        series factor = weekday($obsdate)
+    endif
+
+    # Mean values per period
+    matrix table = aggregate(y, factor, "mean")
+    matrix ret = mshape(NA, horizon, 1)  # store point forecasts
+    scalar last_factor_value = factor[$t2]
+    scalar tofill = 1 + last_factor_value  # first quarter/month to fill up
+    
+    loop i=1..horizon
+        ret[i] = table[tofill, end]
+        if tofill >= $pd  # e.g. month=12 -> switch back to 1
+            tofill = 1
+        else 
+            tofill++
+        endif
+    endloop
+
+    return ret
+end function
+
+# Restrict to sample with valid observations
+smpl Bricks --no-missing --replace
+
+# Create forecast
+scalar obs_to_sampleend = $tmax - $t2
+matrix mat = smeanFC(Bricks, obs_to_sampleend)
+# Switch to test set
+smpl 2005:3 $tmax
+series fc_smean = mat  # insert vector as series
+
+smpl full
+gnuplot Bricks fc_smean --time-series --with-lines --output=display \
+ {set grid; set key outside below;
+  set title "Clay brick production in Australia";
+  set xlabel "Quarter"; set ylabel "Bricks";
+  set linetype 1 lc rgb "black";
+  set linetype 2 lc rgb "blue" lw 2 dt 1;}
+  
+
+# ==========================================
+# Random-Walk with drift == Drift method
+# ==========================================
+function matrix rwdriftFC (const series y,
+                           const int horizon[1::])
+    /* Random-Walk forecast plus Drift. */
+
+    # Retrieve the last observation value
+    scalar delta_t1_t2 = y[$t2] - y[$t1]
+    scalar mean_delta = delta_t1_t2 / ($nobs -1)
+    matrix ret = y[$t2] .+ seq(1,horizon)' .* mean_delta
+
+    return ret
+end function
+
+smpl Bricks --no-missing --replace
+
+# Create forecast
+scalar obs_to_sampleend = $tmax - $t2
+matrix mat = rwdriftFC(Bricks, obs_to_sampleend)
+# Switch to test set
+smpl 2005:3 $tmax
+series fc_rwd = mat  # insert vector as series
+
+smpl full
+gnuplot Bricks fc_rwd --time-series --with-lines --output=display \
+ {set grid; set key outside below;
+  set title "Clay brick production in Australia";
+  set xlabel "Quarter"; set ylabel "Bricks";
+  set linetype 1 lc rgb "black";
+  set linetype 2 lc rgb "blue" lw 2 dt 1;}
+
+
+# ============================================
+# Example: Google’s daily closing stock price
+# ============================================
+open gafa_stock.gdt
+
+smpl Symbol == "GOOG" --restrict --permanent  # Select google time-series
+smpl 2015-01-02 2016-01-29 --permanent
+
+# Binary series for trainset
+series trainset = 0
+smpl 2015-01-02 2015-12-31
+series trainset = 1
+
+# Mean forecast
+# =============
+smpl trainset == 1 --restrict
+ols Close const --simple
+# Create forecast and standard deviation of forecast
+smpl trainset == 0 --restrict --replace
+fcast fc_mean --out-of-sample
+
+# Naive aka Random Walk without drift
+# ===================================
+function matrix rwdriftFC (const series y,
+                           const int horizon[1::])
+    /* Random-Walk forecast plus Drift. */
+
+    # Retrieve the last observation value
+    scalar delta_t1_t2 = y[$t2] - y[$t1]
+    scalar mean_delta = delta_t1_t2 / ($nobs -1)
+    matrix ret = y[$t2] .+ seq(1,horizon)' .* mean_delta
+
+    return ret
+end function
+
+smpl trainset == 1 --restrict --replace
+scalar obs_to_sampleend = $tmax - $t2
+matrix mat = rwdriftFC(Close, obs_to_sampleend)
+# Create forecast and standard deviation of forecast
+smpl trainset == 0 --restrict --replace
+series fc_rwd = mat
+
+# Add series descriptions
+setinfo fc_mean --graph-name="Mean"
+setinfo fc_rw --graph-name="Naive"
+setinfo fc_rwd --graph-name="Drift"
+
+smpl full
+list L = Close fc_rwd fc_mean fc_rw 
+gnuplot L --with-lines --time-series --output=display \
+  { set title "Google daily closing stock prices";
+    set xlabel "day";
+    set ylabel "USD";
+    set grid;
+    set linetype 1 lc rgb "black" lw 2;
+    set linetype 2 lc rgb "red" lw 2;
+    set linetype 3 lc rgb "blue" lw 2;
+    set linetype 4 lc rgb "dark-green" lw 2;}
+
+
+
+
+
