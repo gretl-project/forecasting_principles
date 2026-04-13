@@ -1,0 +1,41 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/forecasting-regression.html#forecasting-regression
+
+
+# Set your local path to the dataset
+open global_economy.gdt
+
+# Restrict sample to Sweden
+smpl Country == "Sweden" --restrict --permanent
+
+# Create new series
+series GDP_per_capita = GDP / Population
+
+# Estimate trend regression 
+ols GDP_per_capita time --simple
+
+# Add 3 years of new observations
+dataset addobs 3
+
+# Create forecast and standard deviation of forecast
+fcast fc --out-of-sample
+series fcse = $fcse
+print fc fcse --byobs
+
+# Create forecast plot with prediction intervals
+## Compute critical values of t-distribution
+scalar critical_80_pct = critical(t, $nobs, 0.1)
+scalar critical_95_pct = critical(t, $nobs, 0.025)
+
+bundle b1 = _(center="fc", width="fcse", factor=critical_80_pct, style="fill",
+              color="cyan", title="80% interval")
+bundle b2 = _(center="fc", width="fcse", factor=critical_95_pct, style="fill",
+              color="red", title="95% interval")
+bundles B = defarray(b1, b2)
+
+gnuplot GDP_per_capita fc --time-series --with-lines --bands=B --output=display \
+ {set grid; set key outside below;
+  set title "GDP per capita for Sweden";
+  set xlabel "Year"; set ylabel "USD";}
+  
