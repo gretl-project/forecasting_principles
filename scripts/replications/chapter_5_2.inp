@@ -5,6 +5,7 @@ set verbose off
 
 # Set your local path to the dataset
 #open aus_production.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_production.gdt
 
 # Remove all observations before 1970:1 permanently
 smpl obs >= 1970:1 --restrict --permanent
@@ -29,7 +30,7 @@ gnuplot Bricks Bricks_mean fc_mean --time-series --with-lines --output=display \
   set linetype 1 lc rgb "black";
   set linetype 2 lc rgb "blue" lw 2 dt 2;
   set linetype 3 lc rgb "blue" lw 2 dt 1;}
-  
+
 
 # ==========================================
 # Random-Walk without drift == Naive method
@@ -48,7 +49,7 @@ gnuplot Bricks fc_rw --time-series --with-lines --output=display \
   set xlabel "Quarter"; set ylabel "Bricks";
   set linetype 1 lc rgb "black";
   set linetype 2 lc rgb "blue" lw 2 dt 1;}
-  
+
 
 # ==========================================
 # Seasonal mean
@@ -66,7 +67,7 @@ function matrix smeanFC (const series y,
         quarter = contains(month, {7, 8, 9}) ? 3 : quarter
         quarter = contains(month, {10, 11, 12}) ? 4 : quarter
     endif
-    
+
     series factor = month
     if $pd == 4 # quarterly
         series factor = quarter
@@ -81,12 +82,12 @@ function matrix smeanFC (const series y,
     matrix ret = mshape(NA, horizon, 1)  # store point forecasts
     scalar last_factor_value = factor[$t2]
     scalar tofill = 1 + last_factor_value  # first quarter/month to fill up
-    
+
     loop i=1..horizon
         ret[i] = table[tofill, end]
         if tofill >= $pd  # e.g. month=12 -> switch back to 1
             tofill = 1
-        else 
+        else
             tofill++
         endif
     endloop
@@ -111,7 +112,7 @@ gnuplot Bricks fc_smean --time-series --with-lines --output=display \
   set xlabel "Quarter"; set ylabel "Bricks";
   set linetype 1 lc rgb "black";
   set linetype 2 lc rgb "blue" lw 2 dt 1;}
-  
+
 
 # ==========================================
 # Random-Walk with drift == Drift method
@@ -147,9 +148,10 @@ gnuplot Bricks fc_rwd --time-series --with-lines --output=display \
 
 
 # ============================================
-# Example: Google’s daily closing stock price
+# Example: Google's daily closing stock price
 # ============================================
-open gafa_stock.gdt
+# open gafa_stock.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/gafa_stock.gdt
 
 smpl Symbol == "GOOG" --restrict --permanent  # Select google time-series
 smpl 2015-01-02 2016-01-29 --permanent
@@ -166,6 +168,14 @@ ols Close const --simple
 # Create forecast and standard deviation of forecast
 smpl trainset == 0 --restrict --replace
 fcast fc_mean --out-of-sample
+
+# Naive aka Random Walk without drift
+# ==========================================
+smpl trainset == 1 --restrict --replace
+arima 0 1 0 ; Close --nc --quiet
+# Create forecast and standard deviation of forecast
+smpl trainset == 0 --restrict --replace
+fcast fc_rw --out-of-sample
 
 # Naive aka Random Walk without drift
 # ===================================
@@ -194,7 +204,7 @@ setinfo fc_rw --graph-name="Naive"
 setinfo fc_rwd --graph-name="Drift"
 
 smpl full
-list L = Close fc_rwd fc_mean fc_rw 
+list L = Close fc_rwd fc_mean fc_rw
 gnuplot L --with-lines --time-series --output=display \
   { set title "Google daily closing stock prices";
     set xlabel "day";
