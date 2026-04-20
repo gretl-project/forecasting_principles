@@ -1,15 +1,13 @@
 set verbose off
 # Replicate Ch. 9.1
-# https://otexts.com/fpp3/stationarity.html
-
-#==============================================
 # https://otexts.com/fpp3/stationarity.html#stationarity
 #==============================================
 
 #==========================================
 # EXAMPLE: Differencing
 #==========================================
-open gafa_stock.gdt
+# open gafa_stock.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/gafa_stock.gdt
 
 smpl Symbol == "GOOG" --restrict --permanent
 
@@ -30,7 +28,8 @@ corrgm d_Close 24 --plot=display --silent
 # We do not have access to the antidiabetic sales data used in the book. We will
 # use the aus_production dataset instead.
 #==============================================
-open aus_production.gdt
+# open aus_production.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_production.gdt
 
 series log_Electricity = log(Electricity)
 series d4_Electricity = sdiff(log_Electricity) # seasonal difference (lag 4 for quarterly data)
@@ -50,7 +49,8 @@ tsplots L --output=display
 # Example: Unit root tests
 # https://otexts.com/fpp3/stationarity.html#unit-root-tests
 #==============================================
-open gafa_stock.gdt
+# open gafa_stock.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/gafa_stock.gdt
 smpl Symbol == "GOOG" --restrict --permanent
 
 # KPSS test
