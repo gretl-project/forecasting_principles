@@ -3,7 +3,8 @@ set verbose off
 # https://otexts.com/fpp3/accuracy.html
 
 # Set your local path to the dataset
-open "./data/aus_production.gdt"
+# open "./data/aus_production.gdt"
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_production.gdt
 
 # Remove all observations before 1992:1 permanently
 smpl obs >= 1992:1 --restrict --permanent
@@ -12,7 +13,7 @@ smpl obs >= 1992:1 --restrict --permanent
 scalar HORIZON = 10
 series TARGET = Beer  # target series
 
-# Construct binary series for distingzising between train/test sets
+# Construct binary series for distinguishing between train/test sets
 series istrain = FALSE
 smpl 1992:1 2007:4
 series istrain = TRUE
