@@ -4,7 +4,8 @@ set verbose off
 # Replicate Ch. 10.5 - Dynamic harmonic regression
 # https://otexts.com/fpp3/dhr.html
 #==============================================
-open aus_retail.gdt
+# open aus_retail.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_retail.gdt
 
 # Download and install user-contributed package
 # pkg install basis_functions  # EXECUTE ONLY ONCE
