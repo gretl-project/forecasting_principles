@@ -8,12 +8,12 @@ set verbose off
 # Exercise 1: Load data and set sample
 # =============
 # Requires local file
-open aus_production.gdt
+# open aus_production.gdt
+# setobs 4 1956:1 --time-series
 
 # Alternatively, open dataset from URL:
-# open "https://raw.githubusercontent.com/gretl-project/forecasting_principles/refs/heads/main/data/csv/aus_production.csv"
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_production.gdt
 
-setobs 4 1956:1 --time-series
 
 # Remove all observations before 1992:1 permanently
 smpl obs >= 1992:1 --restrict --permanent
