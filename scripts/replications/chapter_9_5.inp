@@ -12,7 +12,8 @@ set verbose off
 # non-seasonal ARIMA modeling.
 #==========================================
 
-open prices.gdt
+# open prices.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/prices.gdt
 
 series d_copper = diff(copper)  # first difference to achieve stationarity
 
