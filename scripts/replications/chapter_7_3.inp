@@ -48,12 +48,17 @@ gnuplot uhat yhat --output=display \
 #==============================================
 
 # open aus_airpassengers.gdt
+# setobs 1 1970 --time-series
 open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_airpassengers.gdt
-setobs 1 1970 --time-series
+
 smpl Year <= 2011 --restrict --permanent
 
 # left-join of another annual dataset with identical sample
-append guinea_rice.gdt
+# append guinea_rice.gdt
+
+append https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/guinea_rice.gdt
+
+
 
 strings MyPlots = array(3)
 gnuplot Passengers --time-series --with-lines --outbuf=MyPlots[1] \
