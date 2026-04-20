@@ -8,8 +8,9 @@ set verbose off
 #==============================================
 
 # open us_change.csv  # *.csv or *.gdt file
+# setobs 4 1970:1 --time-series
+
 open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/us_change.gdt
-#setobs 4 1970:1 --time-series
 
 ols Consumption const Income
 series yhat = $yhat  # fitted values
