@@ -5,7 +5,8 @@ set verbose off
 # https://otexts.com/fpp3/seasonal-arima.html
 #==============================================
 
-open us_employment.gdt
+# open us_employment.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/us_employment.gdt
 smpl Title == "Leisure and Hospitality" --restrict --permanent
 setobs 12 1939:1 --time-series
 
@@ -89,7 +90,8 @@ gnuplot Employed fc --time-series --with-lines --bands=B --output=display \
 # for demonstration purposes.
 #==========================================
 
-open us_employment.gdt
+# open us_employment.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/us_employment.gdt
 smpl Title == "Leisure and Hospitality" --restrict --permanent
 setobs 12 1939:1 --time-series
 
