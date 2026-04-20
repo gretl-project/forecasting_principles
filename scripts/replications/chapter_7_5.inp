@@ -8,8 +8,10 @@ set verbose off
 # We are not directly replicating the example here, but just show how to conduct a stepwise regression in gretl.
 #==============================================
 
-open us_change.gdt  # *.csv or *.gdt file
-setobs 4 1970:1 --time-series
+# open us_change.gdt  # *.csv or *.gdt file
+# setobs 4 1970:1 --time-series
+
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/us_change.gdt
 
 # BACKWARD selection of regressors
 ##
