@@ -5,7 +5,9 @@ set verbose off
 # https://otexts.com/fpp3/regarima.html
 #==============================================
 
-open us_change.gdt
+# open us_change.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/us_change.gdt
+
 
 gnuplot Consumption Income --time-series --with-lines --output=display \
  {set grid; set title "US consumption and personal income";
