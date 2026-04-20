@@ -5,7 +5,8 @@ set verbose off
 # https://otexts.com/fpp3/stochastic-and-deterministic-trends.html
 #==============================================
 
-open aus_airpassengers.gdt
+# open aus_airpassengers.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_airpassengers.gdt
 
 # Example: Air transport passengers Australia
 gnuplot Passengers --time-series --with-lines --output=display \
