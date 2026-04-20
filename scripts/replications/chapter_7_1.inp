@@ -35,8 +35,8 @@ list L = Production Savings Income
 tsplots L --output=display
 
 # Correlation matrix
-list L = Consumption Income Production Savings Income
-corr L --triangle --plot=display
+list L = Consumption Income Production Savings
+corr L --triangle --quiet --plot=display
 
 # Pair plot
 # pkg install PairPlot  # install PairPlot package if not already installed
