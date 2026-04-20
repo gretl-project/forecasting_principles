@@ -3,7 +3,8 @@ set verbose off
 # https://otexts.com/fpp3/diagnostics.html
 
 
-open gafa_stock.gdt
+# open gafa_stock.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/gafa_stock.gdt
 
 smpl Symbol == "GOOG" --restrict --permanent  # Select google time-series
 smpl 2015-01-02 2015-12-31 --permanent
