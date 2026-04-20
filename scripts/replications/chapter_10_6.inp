@@ -4,7 +4,8 @@ set verbose off
 # Replicate Ch. 10.6 - Lagged predictors
 # https://otexts.com/fpp3/lagged-predictors.html
 #==============================================
-open insurance.gdt
+# open insurance.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/insurance.gdt
 
 # Time-series plots
 tsplots Quotes TVadverts --output=display
@@ -56,7 +57,7 @@ smpl full
 series fc = $fcast
 series fcse = $fcse
 
-# Create forecast plot 
+# Create forecast plot
 scalar critical_80_pct = critical(t, $nobs, 0.1)
 scalar critical_95_pct = critical(t, $nobs, 0.025)
 
