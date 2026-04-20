@@ -9,11 +9,10 @@ set verbose off
 #==============================================
 
 # Requires local file
-open aus_production.csv  # *.csv or *.gdt file
-# Alternatively, open dataset from URL:
-# open "https://raw.githubusercontent.com/gretl-project/forecasting_principles/refs/heads/main/data/csv/aus_production.csv"
+# open aus_production.gdt  # *.csv or *.gdt file
+# setobs 4 1956:1 --time-series
 
-setobs 4 1956:1 --time-series
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/aus_production.gdt
 
 # Remove all observations before 1992:1 permanently
 smpl obs >= 1992:1 --restrict --permanent
@@ -55,8 +54,10 @@ gnuplot Beer fc --time-series --with-lines --bands=B --output=display \
 # https://otexts.com/fpp3/forecasting-regression.html#scenario-based-forecasting
 #==============================================
 
-open us_change.gdt  # *.csv or *.gdt file
-setobs 4 1970:1 --time-series
+# open us_change.gdt  # *.csv or *.gdt file
+# setobs 4 1970:1 --time-series
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/us_change.gdt
+
 
 # Add 4 future observations
 series trainset = 1
