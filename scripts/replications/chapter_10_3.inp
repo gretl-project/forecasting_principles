@@ -5,7 +5,8 @@ set verbose off
 # https://otexts.com/fpp3/forecasting.html
 #==============================================
 
-open us_change.gdt
+# open us_change.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/us_change.gdt
 
 #==============================================
 # Example: US personal consumption and income
@@ -27,7 +28,8 @@ naivePlot(&Model)
 # https://otexts.com/fpp3/forecasting.html#example-forecasting-electricity-demand
 #==========================================
 
-open vic_elec_daily.gdt
+# open vic_elec_daily.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/vic_elec_daily.gdt
 
 ## Construct weekday series
 series wd = weekday($obsdate)
