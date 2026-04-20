@@ -4,7 +4,8 @@ set verbose off
 
 
 # Set your local path to the dataset
-open global_economy.gdt
+# open global_economy.gdt
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/global_economy.gdt
 
 # Restrict sample to Sweden
 smpl Country == "Sweden" --restrict --permanent
@@ -12,7 +13,7 @@ smpl Country == "Sweden" --restrict --permanent
 # Create new series
 series GDP_per_capita = GDP / Population
 
-# Estimate trend regression 
+# Estimate trend regression
 ols GDP_per_capita time --simple
 
 # Add 3 years of new observations
@@ -38,4 +39,4 @@ gnuplot GDP_per_capita fc --time-series --with-lines --bands=B --output=display 
  {set grid; set key outside below;
   set title "GDP per capita for Sweden";
   set xlabel "Year"; set ylabel "USD";}
-  
+
