@@ -8,8 +8,9 @@ set verbose off
 # We are not directly replicating the example here, but just show how to conduct a stepwise regression in gretl.
 #==============================================
 
-boston_marathon.gdt  # *.csv or *.gdt file
-setobs 1 1897 --time-series
+# open boston_marathon.gdt  # *.csv or *.gdt file
+# setobs 1 1897 --time-series
+open https://github.com/gretl-project/forecasting_principles/raw/refs/heads/main/data/gdt/boston_marathon.gdt
 
 series Minutes = Time / 60
 genr time  # create linear trend
