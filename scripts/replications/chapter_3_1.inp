@@ -1,0 +1,46 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/transformations.html
+
+### Transformations: log and Box-Cox transform of quarterly gas production
+### NOTE: This replication uses the BoxCoxFuncForm package to estimate the optimal Box-Cox lambda via Maximum Likelihood. The original replication in the book used a different method to estimate lambda.
+
+open "../../../data/gdt/aus_production.gdt"
+
+setinfo Gas -d "Australian quarterly gas production" -n "Petajoules"
+
+gnuplot Gas --time-series --with-lines --output=display \
+ {set title "Australian gas production"; set xlabel "Year";
+  set ylabel "Petajoules"; set grid;}
+
+# Log transformation
+series log_Gas = log(Gas)
+setinfo log_Gas -d "Log of Australian quarterly gas production" -n "log(Petajoules)"
+
+gnuplot log_Gas --time-series --with-lines --output=display \
+ {set title "Log of Australian gas production"; set xlabel "Year";
+  set ylabel "log(Petajoules)"; set grid;}
+
+
+### Box-Cox transformation with lambda chosen via Maximum Likelihood
+### using the BoxCoxFuncForm package
+### https://gretl.sourceforge.net/current_fnfiles/BoxCoxFuncForm.gfn
+
+#pkg install BoxCoxFuncForm  # only once, then comment out this line
+include BoxCoxFuncForm.gfn
+
+# Estimate the optimal lambda for Gas against a constant and linear trend
+series trend = time
+list Z = const
+list X = trend
+bundle BC = BoxCoxForm(Gas, X, Z, 1)
+scalar lambda = BC.best[1,1]
+printf "Optimal Box-Cox lambda (MLE): %.4f\n", lambda
+
+# Apply the transformation using gretl's built-in boxcox() function
+series bc_Gas = boxcox(Gas, lambda)
+setinfo bc_Gas -d "Box-Cox transformed Australian gas production" -n "Transformed"
+
+gnuplot bc_Gas --time-series --with-lines --output=display \
+ {set title "Box-Cox transformed gas production (optimal lambda)";
+  set xlabel "Year"; set ylabel "Transformed Gas"; set grid;}
