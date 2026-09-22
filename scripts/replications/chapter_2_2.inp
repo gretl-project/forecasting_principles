@@ -1,0 +1,39 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/time-plots.html
+
+
+### Example 1: Weekly economy passenger load on Ansett Airlines
+### (melsyd_economy: Melbourne-Sydney, Economy class)
+
+open "../../../data/gdt/ansett.gdt"
+
+# Restrict to the Melbourne-Sydney economy-class route
+smpl Airports == "MEL-SYD" && Class == "Economy" --restrict --permanent
+
+# Resulting dataset is a weekly time series of economy-class passengers on the Melbourne-Sydney route
+setobs 52 1987:26 --time-series
+print dataset --head
+printf "Number of observations: %d\n", $nobs
+
+# Passengers are recorded in thousands in the book
+series Passengers = Passengers / 1000
+setinfo Passengers -d "Economy class passengers: Melbourne-Sydney" -n "Passengers ('000)"
+
+gnuplot Passengers --time-series --with-lines --output=display \
+ {set title "Ansett airlines economy class (Melbourne-Sydney)";
+  set xlabel "Week"; set ylabel "Passengers ('000)"; set grid;
+  set yrange[-2:];}
+
+
+### Example 2: Multiple time series - Australian antidiabetic drug sales (a10)
+# Skipped as not clear how variable "a10" is defined
+
+#open "../../../data/gdt/PBS.gdt"
+
+# Restrict to ATC2 category A10 (antidiabetic drugs)
+#smpl ATC2 == "A10" --restrict --permanent
+
+# Define time series structure
+#setobs 12 1991:07 --time-series
+#print dataset --head
