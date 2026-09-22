@@ -1,0 +1,35 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/seasonal-plots.html
+
+
+### Seasonal plot and subseries plot of electricity demand
+### Book uses half-hourly `vic_elec`; here we use the daily-aggregated
+### `vic_elec_daily` series instead (Demand, GW), which still shows
+### clear day-of-week seasonality.
+### Note: The book examples are only partly replicated here, as the Gretl implementation of seasonal plots is not yet complete.
+
+#pkg install season_plot  # only once, then comment out this line
+include season_plot.gfn
+help season_plot
+
+open "../../../data/gdt/vic_elec_daily.gdt"
+
+setinfo Demand -d "Daily electricity demand (Victoria, Australia)" -n "GW"
+
+bundle SP = set_season_plot(Demand)
+
+do_season_plot(SP, "obsmajor")   # seasonal plot: one line per year
+do_season_plot(SP, "obsminor")   # subseries plot: one panel per period
+
+# Construct weekday series
+series weekday = weekday($obsdate)
+matrix m = aggregate(Demand, weekday, mean)
+cnameset(m, defarray("Weekday", "count", "mean"))
+print m
+
+# Plot average daily electricity demand by day of week
+gnuplot 3 1 --matrix=m --with-lines --output=display \
+ {set title "Average daily electricity demand by day of week";
+  set xlabel "Day of week"; set ylabel "Demand (GW)"; set grid;
+  set xtics ("Sun" 0, "Mon" 1, "Tue" 2, "Wed" 3, "Thu" 4, "Fri" 5, "Sat" 6);}
