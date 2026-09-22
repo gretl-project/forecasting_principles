@@ -21,6 +21,8 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [2.4 Seasonal plots](https://otexts.com/fpp3/seasonal-plots.html) -- [Gretl replication file](scripts/replications/chapter_2_4.inp)
 
+[2.6 Scatter plots](https://otexts.com/fpp3/scatterplots.html) -- [Gretl replication file](scripts/replications/chapter_2_6.inp)
+
 ### Chapter 5 A forecaster's toolbox
 
 [5.1 A tidy forecasting workflow](https://otexts.com/fpp3/a-tidy-forecasting-workflow.html) -- [Gretl replication file](scripts/replications/chapter_5_1.inp)
