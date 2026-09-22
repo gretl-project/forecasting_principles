@@ -1,0 +1,32 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/lag-plots.html
+
+
+### Lag plots of quarterly Australian beer production
+### Restrict to recent years (1992 onwards), as in the book
+
+open "../../../data/gdt/aus_production.gdt"
+
+smpl obs >= 1992:1 --restrict --permanent
+series day,month,year
+isoconv($obsdate, &year, &month, &day)
+setinfo month --graph-name="Quarter"
+setinfo Beer -d "Australian quarterly beer production"
+
+# Build lags 1 to 9 of Beer
+list LAGS = lags(9, Beer)
+
+gpbuild Plots
+    loop i=1..nelem(LAGS) -q
+        if i==1
+            gnuplot Beer LAGS[i] month --factorized --fit=none --output=none \
+              {set xlabel "lag $i"; set ylabel "Beer"; set key top right font ",9"; set grid;}
+        else
+            gnuplot Beer LAGS[i] month --factorized --fit=none --output=none \
+              {set xlabel "lag $i"; set ylabel "Beer"; set nokey; set grid;}
+        endif
+    endloop
+end gpbuild
+
+gridplot Plots --fontsize=10 --width=1000 --height=800 --cols=3 --output=display
