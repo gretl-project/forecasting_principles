@@ -15,7 +15,7 @@ The data files used in the replication scripts are available in the `data/` fold
 
 ## Chapter Replications
 
-### Chapter 2 Time series
+### Chapter 2 Time series graphics
 
 [2.2 Time plots](https://otexts.com/fpp3/time-plots.html) -- [Gretl replication file](scripts/replications/chapter_2_2.inp)
 
