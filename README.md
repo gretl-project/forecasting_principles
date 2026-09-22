@@ -25,6 +25,8 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [2.7 Lag plots](https://otexts.com/fpp3/lag-plots.html) -- [Gretl replication file](scripts/replications/chapter_2_7.inp)
 
+[2.8 Autocorrelation](https://otexts.com/fpp3/acf.html) -- [Gretl replication file](scripts/replications/chapter_2_8.inp)
+
 ### Chapter 5 A forecaster's toolbox
 
 [5.1 A tidy forecasting workflow](https://otexts.com/fpp3/a-tidy-forecasting-workflow.html) -- [Gretl replication file](scripts/replications/chapter_5_1.inp)

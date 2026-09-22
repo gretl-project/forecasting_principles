@@ -1,0 +1,16 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/acf.html
+
+
+### Autocorrelation function of quarterly Australian beer production
+### Restrict to recent years (1992 onwards), as in the book
+
+open "../../../data/gdt/aus_production.gdt"
+
+smpl obs >= 1992:1 --restrict --permanent
+
+setinfo Beer -d "Australian quarterly beer production"
+
+# Correlogram (ACF/PACF) up to lag 16, as used in the book's ACF plot
+corrgm Beer 16	--acf-only --plot=display --quiet
