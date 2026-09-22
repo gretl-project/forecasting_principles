@@ -1,0 +1,26 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/scatterplots.html
+
+# Note: The dataset we use is daily-aggregated, while the book uses half-hourly data.
+
+open "../../../data/gdt/vic_elec_daily.gdt"
+
+# Create calendar series
+series day,month,year
+isoconv($obsdate, &year, &month, &day)
+
+# Restrict to 2014
+smpl year == 2014 --restrict --permanent
+
+# Create scatter plot of electricity demand versus temperature
+gnuplot Demand --with-lines --time-series --output=display \
+  { set title "Daily electricity demand: Victoria"; set grid;}
+gnuplot Temperature --with-lines --time-series --output=display \
+  { set title "Daily temperature: Victoria"; set grid;}
+
+gnuplot Demand Temperature --output=display --fit=none \
+  { set title "Electricity demand versus Temperature";
+    set xlabel "Temperature (degrees Celsius)";
+    set ylabel "Electricity demand (GW)";
+    set grid;}
