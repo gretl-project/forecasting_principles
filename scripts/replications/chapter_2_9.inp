@@ -1,0 +1,20 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/wn.html
+
+
+### White noise: simulate 50 independent N(0,1) draws and inspect
+### their time plot and ACF
+
+set seed 12345678
+nulldata 50 --preserve
+setobs 1 1 --time-series
+
+series y = normal()
+setinfo y -d "White noise" -n "y"
+
+gnuplot y --time-series --with-lines --output=display \
+ {set title "White noise"; set xlabel "time"; set ylabel "y"; set grid;}
+
+# ACF with 95% significance bounds (approx +/-1.96/sqrt(T))
+corrgm y 16 --acf-only --plot=display --quiet

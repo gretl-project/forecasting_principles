@@ -27,6 +27,8 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [2.8 Autocorrelation](https://otexts.com/fpp3/acf.html) -- [Gretl replication file](scripts/replications/chapter_2_8.inp)
 
+[2.9 White noise](https://otexts.com/fpp3/wn.html) -- [Gretl replication file](scripts/replications/chapter_2_9.inp)
+
 ### Chapter 5 A forecaster's toolbox
 
 [5.1 A tidy forecasting workflow](https://otexts.com/fpp3/a-tidy-forecasting-workflow.html) -- [Gretl replication file](scripts/replications/chapter_5_1.inp)
