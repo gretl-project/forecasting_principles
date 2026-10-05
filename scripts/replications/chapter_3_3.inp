@@ -1,0 +1,95 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/moving-averages.html
+#
+# Contents:
+#   1. m-MA of Australian exports (% of GDP, annual, 1960-2017)
+#   2. 2x12-MA of US retail employment (monthly)
+#
+# Run from directory code/hyndman_fpp3/. Figures are stored in FIGDIR.
+#
+# Note on gretl's movavg(x, p): without the 'control' argument it returns
+# the TRAILING average of x(t-p+1), ..., x(t). A centred MA is obtained by
+# shifting this series forward (a lead), as done below.
+
+
+### 1. Australian exports: m-MA with odd order m = 2k + 1
+
+open "../../../data/gdt/global_economy.gdt"
+
+smpl Code == "AUS" --restrict --permanent
+printf "Number of annual observations for Australia: %d\n", $nobs
+
+# Centred 5-MA (k = 2): trailing 5-MA shifted forward by k = 2 periods
+series ma5_trail = movavg(Exports, 5, FALSE)
+series ma5 = ma5_trail(+2)
+setinfo ma5 -n "5-MA"
+
+# Cross-check: movavg() with control != 0 returns a centred MA
+series ma5_alt = movavg(Exports, 5, TRUE)
+printf "\nMax. abs. difference between both 5-MA versions: %g\n", \
+  max(abs(ma5 - ma5_alt))
+
+# Book value for 1962: (12.99+12.40+13.94+13.01+14.94)/5 = 13.46
+printf "\nFirst years: data and centred 5-MA (no value for 1960, 1961):\n"
+print Exports ma5 --head=10
+
+gnuplot Exports ma5 --time-series --with-lines \
+  --output=display \
+  {set title "Total Australian exports"; set xlabel "Year";
+set ylabel "% of GDP"; set grid;}
+
+# Effect of the order m: a larger order gives a smoother curve
+series ma3_trail = movavg(Exports, 3)
+series ma9_trail = movavg(Exports, 9)
+series ma3 = ma3_trail(+1)
+series ma9 = ma9_trail(+4)
+setinfo ma3 -n "3-MA"
+setinfo ma9 -n "9-MA"
+
+strings MaPlots = array(2)
+
+gnuplot Exports ma3 --time-series --with-lines \
+  --outbuf=MaPlots[1] \
+  {set title "Australian exports: 3-MA "; set xlabel "Year";
+set ylabel "% of GDP"; set grid;}
+
+gnuplot Exports ma9 --time-series --with-lines \
+  --outbuf=MaPlots[2] \
+  {set title "Australian exports: 9-MA "; set xlabel "Year";
+set ylabel "% of GDP"; set grid;}
+
+# Actual grid-plot
+gridplot MaPlots --output=display
+
+
+### 2. US retail employment: centred 2x12-MA for monthly data
+### Note: series USTRADE (thousands of persons, 1990:01-2019:12)
+### Note: The USTRADE series does not match the original seasonal
+### pattern from the book!
+
+open "../../../data/gdt/us_retail_employment.gdt"
+setinfo USTRADE -d "Persons employed in US retail" -n "Employed"
+
+# 2x12-MA = 12-MA followed by a 2-MA.
+# Trailing 12-MA at t+5 covers t-6..t+5, at t+6 covers t-5..t+6.
+# Their average puts weight 1/24 on y(t-6), y(t+6) and 1/12 on y(t-5..t+5).
+series ma12_trail = movavg(USTRADE, 12)
+series ma_2x12 = (ma12_trail(+5) + ma12_trail(+6)) / 2
+setinfo ma_2x12 -n "2x12-MA"
+
+gnuplot USTRADE ma_2x12 --time-series --with-lines \
+  --output=display \
+  {set title "Total employment in US retail"; set xlabel "Month";
+set ylabel "Persons (thousands)"; set grid;}
+
+# Contrast: a centred 7-MA is NOT a multiple of the seasonal period
+# and therefore leaves seasonal fluctuations in the smoothed series
+series ma7_trail = movavg(USTRADE, 7)
+series ma7 = ma7_trail(+3)
+setinfo ma7 -n "7-MA"
+
+gnuplot USTRADE ma7 --time-series --with-lines \
+  --output=display \
+  {set title "Total employment in US retail: 7-MA (wrong order)";
+set xlabel "Month"; set ylabel "Persons (thousands)"; set grid;}
