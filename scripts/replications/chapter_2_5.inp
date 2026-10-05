@@ -1,0 +1,26 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/subseries.html
+
+
+### Seasonal subseries plot of US retail employment
+### One panel per month, showing the trend across years within that month
+
+open "../../../data/gdt/us_retail_employment.gdt"
+
+setinfo USTRADE -d "US retail employment" -n "Persons (thousands)"
+
+# Build one series per calendar month: each series holds USTRADE
+# in that month and NA elsewhere, so a time plot of it traces the
+# evolution of that month's value across years.
+list PM = seasonals() ^ USTRADE
+list L = PM*1
+
+gpbuild Plots
+    loop foreach i L
+        gnuplot $i --with-lines --time-series
+    endloop
+end gpbuild
+
+# Adjust parameters as you feel
+gridplot Plots --fontsize=10 --width=1000 --height=800 --cols=3 --output=display
