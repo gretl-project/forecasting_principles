@@ -33,6 +33,8 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [3.1 Transformations and adjustments](https://otexts.com/fpp3/transformations.html) -- [Gretl replication file](scripts/replications/chapter_3_1.inp)
 
+[3.3 Moving averages](https://otexts.com/fpp3/moving-averages.html) -- [Gretl replication file](scripts/replications/chapter_3_3.inp)
+
 ### Chapter 5 A forecaster's toolbox
 
 [5.1 A tidy forecasting workflow](https://otexts.com/fpp3/a-tidy-forecasting-workflow.html) -- [Gretl replication file](scripts/replications/chapter_5_1.inp)
