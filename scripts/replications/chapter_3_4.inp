@@ -1,0 +1,97 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/classical-decomposition.html
+#
+# Contents:
+#   1. Data: Australian quarterly gas production
+#   2. Additive classical decomposition
+#   3. Multiplicative classical decomposition
+#   4. Strength of trend and seasonality, trend at the end points
+#
+# Run from directory scripts/replications/. Uses the user-contributed
+# package tsdecomp (https://github.com/atecon/tsdecomp).
+#
+# Note: The book illustrates the method with US retail employment. The
+# USTRADE series in the available dataset does not reproduce the book's
+# seasonal pattern, so the quarterly Gas series is used instead.
+
+# pkg install tsdecomp  # only once
+include tsdecomp.gfn
+
+
+### 1. Data: Australian gas production (quarterly)
+
+open "aus_production.gdt"
+setinfo Gas -d "Australian gas production (petajoules)" -n "Gas"
+
+gnuplot Gas --time-series --with-lines \
+  --output=display \
+  {set title "Australian gas production"; set xlabel "Quarter";
+   set ylabel "Petajoules"; set grid;}
+
+
+### 2. Additive classical decomposition
+### Note: trend from a 2x4-MA, hence no trend/remainder for the first
+### and last two observations (as in the book)
+
+bundle C_add = clc_decompose(Gas)
+
+series trend_add = C_add.trend
+series season_add = C_add.season
+series remainder_add = C_add.remainder
+setinfo trend_add -n "trend"
+setinfo season_add -n "season_year"
+setinfo remainder_add -n "remainder"
+
+scalar err = plot_decompose(Gas, C_add, \
+  _(title="Classical additive decomposition of Australian gas production"))
+
+# Seasonal components: one value per quarter, summing to zero
+series quarter = $obsminor
+printf "\nAdditive seasonal components by quarter (sum = 0):\n"
+summary season_add --simple --by=quarter
+
+printf "\nFirst and last observations (NA trend at the end points):\n"
+print Gas trend_add season_add remainder_add --head=6
+print Gas trend_add season_add remainder_add --tail=6
+
+
+### 3. Multiplicative classical decomposition
+### Note: seasonal amplitude of Gas grows with the level, which suggests
+### the multiplicative form y = T * S * R
+
+bundle C_mult = clc_decompose(Gas, _(multiplicative=TRUE))
+
+series trend_mult = C_mult.trend
+series season_mult = C_mult.season
+series remainder_mult = C_mult.remainder
+
+scalar err = plot_decompose(Gas, C_mult, \
+  _(title="Classical multiplicative decomposition of Australian gas production"))
+
+# Seasonal indices: one value per quarter, averaging one (summing to m = 4)
+printf "\nMultiplicative seasonal indices by quarter (mean = 1):\n"
+summary season_mult --simple --by=quarter
+
+# Seasonally adjusted series
+series Gas_sa = Gas / season_mult
+setinfo Gas_sa -n "Seasonally adjusted"
+
+gnuplot Gas Gas_sa --time-series --with-lines \
+  --output=display \
+  {set title "Australian gas production: seasonally adjusted";
+set xlabel "Quarter"; set ylabel "Petajoules"; set grid;}
+
+
+### 4. Strength of trend and seasonality; trend at the end points
+
+printf "\nAdditive:       F_T = %.3f, F_S = %.3f\n", \
+  strength_trend(C_add), strength_season(C_add)
+printf "Multiplicative: F_T = %.3f, F_S = %.3f\n", \
+  strength_trend(C_mult), strength_season(C_mult)
+
+# Extrapolating the trend fills the missing end points
+bundle C_ext = clc_decompose(Gas, _(extrapolate_trend=2))
+series trend_ext = C_ext.trend
+printf "\nTrend with extrapolation at the end points:\n"
+print trend_add trend_ext --head=6
