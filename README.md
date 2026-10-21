@@ -37,6 +37,8 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [3.4 Classical decomposition](https://otexts.com/fpp3/classical-decomposition.html) -- [Gretl replication file](scripts/replications/chapter_3_4.inp)
 
+[3.6 STL decomposition](https://otexts.com/fpp3/stl.html) -- [Gretl replication file](scripts/replications/chapter_3_6.inp)
+
 ### Chapter 5 A forecaster's toolbox
 
 [5.1 A tidy forecasting workflow](https://otexts.com/fpp3/a-tidy-forecasting-workflow.html) -- [Gretl replication file](scripts/replications/chapter_5_1.inp)

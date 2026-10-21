@@ -1,0 +1,171 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/stl.html
+#
+# Contents:
+#   1. Data: Australian quarterly gas production (log)
+#   2. STL decomposition with default settings
+#   3. STL decomposition with chosen windows and robust fitting
+#   4. Effect of the window parameters
+#   5. Back-transformation to the original scale
+#   6. Strength of trend and seasonality
+#
+# Run from directory scripts/replications/. Uses the user-contributed
+# package tsdecomp (https://github.com/atecon/tsdecomp).
+#
+# Note: The book illustrates the method with US retail employment. The
+# USTRADE series in the available dataset does not reproduce the book's
+# seasonal pattern, so the quarterly Gas series is used instead.
+#
+# Note: stl_decompose() is additive. As the seasonal swings of Gas grow
+# with its level, STL is applied to log(Gas).
+#
+# Note: R's season(window = "periodic") has no direct counterpart in
+# tsdecomp. A large (odd) s_window gives an almost fixed seasonal pattern.
+# tsdecomp uses local linear loess throughout, so results can differ
+# slightly from R's STL().
+
+# pkg install tsdecomp  # only once
+# pkg install season_plot  # only once
+include tsdecomp.gfn
+include season_plot.gfn
+
+
+### 1. Data: Australian gas production (quarterly)
+### Note: USTRADE (us_retail_employment.gdt) does not reproduce the
+### seasonal pattern from the book, hence Gas is used.
+
+open "aus_production.gdt"
+setinfo Gas -d "Australian gas production (petajoules)" -n "Gas"
+
+series lGas = log(Gas)
+setinfo lGas -d "Log of Australian gas production" -n "log(Gas)"
+
+gnuplot lGas --time-series --with-lines --output=display \
+  {set title "Log of Australian gas production"; set xlabel "Quarter";
+   set ylabel "log(Petajoules)"; set grid;}
+
+
+### 2. STL decomposition with default settings
+### (book: model(STL(Employed)))
+### Note: unlike the classical decomposition, the trend-cycle is available
+### for all observations
+
+bundle S1 = stl_decompose(lGas)
+
+series trend1 = S1.trend
+series season1 = S1.season
+series remainder1 = S1.remainder
+
+scalar err = plot_decompose(lGas, S1,
+  _(title="STL decomposition of log Australian gas production"))
+
+# s_window: seasonal window, t_window: trend window, l_window: low-pass window
+printf "\nSTL parameters used (s_window, t_window, l_window): %d, %d, %d\n",
+  S1.s_window, S1.t_window, S1.l_window
+
+printf "\nFirst and last observations (no NA at the end points):\n"
+print lGas trend1 season1 remainder1 --head=4
+print lGas trend1 season1 remainder1 --tail=4
+
+# The components add up to the series
+printf "\nMax. abs. deviation of trend+season+remainder from log(Gas): %g\n", \
+  max(abs(lGas - trend1 - season1 - remainder1))
+
+
+### 3. STL decomposition with chosen windows and robust fitting
+### (book: STL(Employed ~ trend(window = 7) +
+###            season(window = "periodic"), robust = TRUE))
+
+bundle S2 = stl_decompose(lGas, _(t_window=7, s_window=35, robust=TRUE))
+
+series trend2 = S2.trend
+series season2 = S2.season
+series remainder2 = S2.remainder
+series lGas_sa = lGas - season2
+setinfo trend2 -n "trend"
+setinfo lGas_sa -n "Seasonally adjusted"
+
+scalar err = plot_decompose(lGas, S2, \
+  _(title="STL decomposition (robust, t_window = 7, s_window = 35)"))
+
+# Data, trend-cycle and seasonally adjusted series
+gnuplot lGas trend2 lGas_sa --time-series --with-lines --output=display \
+  {set title "Log of Australian gas production: trend and seasonally adjusted";
+   set xlabel "Quarter"; set ylabel "log(Petajoules)"; set grid;}
+
+
+### 4. Effect of the window parameters
+### s_window: smoothing of the cycle-subseries (counted in years);
+### t_window: smoothing of the trend-cycle (counted in quarters)
+
+bundle S_fast = stl_decompose(lGas, _(s_window=5))
+bundle S_slow = stl_decompose(lGas, _(s_window=35))
+bundle S_wig = stl_decompose(lGas, _(t_window=5))
+bundle S_smooth = stl_decompose(lGas, _(t_window=21))
+
+series season_fast = S_fast.season
+series season_slow = S_slow.season
+series trend_wig = S_wig.trend
+series trend_smooth = S_smooth.trend
+
+strings P = array(4)
+
+gnuplot season_fast --time-series --with-lines \
+  --outbuf=P[1] \
+  {set title "Seasonal component: s_window = 5";
+   set xlabel "Quarter"; set grid; set nokey;}
+
+gnuplot season_slow --time-series --with-lines \
+  --outbuf=P[2] \
+  {set title "Seasonal component: s_window = 35";
+   set xlabel "Quarter"; set grid; set nokey;}
+
+gnuplot trend_wig --time-series --with-lines \
+  --outbuf=P[3] \
+  {set title "Trend-cycle: t_window = 5";
+   set xlabel "Quarter"; set grid; set nokey;}
+
+gnuplot trend_smooth --time-series --with-lines \
+  --outbuf=P[4] \
+  {set title "Trend-cycle: t_window = 21";
+   set xlabel "Quarter"; set grid; set nokey;}
+
+gridplot P --output=display
+
+
+### 5. Back-transformation to the original scale
+### Note: exp(trend) and exp(season) are the trend-cycle and the
+### multiplicative seasonal factor of Gas
+
+series Gas_trend = exp(trend2)
+series Gas_season = exp(season2)
+setinfo Gas_trend -n "trend"
+
+printf "\nMultiplicative seasonal factors by quarter:\n"
+series quarter = $obsminor
+summary Gas_season --simple --by=quarter
+
+gnuplot Gas Gas_trend --time-series --with-lines \
+  --output=display \
+  {set title "Australian gas production and STL trend-cycle";
+   set xlabel "Quarter"; set ylabel "Petajoules"; set grid;}
+
+
+### 6. Strength of trend and seasonality
+
+printf "\nDefault STL: F_T = %.3f, F_S = %.3f\n", \
+  strength_trend(S1), strength_season(S1)
+printf "Robust STL:  F_T = %.3f, F_S = %.3f\n", \
+  strength_trend(S2), strength_season(S2)
+
+
+### 7. Season plot for the seasonal component
+# initialize the object
+bundle SP = set_season_plot(season2)
+
+# Start plotting for difference frequency components
+do_season_plot(SP, "obsmajor")
+
+
+
