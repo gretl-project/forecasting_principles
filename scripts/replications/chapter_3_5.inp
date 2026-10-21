@@ -1,0 +1,132 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/decomposition.html#methods-used-by-official-statistics-agencies
+#
+# Contents:
+#   1. Data: Australian quarterly gas production
+#   2. X-11 decomposition
+#   3. Season plot of the X-11 seasonal component
+#   4. SEATS decomposition and comparison with X-11
+#   5. Further options of deseas()
+#
+# Run from directory scripts/replications/. Uses gretl's deseas() function,
+# which requires the external program X-13ARIMA-SEATS (x13as) to be
+# installed. The season plot uses the package season_plot.
+#
+# Note: The book illustrates the methods with US retail employment. The
+# USTRADE series in the available dataset does not reproduce the book's
+# seasonal pattern, so the quarterly Gas series is used instead.
+#
+# Note: The book calls X_13ARIMA_SEATS(Employed ~ x11()); deseas() uses
+# the same program. X-11 is the default algorithm, seats=1 selects SEATS.
+#
+# Note: deseas() returns the seasonally adjusted series, the trend and the
+# irregular component, but not the seasonal component. It is derived as
+# y / sa (multiplicative adjustment, logtrans=1). The irregular component
+# is then also a ratio, with values around one.
+
+# pkg install season_plot  # only once
+include season_plot.gfn
+
+
+### 1. Data: Australian gas production (quarterly)
+### Note: USTRADE (us_retail_employment.gdt) does not reproduce the
+### seasonal pattern from the book, hence Gas is used.
+
+open "aus_production.gdt"
+setinfo Gas -d "Australian gas production (petajoules)" -n "Gas"
+
+gnuplot Gas --time-series --with-lines --output=display \
+  {set title "Australian gas production"; set xlabel "Quarter";
+   set ylabel "Petajoules"; set grid;}
+
+
+### 2. X-11 decomposition
+### (book: model(x11 = X_13ARIMA_SEATS(Employed ~ x11())))
+### Note: the seasonal swings of Gas grow with its level, hence a
+### multiplicative adjustment (logtrans=1). Pass the series in levels!
+
+bundle X11 = _(output="all", logtrans=1)
+deseas(Gas, &X11)
+
+series Gas_sa = X11.results[,1]
+series Gas_trend = X11.results[,2]
+series Gas_irreg = X11.results[,3]
+series season_x11 = Gas / Gas_sa
+setinfo Gas_sa -n "Seasonally adjusted"
+setinfo Gas_trend -n "trend"
+
+printf "\nFirst and last observations (no NA at the end points):\n"
+print Gas Gas_trend Gas_sa season_x11 Gas_irreg --head=4
+print Gas Gas_trend Gas_sa season_x11 Gas_irreg --tail=4
+
+# The components multiply to the series
+printf "\nMax. abs. deviation of trend*season*irregular from Gas: %g\n", \
+  max(abs(Gas - Gas_trend * season_x11 * Gas_irreg))
+
+# Data, trend-cycle and seasonally adjusted series
+gnuplot Gas Gas_trend Gas_sa --time-series --with-lines --output=display \
+  {set title "Australian gas production: X-11 trend and seasonally adjusted";
+   set xlabel "Quarter"; set ylabel "Petajoules"; set grid;}
+
+# Components in separate panels
+strings P = array(3)
+
+gnuplot Gas Gas_trend --time-series --with-lines --outbuf=P[1] \
+  {set title "Gas and trend"; set xlabel ""; set grid;}
+
+gnuplot season_x11 --time-series --with-lines --outbuf=P[2] \
+  {set title "Seasonal"; set xlabel ""; set grid; set nokey;}
+
+gnuplot Gas_irreg --time-series --with-lines --outbuf=P[3] \
+  {set title "Irregular"; set xlabel "Quarter"; set grid; set nokey;}
+
+gridplot P --output=display
+
+
+### 3. Season plot of the X-11 seasonal component
+
+bundle SP = set_season_plot(season_x11)
+do_season_plot(SP, "obsmajor")
+
+
+### 4. SEATS decomposition and comparison with X-11
+
+# Note: with automatic ARIMA model selection, seats=1 crashed gretl for
+# this series in the tested setup (gretl 2026d-git, Debian x13as).
+# Imposing the airline model (0,1,1)(0,1,1) avoids this and is a common
+# choice for SEATS.
+bundle SEATS = _(output="all", logtrans=1, seats=1, airline=1)
+deseas(Gas, &SEATS)
+
+series Gas_sa_seats = SEATS.results[,1]
+series season_seats = Gas / Gas_sa_seats
+setinfo season_x11 -n "X-11"
+setinfo season_seats -n "SEATS"
+
+printf "\nMax. abs. difference of seasonal factors, X-11 vs. SEATS: %g\n", \
+  max(abs(season_x11 - season_seats))
+
+gnuplot season_x11 season_seats --time-series --with-lines --output=display \
+  {set title "Seasonal component: X-11 vs. SEATS"; set xlabel "Quarter";
+   set grid;}
+
+# Seasonal factors by quarter (mean about one)
+series quarter = $obsminor
+printf "\nX-11 seasonal factors by quarter:\n"
+summary season_x11 --simple --by=quarter
+printf "\nSEATS seasonal factors by quarter:\n"
+summary season_seats --simple --by=quarter
+
+
+### 5. Further options of deseas()
+### Note: airline=1 imposes the ARIMA (0,1,1)(0,1,1) "airline" model,
+### outliers=3 activates the detection of additive outliers and level
+### shifts (the X-13ARIMA-SEATS default), verbose=1 prints the options used.
+
+bundle AL = _(output="sa", logtrans=1, airline=1, outliers=3, verbose=1)
+series Gas_sa_airline = deseas(Gas, &AL)
+setinfo Gas_sa_airline -n "Airline model, outliers"
+
+printf "\nMax. abs. difference of seasonally adjusted series, airline model vs. default X-11: %g\n", \
+  max(abs(Gas_sa_airline - Gas_sa))
