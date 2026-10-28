@@ -1,0 +1,97 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/exponential-smoothing.html#sec-holt-winters
+#
+# Contents:
+#   1. Data: Australian domestic holiday trips (quarterly, 1998-2017)
+#   2. Holt-Winters multiplicative method (default of Winters())
+#   3. Holt-Winters additive method
+#   4. Comparison of the two methods
+#
+# Run from directory scripts/replications/. Uses the user-contributed
+# package Winters. The cleanup below writes temp_matrix.csv into the
+# working directory.
+#
+# Note: The book's tables 8.3 and 8.4 were estimated with ETS(). Winters()
+# uses its own estimation, so parameters and forecasts can differ slightly.
+
+include Winters.gfn
+
+
+### 1. Data: Australian domestic holiday trips
+
+open "../../data/gdt/tourism.gdt" --quiet
+smpl Purpose == "Holiday" --restrict --permanent
+
+# Clean up the y series
+series Trips = NA
+# y uses a comma as decimal separator (e.g. "223,5574059"), so replace it
+# before atof(); otherwise the decimals are dropped
+loop i=1..$nobs
+    Trips[i] = atof(strsub(y[i], ",", "."))
+endloop
+series Trips = Trips / 1e3
+
+matrix mat = aggregate(Trips, ds, "sum")[,3]
+mwrite(mat, "temp_matrix.csv")
+open "temp_matrix.csv"
+rename v1 Trips
+setobs 4 1998:1 --time-series
+
+printf "Number of quarters: %d\n", $nobs
+gnuplot Trips --time-series --with-lines --output=display \
+  {set title "Australian domestic holiday trips"; set xlabel "Quarter";
+   set ylabel "Overnight trips (millions)"; set grid;}
+
+# Reopen the cleaned series for the analysis
+open "temp_matrix.csv"
+rename v1 Trips
+setobs 4 1998:1 --time-series
+
+
+### 2. Holt-Winters multiplicative method
+### (book: ETS(Trips ~ error("M") + trend("A") + season("M")))
+### Note: Winters() estimates alpha, beta and gamma and the initial values.
+### The forecasts cover three years (12 quarters), as in the book.
+
+dataset addobs 12
+
+bundle wm = Winters(Trips)
+
+printf "\nMultiplicative Holt-Winters:\n"
+printf "  alpha = %.4f, beta = %.4f, gamma = %.4f\n", wm.theta[1], wm.theta[2], wm.theta[3]
+printf "  training RMSE = %.4f\n", wm.RMSE_train
+
+matrix Wm = wm.W
+printf "\nForecasts 2018:1-2020:4:\n"
+print Wm
+
+Winters_plot(&wm, 1)
+Winters_plot(&wm, 2)
+
+
+### 3. Holt-Winters additive method
+### (book: ETS(Trips ~ error("A") + trend("A") + season("A")))
+### Note: the additive model gives analytic standard errors (sixth column of W).
+
+bundle wa = Winters(Trips, _(additive=1, verbose=0))
+
+printf "\nAdditive Holt-Winters:\n"
+printf "  alpha = %.4f, beta = %.4f, gamma = %.4f\n", wa.theta[1], wa.theta[2], wa.theta[3]
+printf "  training RMSE = %.4f\n", wa.RMSE_train
+
+matrix Wa = wa.W
+printf "\nForecasts 2018:1-2020:4:\n"
+printf "%8s %12s %12s\n", "quarter", "forecast", "std. error"
+print Wa
+
+Winters_plot(&wa, 1)
+Winters_plot(&wa, 2)
+
+
+### 4. Comparison of the two methods
+### Note: the book finds the multiplicative method slightly better on RMSE
+### (0.4122 vs. 0.4169); both have the same number of parameters.
+
+printf "\nTraining RMSE: multiplicative = %.4f, additive = %.4f\n", \
+  wm.RMSE_train, wa.RMSE_train
