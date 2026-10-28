@@ -62,3 +62,33 @@ print CI
 
 Holt_plot(&hf, 1)
 Holt_plot(&hf, 2)
+
+
+### 5. Example: Internet usage (simplified)
+### Note: full sample, Holt's method only. The book's cross-validation
+### and damped-trend comparison are not replicated here.
+
+open "../../data/gdt/www_usage.gdt"
+setinfo y -d "Number of users connected per minute" -n "Users"
+printf "Number of observations for internet usage: %d\n", $nobs
+
+gnuplot y --time-series --with-lines --output=display \
+  {set title "Internet usage per minute"; set xlabel "Minute";
+   set ylabel "Number of users"; set grid;}
+
+# Ten minutes beyond the data for the forecasts
+dataset addobs 10
+
+bundle hw = Holt(y)
+
+printf "\nHolt, automatic parameters:\n"
+printf "  alpha = %.4f, beta = %.4f\n", hw.theta[1], hw.theta[2]
+printf "  initial level = %.4f, initial trend = %.4f\n", hw.init[1], hw.init[2]
+printf "  training RMSE = %.4f, MAE = %.4f\n", hw.RMSE_train, hw.MAE_train
+
+matrix CIw = Holt_ci_matrix(hw)
+print CIw
+
+# Actual data and forecasts with intervals, then the Holt components
+Holt_plot(&hw, 1)
+Holt_plot(&hw, 2)
