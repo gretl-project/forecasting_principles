@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="eggs" frequency="1" n="94" startobs="1900" endobs="1993" type="time-series">
+<description>Data imported from CSV file 'eggs.csv', 2026-10-28 18:28
+</description>
+<variables count="1">
+<variable name="y"
+/>
+</variables>
+<observations count="94" labels="false">
+<obs>276.79 </obs>
+<obs>315.42 </obs>
+<obs>314.87 </obs>
+<obs>321.25 </obs>
+<obs>314.54 </obs>
+<obs>317.92 </obs>
+<obs>303.39 </obs>
+<obs>288.62 </obs>
+<obs>292.44 </obs>
+<obs>320.92 </obs>
+<obs>323.38 </obs>
+<obs>270.77 </obs>
+<obs>301.77 </obs>
+<obs>282.99 </obs>
+<obs>295.06 </obs>
+<obs>276.47 </obs>
+<obs>292.8 </obs>
+<obs>358.78 </obs>
+<obs>345.82 </obs>
+<obs>345.42 </obs>
+<obs>314.1 </obs>
+<obs>228.74 </obs>
+<obs>215.76 </obs>
+<obs>224.67 </obs>
+<obs>225.93 </obs>
+<obs>250.87 </obs>
+<obs>236.24 </obs>
+<obs>209.12 </obs>
+<obs>237.31 </obs>
+<obs>251.67 </obs>
+<obs>205.36 </obs>
+<obs>167.21 </obs>
+<obs>150.42 </obs>
+<obs>154.09 </obs>
+<obs>183.67 </obs>
+<obs>246.66 </obs>
+<obs>227.58 </obs>
+<obs>214.6 </obs>
+<obs>208.41 </obs>
+<obs>181.21 </obs>
+<obs>185.67 </obs>
+<obs>230.86 </obs>
+<obs>266.34 </obs>
+<obs>310.29 </obs>
+<obs>267.18 </obs>
+<obs>303.03 </obs>
+<obs>278.46 </obs>
+<obs>293.36 </obs>
+<obs>283.62 </obs>
+<obs>274.26 </obs>
+<obs>218.12 </obs>
+<obs>265.62 </obs>
+<obs>226.7 </obs>
+<obs>258 </obs>
+<obs>196.98 </obs>
+<obs>213.38 </obs>
+<obs>209.17 </obs>
+<obs>184.5 </obs>
+<obs>192.61 </obs>
+<obs>155.83 </obs>
+<obs>176.32 </obs>
+<obs>172.13 </obs>
+<obs>161.63 </obs>
+<obs>163 </obs>
+<obs>157.63 </obs>
+<obs>154.5 </obs>
+<obs>174.28 </obs>
+<obs>135.17 </obs>
+<obs>141.36 </obs>
+<obs>157.83 </obs>
+<obs>145.65 </obs>
+<obs>112.06 </obs>
+<obs>106.85 </obs>
+<obs>170.91 </obs>
+<obs>156.26 </obs>
+<obs>140.78 </obs>
+<obs>148.35 </obs>
+<obs>132.61 </obs>
+<obs>115.72 </obs>
+<obs>116.07 </obs>
+<obs>98.76 </obs>
+<obs>100.33 </obs>
+<obs>89.12 </obs>
+<obs>88.67 </obs>
+<obs>100.58 </obs>
+<obs>76.84 </obs>
+<obs>81.1 </obs>
+<obs>69.6 </obs>
+<obs>64.55 </obs>
+<obs>80.36 </obs>
+<obs>79.79 </obs>
+<obs>74.79 </obs>
+<obs>64.86 </obs>
+<obs>62.27 </obs>
+</observations>
+</gretldata>

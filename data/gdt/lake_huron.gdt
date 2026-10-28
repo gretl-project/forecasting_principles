@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="lake_huron" frequency="1" n="98" startobs="1875" endobs="1972" type="time-series">
+<description>Data imported from CSV file 'lake_huron.csv', 2026-10-28 18:36
+</description>
+<variables count="1">
+<variable name="y"
+/>
+</variables>
+<observations count="98" labels="false">
+<obs>580.38 </obs>
+<obs>581.86 </obs>
+<obs>580.97 </obs>
+<obs>580.8 </obs>
+<obs>579.79 </obs>
+<obs>580.39 </obs>
+<obs>580.42 </obs>
+<obs>580.82 </obs>
+<obs>581.4 </obs>
+<obs>581.32 </obs>
+<obs>581.44 </obs>
+<obs>581.68 </obs>
+<obs>581.17 </obs>
+<obs>580.53 </obs>
+<obs>580.01 </obs>
+<obs>579.91 </obs>
+<obs>579.14 </obs>
+<obs>579.16 </obs>
+<obs>579.55 </obs>
+<obs>579.67 </obs>
+<obs>578.44 </obs>
+<obs>578.24 </obs>
+<obs>579.1 </obs>
+<obs>579.09 </obs>
+<obs>579.35 </obs>
+<obs>578.82 </obs>
+<obs>579.32 </obs>
+<obs>579.01 </obs>
+<obs>579 </obs>
+<obs>579.8 </obs>
+<obs>579.83 </obs>
+<obs>579.72 </obs>
+<obs>579.89 </obs>
+<obs>580.01 </obs>
+<obs>579.37 </obs>
+<obs>578.69 </obs>
+<obs>578.19 </obs>
+<obs>578.67 </obs>
+<obs>579.55 </obs>
+<obs>578.92 </obs>
+<obs>578.09 </obs>
+<obs>579.37 </obs>
+<obs>580.13 </obs>
+<obs>580.14 </obs>
+<obs>579.51 </obs>
+<obs>579.24 </obs>
+<obs>578.66 </obs>
+<obs>578.86 </obs>
+<obs>578.05 </obs>
+<obs>577.79 </obs>
+<obs>576.75 </obs>
+<obs>576.75 </obs>
+<obs>577.82 </obs>
+<obs>578.64 </obs>
+<obs>580.58 </obs>
+<obs>579.48 </obs>
+<obs>577.38 </obs>
+<obs>576.9 </obs>
+<obs>576.94 </obs>
+<obs>576.24 </obs>
+<obs>576.84 </obs>
+<obs>576.85 </obs>
+<obs>576.9 </obs>
+<obs>577.79 </obs>
+<obs>578.18 </obs>
+<obs>577.51 </obs>
+<obs>577.23 </obs>
+<obs>578.42 </obs>
+<obs>579.61 </obs>
+<obs>579.05 </obs>
+<obs>579.26 </obs>
+<obs>579.22 </obs>
+<obs>579.38 </obs>
+<obs>579.1 </obs>
+<obs>577.95 </obs>
+<obs>578.12 </obs>
+<obs>579.75 </obs>
+<obs>580.85 </obs>
+<obs>580.41 </obs>
+<obs>579.96 </obs>
+<obs>579.61 </obs>
+<obs>578.76 </obs>
+<obs>578.18 </obs>
+<obs>577.21 </obs>
+<obs>577.13 </obs>
+<obs>579.1 </obs>
+<obs>578.25 </obs>
+<obs>577.91 </obs>
+<obs>576.89 </obs>
+<obs>575.96 </obs>
+<obs>576.8 </obs>
+<obs>577.68 </obs>
+<obs>578.38 </obs>
+<obs>578.52 </obs>
+<obs>579.74 </obs>
+<obs>579.31 </obs>
+<obs>579.89 </obs>
+<obs>579.96 </obs>
+</observations>
+</gretldata>

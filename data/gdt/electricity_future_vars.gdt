@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="electricity_future_vars" frequency="24" n="24" startobs="1:01" endobs="1:24" type="time-series">
+<description>Data imported from CSV file 'electricity_future_vars.csv', 2026-10-28 18:29
+</description>
+<variables count="11">
+<variable name="unique_id"
+ discrete="true"
+/>
+<variable name="ds"
+ discrete="true"
+/>
+<variable name="Exogenous1"
+/>
+<variable name="Exogenous2"
+/>
+<variable name="day_0"
+/>
+<variable name="day_1"
+/>
+<variable name="day_2"
+/>
+<variable name="day_3"
+/>
+<variable name="day_4"
+/>
+<variable name="day_5"
+/>
+<variable name="day_6"
+/>
+</variables>
+<observations count="24" labels="false">
+<obs>1 1 49119 461 1 0 0 0 0 0 0 </obs>
+<obs>1 2 48115 484 1 0 0 0 0 0 0 </obs>
+<obs>1 3 47727 497 1 0 0 0 0 0 0 </obs>
+<obs>1 4 47673 509 1 0 0 0 0 0 0 </obs>
+<obs>1 5 47848 510 1 0 0 0 0 0 0 </obs>
+<obs>1 6 48673 511 1 0 0 0 0 0 0 </obs>
+<obs>1 7 50071 526 1 0 0 0 0 0 0 </obs>
+<obs>1 8 52259 528 1 0 0 0 0 0 0 </obs>
+<obs>1 9 54395 659 1 0 0 0 0 0 0 </obs>
+<obs>1 10 56071 897 1 0 0 0 0 0 0 </obs>
+<obs>1 11 56989 1140 1 0 0 0 0 0 0 </obs>
+<obs>1 12 56985 1342 1 0 0 0 0 0 0 </obs>
+<obs>1 13 56391 1547 1 0 0 0 0 0 0 </obs>
+<obs>1 14 55922 1618 1 0 0 0 0 0 0 </obs>
+<obs>1 15 55826 1664 1 0 0 0 0 0 0 </obs>
+<obs>1 16 56216 1768 1 0 0 0 0 0 0 </obs>
+<obs>1 17 56661 1964 1 0 0 0 0 0 0 </obs>
+<obs>1 18 55479 2092 1 0 0 0 0 0 0 </obs>
+<obs>1 19 53741 2243 1 0 0 0 0 0 0 </obs>
+<obs>1 20 52591 2544 1 0 0 0 0 0 0 </obs>
+<obs>1 21 51787 2785 1 0 0 0 0 0 0 </obs>
+<obs>1 22 51488 2919 1 0 0 0 0 0 0 </obs>
+<obs>1 23 50928 3119 1 0 0 0 0 0 0 </obs>
+<obs>1 24 49889 3306 1 0 0 0 0 0 0 </obs>
+</observations>
+<string-tables count="2">
+<valstrings owner="unique_id" count="1">"NP" </valstrings>
+<valstrings owner="ds" count="24">"2018-12-24 00:00:00" "2018-12-24 01:00:00" "2018-12-24 02:00:00" "2018-12-24 03:00:00" "2018-12-24 04:00:00" "2018-12-24 05:00:00" "2018-12-24 06:00:00" "2018-12-24 07:00:00" "2018-12-24 08:00:00" "2018-12-24 09:00:00" "2018-12-24 10:00:00" "2018-12-24 11:00:00" "2018-12-24 12:00:00" "2018-12-24 13:00:00" "2018-12-24 14:00:00" "2018-12-24 15:00:00" "2018-12-24 16:00:00" "2018-12-24 17:00:00" "2018-12-24 18:00:00" "2018-12-24 19:00:00" "2018-12-24 20:00:00" "2018-12-24 21:00:00" "2018-12-24 22:00:00" "2018-12-24 23:00:00" </valstrings>
+</string-tables>
+</gretldata>

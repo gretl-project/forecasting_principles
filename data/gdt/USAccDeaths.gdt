@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="USAccDeaths" frequency="12" n="72" startobs="1973:01" endobs="1978:12" type="time-series">
+<description>Data imported from CSV file 'USAccDeaths.csv', 2026-10-28 18:43
+</description>
+<variables count="1">
+<variable name="y"
+/>
+</variables>
+<observations count="72" labels="false">
+<obs>9007 </obs>
+<obs>8106 </obs>
+<obs>8928 </obs>
+<obs>9137 </obs>
+<obs>10017 </obs>
+<obs>10826 </obs>
+<obs>11317 </obs>
+<obs>10744 </obs>
+<obs>9713 </obs>
+<obs>9938 </obs>
+<obs>9161 </obs>
+<obs>8927 </obs>
+<obs>7750 </obs>
+<obs>6981 </obs>
+<obs>8038 </obs>
+<obs>8422 </obs>
+<obs>8714 </obs>
+<obs>9512 </obs>
+<obs>10120 </obs>
+<obs>9823 </obs>
+<obs>8743 </obs>
+<obs>9129 </obs>
+<obs>8710 </obs>
+<obs>8680 </obs>
+<obs>8162 </obs>
+<obs>7306 </obs>
+<obs>8124 </obs>
+<obs>7870 </obs>
+<obs>9387 </obs>
+<obs>9556 </obs>
+<obs>10093 </obs>
+<obs>9620 </obs>
+<obs>8285 </obs>
+<obs>8466 </obs>
+<obs>8160 </obs>
+<obs>8034 </obs>
+<obs>7717 </obs>
+<obs>7461 </obs>
+<obs>7767 </obs>
+<obs>7925 </obs>
+<obs>8623 </obs>
+<obs>8945 </obs>
+<obs>10078 </obs>
+<obs>9179 </obs>
+<obs>8037 </obs>
+<obs>8488 </obs>
+<obs>7874 </obs>
+<obs>8647 </obs>
+<obs>7792 </obs>
+<obs>6957 </obs>
+<obs>7726 </obs>
+<obs>8106 </obs>
+<obs>8890 </obs>
+<obs>9299 </obs>
+<obs>10625 </obs>
+<obs>9302 </obs>
+<obs>8314 </obs>
+<obs>8850 </obs>
+<obs>8265 </obs>
+<obs>8796 </obs>
+<obs>7836 </obs>
+<obs>6892 </obs>
+<obs>7791 </obs>
+<obs>8192 </obs>
+<obs>9115 </obs>
+<obs>9434 </obs>
+<obs>10484 </obs>
+<obs>9827 </obs>
+<obs>9110 </obs>
+<obs>9070 </obs>
+<obs>8633 </obs>
+<obs>9240 </obs>
+</observations>
+</gretldata>

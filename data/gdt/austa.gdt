@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="austa" frequency="1" n="36" startobs="1980" endobs="2015" type="time-series">
+<description>Data imported from CSV file 'austa.csv', 2026-10-28 18:27
+</description>
+<variables count="1">
+<variable name="Visitors"
+/>
+</variables>
+<observations count="36" labels="false">
+<obs>0.82989428 </obs>
+<obs>0.85951092 </obs>
+<obs>0.87668916 </obs>
+<obs>0.86670716 </obs>
+<obs>0.932052 </obs>
+<obs>1.04826364 </obs>
+<obs>1.3111932 </obs>
+<obs>1.63756228 </obs>
+<obs>2.0641074 </obs>
+<obs>1.91268276 </obs>
+<obs>2.03544572 </obs>
+<obs>2.17721128 </obs>
+<obs>2.38968344 </obs>
+<obs>2.75059208 </obs>
+<obs>3.0906664 </obs>
+<obs>3.42664028 </obs>
+<obs>3.83064908 </obs>
+<obs>3.97190864 </obs>
+<obs>3.83160036 </obs>
+<obs>4.143101 </obs>
+<obs>4.566551 </obs>
+<obs>4.47541 </obs>
+<obs>4.462796 </obs>
+<obs>4.384829 </obs>
+<obs>4.796861 </obs>
+<obs>5.015049 </obs>
+<obs>5.063435 </obs>
+<obs>5.145489 </obs>
+<obs>5.099436 </obs>
+<obs>5.088166 </obs>
+<obs>5.353702 </obs>
+<obs>5.343327 </obs>
+<obs>5.589162 </obs>
+<obs>5.904884 </obs>
+<obs>6.357183 </obs>
+<obs>6.858953 </obs>
+</observations>
+</gretldata>

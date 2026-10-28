@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="strikes" frequency="1" n="30" startobs="1951" endobs="1980" type="time-series">
+<description>Data imported from CSV file 'strikes.csv', 2026-10-28 18:38
+</description>
+<variables count="1">
+<variable name="y"
+/>
+</variables>
+<observations count="30" labels="false">
+<obs>4737 </obs>
+<obs>5117 </obs>
+<obs>5091 </obs>
+<obs>3468 </obs>
+<obs>4320 </obs>
+<obs>3825 </obs>
+<obs>3673 </obs>
+<obs>3694 </obs>
+<obs>3708 </obs>
+<obs>3333 </obs>
+<obs>3367 </obs>
+<obs>3614 </obs>
+<obs>3362 </obs>
+<obs>3655 </obs>
+<obs>3963 </obs>
+<obs>4405 </obs>
+<obs>4595 </obs>
+<obs>5045 </obs>
+<obs>5700 </obs>
+<obs>5716 </obs>
+<obs>5138 </obs>
+<obs>5010 </obs>
+<obs>5353 </obs>
+<obs>6074 </obs>
+<obs>5031 </obs>
+<obs>5648 </obs>
+<obs>5506 </obs>
+<obs>4230 </obs>
+<obs>4827 </obs>
+<obs>3885 </obs>
+</observations>
+</gretldata>

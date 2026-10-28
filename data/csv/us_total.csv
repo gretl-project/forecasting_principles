@@ -1,0 +1,1267 @@
+"ds","unique_id","y"
+1997,"Alabama",324158
+1998,"Alabama",329134
+1999,"Alabama",337270
+2000,"Alabama",353614
+2001,"Alabama",332693
+2002,"Alabama",379343
+2003,"Alabama",350345
+2004,"Alabama",382367
+2005,"Alabama",353156
+2006,"Alabama",391093
+2007,"Alabama",418512
+2008,"Alabama",404157
+2009,"Alabama",454456
+2010,"Alabama",534779
+2011,"Alabama",598514
+2012,"Alabama",666712
+2013,"Alabama",615407
+2014,"Alabama",635323
+2015,"Alabama",681149
+2016,"Alabama",694881
+2017,"Alabama",661366
+2018,"Alabama",750188
+2019,"Alabama",729402
+1997,"Alaska",425393
+1998,"Alaska",434871
+1999,"Alaska",422816
+2000,"Alaska",427288
+2001,"Alaska",408960
+2002,"Alaska",419131
+2003,"Alaska",414234
+2004,"Alaska",406319
+2005,"Alaska",432972
+2006,"Alaska",373850
+2007,"Alaska",369967
+2008,"Alaska",341888
+2009,"Alaska",342261
+2010,"Alaska",333312
+2011,"Alaska",335458
+2012,"Alaska",343110
+2013,"Alaska",332298
+2014,"Alaska",328945
+2015,"Alaska",333602
+2016,"Alaska",330552
+2017,"Alaska",347725
+2018,"Alaska",355132
+2019,"Alaska",366476
+1997,"Arizona",134706
+1998,"Arizona",158355
+1999,"Arizona",165076
+2000,"Arizona",205235
+2001,"Arizona",240812
+2002,"Arizona",250734
+2003,"Arizona",272921
+2004,"Arizona",349622
+2005,"Arizona",321584
+2006,"Arizona",358069
+2007,"Arizona",392954
+2008,"Arizona",399188
+2009,"Arizona",369739
+2010,"Arizona",330914
+2011,"Arizona",288802
+2012,"Arizona",332068
+2013,"Arizona",332073
+2014,"Arizona",306715
+2015,"Arizona",351263
+2016,"Arizona",360576
+2017,"Arizona",321451
+2018,"Arizona",384753
+2019,"Arizona",468482
+1997,"Arkansas",260113
+1998,"Arkansas",266485
+1999,"Arkansas",252853
+2000,"Arkansas",251329
+2001,"Arkansas",227943
+2002,"Arkansas",242325
+2003,"Arkansas",246916
+2004,"Arkansas",215124
+2005,"Arkansas",213609
+2006,"Arkansas",233868
+2007,"Arkansas",226439
+2008,"Arkansas",234901
+2009,"Arkansas",244193
+2010,"Arkansas",271515
+2011,"Arkansas",284076
+2012,"Arkansas",296132
+2013,"Arkansas",282120
+2014,"Arkansas",268444
+2015,"Arkansas",291006
+2016,"Arkansas",309732
+2017,"Arkansas",311609
+2018,"Arkansas",360804
+2019,"Arkansas",360024
+1997,"California",2146211
+1998,"California",2309883
+1999,"California",2339521
+2000,"California",2508797
+2001,"California",2464565
+2002,"California",2273193
+2003,"California",2269405
+2004,"California",2406889
+2005,"California",2248256
+2006,"California",2315721
+2007,"California",2395674
+2008,"California",2405266
+2009,"California",2328504
+2010,"California",2273128
+2011,"California",2153186
+2012,"California",2403494
+2013,"California",2415571
+2014,"California",2339392
+2015,"California",2301217
+2016,"California",2172889
+2017,"California",2116902
+2018,"California",2137920
+2019,"California",2154030
+1997,"Colorado",314486
+1998,"Colorado",330259
+1999,"Colorado",333085
+2000,"Colorado",367920
+2001,"Colorado",463738
+2002,"Colorado",459397
+2003,"Colorado",436253
+2004,"Colorado",440378
+2005,"Colorado",470321
+2006,"Colorado",450832
+2007,"Colorado",504775
+2008,"Colorado",504783
+2009,"Colorado",523726
+2010,"Colorado",501350
+2011,"Colorado",466680
+2012,"Colorado",443750
+2013,"Colorado",467798
+2014,"Colorado",478987
+2015,"Colorado",466906
+2016,"Colorado",441018
+2017,"Colorado",438137
+2018,"Colorado",485735
+2019,"Colorado",520139
+1997,"Connecticut",144708
+1998,"Connecticut",131497
+1999,"Connecticut",152237
+2000,"Connecticut",159712
+2001,"Connecticut",146278
+2002,"Connecticut",177587
+2003,"Connecticut",154075
+2004,"Connecticut",162642
+2005,"Connecticut",168067
+2006,"Connecticut",172682
+2007,"Connecticut",180181
+2008,"Connecticut",166801
+2009,"Connecticut",185056
+2010,"Connecticut",199426
+2011,"Connecticut",230036
+2012,"Connecticut",229156
+2013,"Connecticut",234475
+2014,"Connecticut",235859
+2015,"Connecticut",254065
+2016,"Connecticut",247958
+2017,"Connecticut",239818
+2018,"Connecticut",277931
+2019,"Connecticut",283408
+1997,"Delaware",46511
+1998,"Delaware",40809
+1999,"Delaware",56013
+2000,"Delaware",48387
+2001,"Delaware",50113
+2002,"Delaware",52216
+2003,"Delaware",46177
+2004,"Delaware",48057
+2005,"Delaware",46904
+2006,"Delaware",43190
+2007,"Delaware",48155
+2008,"Delaware",48162
+2009,"Delaware",50148
+2010,"Delaware",54825
+2011,"Delaware",79715
+2012,"Delaware",101676
+2013,"Delaware",95978
+2014,"Delaware",101379
+2015,"Delaware",102693
+2016,"Delaware",108562
+2017,"Delaware",98966
+2018,"Delaware",95516
+2019,"Delaware",89214
+1997,"District of Columbia",34105
+1998,"District of Columbia",30409
+1999,"District of Columbia",32281
+2000,"District of Columbia",33468
+2001,"District of Columbia",29802
+2002,"District of Columbia",32898
+2003,"District of Columbia",32814
+2004,"District of Columbia",32227
+2005,"District of Columbia",32085
+2006,"District of Columbia",29049
+2007,"District of Columbia",32966
+2008,"District of Columbia",31880
+2009,"District of Columbia",33177
+2010,"District of Columbia",33251
+2011,"District of Columbia",32862
+2012,"District of Columbia",28561
+2013,"District of Columbia",32743
+2014,"District of Columbia",33848
+2015,"District of Columbia",32237
+2016,"District of Columbia",28888
+2017,"District of Columbia",29457
+2018,"District of Columbia",31490
+2019,"District of Columbia",30544
+1999,"Federal Offshore -- Gulf of Mexico",0
+2000,"Federal Offshore -- Gulf of Mexico",0
+2001,"Federal Offshore -- Gulf of Mexico",0
+2002,"Federal Offshore -- Gulf of Mexico",109277
+2003,"Federal Offshore -- Gulf of Mexico",98372
+2004,"Federal Offshore -- Gulf of Mexico",90025
+2005,"Federal Offshore -- Gulf of Mexico",78139
+2006,"Federal Offshore -- Gulf of Mexico",102242
+2007,"Federal Offshore -- Gulf of Mexico",115528
+2008,"Federal Offshore -- Gulf of Mexico",102389
+2009,"Federal Offshore -- Gulf of Mexico",103976
+2010,"Federal Offshore -- Gulf of Mexico",108490
+2011,"Federal Offshore -- Gulf of Mexico",101217
+2012,"Federal Offshore -- Gulf of Mexico",93985
+2013,"Federal Offshore -- Gulf of Mexico",95207
+2014,"Federal Offshore -- Gulf of Mexico",93814
+2015,"Federal Offshore -- Gulf of Mexico",95492
+2016,"Federal Offshore -- Gulf of Mexico",95832
+2017,"Federal Offshore -- Gulf of Mexico",94379
+2018,"Federal Offshore -- Gulf of Mexico",94178
+2019,"Federal Offshore -- Gulf of Mexico",94298
+1997,"Florida",522116
+1998,"Florida",503844
+1999,"Florida",559366
+2000,"Florida",541847
+2001,"Florida",543143
+2002,"Florida",689337
+2003,"Florida",689986
+2004,"Florida",734178
+2005,"Florida",778209
+2006,"Florida",891611
+2007,"Florida",917244
+2008,"Florida",942699
+2009,"Florida",1055340
+2010,"Florida",1158452
+2011,"Florida",1217689
+2012,"Florida",1328463
+2013,"Florida",1225676
+2014,"Florida",1214531
+2015,"Florida",1345790
+2016,"Florida",1382558
+2017,"Florida",1387960
+2018,"Florida",1477160
+2019,"Florida",1545434
+1997,"Georgia",371376
+1998,"Georgia",368579
+1999,"Georgia",337576
+2000,"Georgia",413845
+2001,"Georgia",351109
+2002,"Georgia",383546
+2003,"Georgia",379761
+2004,"Georgia",394986
+2005,"Georgia",412560
+2006,"Georgia",420469
+2007,"Georgia",441107
+2008,"Georgia",425043
+2009,"Georgia",462799
+2010,"Georgia",530030
+2011,"Georgia",522897
+2012,"Georgia",615771
+2013,"Georgia",625283
+2014,"Georgia",652408
+2015,"Georgia",694399
+2016,"Georgia",706688
+2017,"Georgia",689501
+2018,"Georgia",738986
+2019,"Georgia",753735
+1997,"Hawaii",2894
+1998,"Hawaii",2654
+1999,"Hawaii",3115
+2000,"Hawaii",2841
+2001,"Hawaii",2818
+2002,"Hawaii",2734
+2003,"Hawaii",2732
+2004,"Hawaii",2774
+2005,"Hawaii",2795
+2006,"Hawaii",2783
+2007,"Hawaii",2850
+2008,"Hawaii",2702
+2009,"Hawaii",2607
+2010,"Hawaii",2627
+2011,"Hawaii",2619
+2012,"Hawaii",2689
+2013,"Hawaii",2855
+2014,"Hawaii",2916
+2015,"Hawaii",2924
+2016,"Hawaii",3040
+2017,"Hawaii",3106
+2018,"Hawaii",3282
+2019,"Hawaii",3277
+1997,"Idaho",68669
+1998,"Idaho",69277
+1999,"Idaho",70672
+2000,"Idaho",72697
+2001,"Idaho",80279
+2002,"Idaho",71481
+2003,"Idaho",69868
+2004,"Idaho",75335
+2005,"Idaho",74540
+2006,"Idaho",75709
+2007,"Idaho",81937
+2008,"Idaho",88515
+2009,"Idaho",85197
+2010,"Idaho",83326
+2011,"Idaho",82544
+2012,"Idaho",89004
+2013,"Idaho",104783
+2014,"Idaho",92046
+2015,"Idaho",104730
+2016,"Idaho",106306
+2017,"Idaho",111334
+2018,"Idaho",111700
+2019,"Idaho",127638
+1997,"Illinois",1077139
+1998,"Illinois",957254
+1999,"Illinois",1004281
+2000,"Illinois",1030604
+2001,"Illinois",951616
+2002,"Illinois",1049878
+2003,"Illinois",998486
+2004,"Illinois",953207
+2005,"Illinois",969642
+2006,"Illinois",893997
+2007,"Illinois",965591
+2008,"Illinois",1000501
+2009,"Illinois",956068
+2010,"Illinois",966678
+2011,"Illinois",986867
+2012,"Illinois",940367
+2013,"Illinois",1056826
+2014,"Illinois",1093931
+2015,"Illinois",993548
+2016,"Illinois",1024186
+2017,"Illinois",1017772
+2018,"Illinois",1108592
+2019,"Illinois",1134722
+1997,"Indiana",556624
+1998,"Indiana",521748
+1999,"Indiana",556932
+2000,"Indiana",570558
+2001,"Indiana",501711
+2002,"Indiana",539034
+2003,"Indiana",527037
+2004,"Indiana",526701
+2005,"Indiana",531111
+2006,"Indiana",496303
+2007,"Indiana",535796
+2008,"Indiana",551424
+2009,"Indiana",506944
+2010,"Indiana",573866
+2011,"Indiana",630669
+2012,"Indiana",649921
+2013,"Indiana",672751
+2014,"Indiana",713416
+2015,"Indiana",718725
+2016,"Indiana",754276
+2017,"Indiana",720453
+2018,"Indiana",854024
+2019,"Indiana",894471
+1997,"Iowa",254489
+1998,"Iowa",232057
+1999,"Iowa",230691
+2000,"Iowa",232565
+2001,"Iowa",224336
+2002,"Iowa",226457
+2003,"Iowa",230161
+2004,"Iowa",226819
+2005,"Iowa",241340
+2006,"Iowa",238454
+2007,"Iowa",293274
+2008,"Iowa",325772
+2009,"Iowa",315186
+2010,"Iowa",311075
+2011,"Iowa",306909
+2012,"Iowa",295183
+2013,"Iowa",326140
+2014,"Iowa",329385
+2015,"Iowa",317821
+2016,"Iowa",330094
+2017,"Iowa",391129
+2018,"Iowa",443174
+2019,"Iowa",442873
+1997,"Kansas",338231
+1998,"Kansas",326674
+1999,"Kansas",302932
+2000,"Kansas",312369
+2001,"Kansas",272500
+2002,"Kansas",304992
+2003,"Kansas",281346
+2004,"Kansas",256779
+2005,"Kansas",255123
+2006,"Kansas",264253
+2007,"Kansas",286538
+2008,"Kansas",282904
+2009,"Kansas",286973
+2010,"Kansas",275184
+2011,"Kansas",279724
+2012,"Kansas",262316
+2013,"Kansas",283177
+2014,"Kansas",284651
+2015,"Kansas",270938
+2016,"Kansas",267315
+2017,"Kansas",269919
+2018,"Kansas",310028
+2019,"Kansas",306050
+1997,"Kentucky",227931
+1998,"Kentucky",205129
+1999,"Kentucky",218399
+2000,"Kentucky",225168
+2001,"Kentucky",208974
+2002,"Kentucky",227920
+2003,"Kentucky",223226
+2004,"Kentucky",225470
+2005,"Kentucky",234080
+2006,"Kentucky",211049
+2007,"Kentucky",229799
+2008,"Kentucky",225295
+2009,"Kentucky",206833
+2010,"Kentucky",232099
+2011,"Kentucky",223034
+2012,"Kentucky",225924
+2013,"Kentucky",229983
+2014,"Kentucky",255434
+2015,"Kentucky",270958
+2016,"Kentucky",271845
+2017,"Kentucky",283678
+2018,"Kentucky",340125
+2019,"Kentucky",336191
+1997,"Louisiana",1661061
+1998,"Louisiana",1569190
+1999,"Louisiana",1495478
+2000,"Louisiana",1536725
+2001,"Louisiana",1219013
+2002,"Louisiana",1341444
+2003,"Louisiana",1233505
+2004,"Louisiana",1281428
+2005,"Louisiana",1254370
+2006,"Louisiana",1217871
+2007,"Louisiana",1289421
+2008,"Louisiana",1238661
+2009,"Louisiana",1189744
+2010,"Louisiana",1354641
+2011,"Louisiana",1420264
+2012,"Louisiana",1482343
+2013,"Louisiana",1396261
+2014,"Louisiana",1423424
+2015,"Louisiana",1470354
+2016,"Louisiana",1591882
+2017,"Louisiana",1593181
+2018,"Louisiana",1738734
+2019,"Louisiana",1861894
+1997,"Maine",6290
+1998,"Maine",5716
+1999,"Maine",6572
+2000,"Maine",44779
+2001,"Maine",95733
+2002,"Maine",101536
+2003,"Maine",70832
+2004,"Maine",72565
+2005,"Maine",57835
+2006,"Maine",49605
+2007,"Maine",63183
+2008,"Maine",70146
+2009,"Maine",70334
+2010,"Maine",77575
+2011,"Maine",71690
+2012,"Maine",68266
+2013,"Maine",64091
+2014,"Maine",60663
+2015,"Maine",52777
+2016,"Maine",53128
+2017,"Maine",43810
+2018,"Maine",46464
+2019,"Maine",44484
+1997,"Maryland",212017
+1998,"Maryland",188552
+1999,"Maryland",196350
+2000,"Maryland",212133
+2001,"Maryland",178376
+2002,"Maryland",196276
+2003,"Maryland",197024
+2004,"Maryland",194725
+2005,"Maryland",202509
+2006,"Maryland",182294
+2007,"Maryland",201053
+2008,"Maryland",196067
+2009,"Maryland",196510
+2010,"Maryland",212020
+2011,"Maryland",193986
+2012,"Maryland",208946
+2013,"Maryland",197356
+2014,"Maryland",207103
+2015,"Maryland",215005
+2016,"Maryland",219024
+2017,"Maryland",222881
+2018,"Maryland",300637
+2019,"Maryland",300876
+1997,"Massachusetts",402629
+1998,"Massachusetts",358846
+1999,"Massachusetts",344790
+2000,"Massachusetts",343314
+2001,"Massachusetts",349103
+2002,"Massachusetts",393194
+2003,"Massachusetts",403991
+2004,"Massachusetts",372532
+2005,"Massachusetts",378068
+2006,"Massachusetts",370664
+2007,"Massachusetts",408704
+2008,"Massachusetts",406719
+2009,"Massachusetts",395852
+2010,"Massachusetts",432297
+2011,"Massachusetts",449194
+2012,"Massachusetts",416350
+2013,"Massachusetts",421001
+2014,"Massachusetts",421671
+2015,"Massachusetts",444332
+2016,"Massachusetts",427946
+2017,"Massachusetts",448996
+2018,"Massachusetts",438577
+2019,"Massachusetts",433774
+1997,"Michigan",994342
+1998,"Michigan",876444
+1999,"Michigan",951143
+2000,"Michigan",963136
+2001,"Michigan",906001
+2002,"Michigan",966354
+2003,"Michigan",924819
+2004,"Michigan",916629
+2005,"Michigan",913827
+2006,"Michigan",803336
+2007,"Michigan",798126
+2008,"Michigan",779602
+2009,"Michigan",735340
+2010,"Michigan",746748
+2011,"Michigan",776466
+2012,"Michigan",790642
+2013,"Michigan",814635
+2014,"Michigan",861755
+2015,"Michigan",844801
+2016,"Michigan",890324
+2017,"Michigan",870756
+2018,"Michigan",965538
+2019,"Michigan",1002237
+1997,"Minnesota",354092
+1998,"Minnesota",330513
+1999,"Minnesota",344591
+2000,"Minnesota",362025
+2001,"Minnesota",340911
+2002,"Minnesota",371583
+2003,"Minnesota",371261
+2004,"Minnesota",359898
+2005,"Minnesota",367825
+2006,"Minnesota",352570
+2007,"Minnesota",388335
+2008,"Minnesota",425352
+2009,"Minnesota",394136
+2010,"Minnesota",422968
+2011,"Minnesota",420770
+2012,"Minnesota",422263
+2013,"Minnesota",467874
+2014,"Minnesota",474520
+2015,"Minnesota",431315
+2016,"Minnesota",449783
+2017,"Minnesota",451979
+2018,"Minnesota",490169
+2019,"Minnesota",509061
+1997,"Mississippi",255475
+1998,"Mississippi",241342
+1999,"Mississippi",306733
+2000,"Mississippi",300652
+2001,"Mississippi",332589
+2002,"Mississippi",343890
+2003,"Mississippi",265842
+2004,"Mississippi",282051
+2005,"Mississippi",301663
+2006,"Mississippi",307305
+2007,"Mississippi",364067
+2008,"Mississippi",355006
+2009,"Mississippi",364323
+2010,"Mississippi",438733
+2011,"Mississippi",433538
+2012,"Mississippi",494016
+2013,"Mississippi",420594
+2014,"Mississippi",427584
+2015,"Mississippi",521355
+2016,"Mississippi",544464
+2017,"Mississippi",526862
+2018,"Mississippi",576888
+2019,"Mississippi",570154
+1997,"Missouri",283294
+1998,"Missouri",258652
+1999,"Missouri",265798
+2000,"Missouri",284763
+2001,"Missouri",283793
+2002,"Missouri",275629
+2003,"Missouri",262529
+2004,"Missouri",263945
+2005,"Missouri",268040
+2006,"Missouri",252697
+2007,"Missouri",272536
+2008,"Missouri",296058
+2009,"Missouri",264867
+2010,"Missouri",280181
+2011,"Missouri",272583
+2012,"Missouri",255875
+2013,"Missouri",276967
+2014,"Missouri",297087
+2015,"Missouri",267673
+2016,"Missouri",267170
+2017,"Missouri",261993
+2018,"Missouri",322805
+2019,"Missouri",316378
+1997,"Montana",59851
+1998,"Montana",59840
+1999,"Montana",62129
+2000,"Montana",67955
+2001,"Montana",65051
+2002,"Montana",69532
+2003,"Montana",68473
+2004,"Montana",66829
+2005,"Montana",68355
+2006,"Montana",73879
+2007,"Montana",73822
+2008,"Montana",76422
+2009,"Montana",75802
+2010,"Montana",72025
+2011,"Montana",78217
+2012,"Montana",73399
+2013,"Montana",79670
+2014,"Montana",78110
+2015,"Montana",75042
+2016,"Montana",75037
+2017,"Montana",80036
+2018,"Montana",87034
+2019,"Montana",88394
+1997,"Nebraska",132221
+1998,"Nebraska",130730
+1999,"Nebraska",121487
+2000,"Nebraska",126962
+2001,"Nebraska",121984
+2002,"Nebraska",120333
+2003,"Nebraska",118922
+2004,"Nebraska",115011
+2005,"Nebraska",119070
+2006,"Nebraska",129885
+2007,"Nebraska",150808
+2008,"Nebraska",171005
+2009,"Nebraska",163474
+2010,"Nebraska",168944
+2011,"Nebraska",171777
+2012,"Nebraska",158757
+2013,"Nebraska",173376
+2014,"Nebraska",172837
+2015,"Nebraska",161189
+2016,"Nebraska",163362
+2017,"Nebraska",166286
+2018,"Nebraska",185949
+2019,"Nebraska",185260
+1997,"Nevada",132128
+1998,"Nevada",148539
+1999,"Nevada",154689
+2000,"Nevada",189170
+2001,"Nevada",176835
+2002,"Nevada",176596
+2003,"Nevada",185846
+2004,"Nevada",214984
+2005,"Nevada",227149
+2006,"Nevada",249608
+2007,"Nevada",254406
+2008,"Nevada",264596
+2009,"Nevada",275468
+2010,"Nevada",259251
+2011,"Nevada",249971
+2012,"Nevada",273502
+2013,"Nevada",272965
+2014,"Nevada",253290
+2015,"Nevada",300002
+2016,"Nevada",304181
+2017,"Nevada",293849
+2018,"Nevada",299783
+2019,"Nevada",302373
+1997,"New Hampshire",20848
+1998,"New Hampshire",19127
+1999,"New Hampshire",20313
+2000,"New Hampshire",24950
+2001,"New Hampshire",23398
+2002,"New Hampshire",24901
+2003,"New Hampshire",54147
+2004,"New Hampshire",61172
+2005,"New Hampshire",70484
+2006,"New Hampshire",62549
+2007,"New Hampshire",62132
+2008,"New Hampshire",71179
+2009,"New Hampshire",59950
+2010,"New Hampshire",60378
+2011,"New Hampshire",69978
+2012,"New Hampshire",72032
+2013,"New Hampshire",54028
+2014,"New Hampshire",57018
+2015,"New Hampshire",68682
+2016,"New Hampshire",57957
+2017,"New Hampshire",52071
+2018,"New Hampshire",49888
+2019,"New Hampshire",53624
+1997,"New Jersey",717011
+1998,"New Jersey",679619
+1999,"New Jersey",715630
+2000,"New Jersey",605275
+2001,"New Jersey",564923
+2002,"New Jersey",598602
+2003,"New Jersey",612890
+2004,"New Jersey",620806
+2005,"New Jersey",602388
+2006,"New Jersey",547206
+2007,"New Jersey",618965
+2008,"New Jersey",614908
+2009,"New Jersey",620790
+2010,"New Jersey",654458
+2011,"New Jersey",660743
+2012,"New Jersey",652060
+2013,"New Jersey",682247
+2014,"New Jersey",773221
+2015,"New Jersey",745789
+2016,"New Jersey",762958
+2017,"New Jersey",706589
+2018,"New Jersey",770284
+2019,"New Jersey",766824
+1997,"New Mexico",256464
+1998,"New Mexico",245823
+1999,"New Mexico",236264
+2000,"New Mexico",266469
+2001,"New Mexico",266283
+2002,"New Mexico",235098
+2003,"New Mexico",221021
+2004,"New Mexico",223575
+2005,"New Mexico",220717
+2006,"New Mexico",223636
+2007,"New Mexico",234236
+2008,"New Mexico",246665
+2009,"New Mexico",241194
+2010,"New Mexico",241137
+2011,"New Mexico",246418
+2012,"New Mexico",243961
+2013,"New Mexico",245502
+2014,"New Mexico",247637
+2015,"New Mexico",250518
+2016,"New Mexico",247761
+2017,"New Mexico",239305
+2018,"New Mexico",271547
+2019,"New Mexico",296753
+1997,"New York",1324164
+1998,"New York",1232473
+1999,"New York",1274162
+2000,"New York",1244746
+2001,"New York",1171898
+2002,"New York",1199632
+2003,"New York",1101618
+2004,"New York",1098056
+2005,"New York",1080215
+2006,"New York",1097160
+2007,"New York",1187059
+2008,"New York",1180356
+2009,"New York",1142625
+2010,"New York",1198127
+2011,"New York",1217324
+2012,"New York",1223036
+2013,"New York",1273263
+2014,"New York",1349203
+2015,"New York",1353385
+2016,"New York",1296270
+2017,"New York",1237311
+2018,"New York",1350443
+2019,"New York",1312031
+1997,"North Carolina",215634
+1998,"North Carolina",214092
+1999,"North Carolina",217159
+2000,"North Carolina",233714
+2001,"North Carolina",207108
+2002,"North Carolina",235376
+2003,"North Carolina",218642
+2004,"North Carolina",224796
+2005,"North Carolina",229715
+2006,"North Carolina",223032
+2007,"North Carolina",237354
+2008,"North Carolina",243090
+2009,"North Carolina",247047
+2010,"North Carolina",304148
+2011,"North Carolina",307804
+2012,"North Carolina",363945
+2013,"North Carolina",440175
+2014,"North Carolina",452780
+2015,"North Carolina",498576
+2016,"North Carolina",522002
+2017,"North Carolina",502567
+2018,"North Carolina",582418
+2019,"North Carolina",556490
+1997,"North Dakota",56179
+1998,"North Dakota",49541
+1999,"North Dakota",56418
+2000,"North Dakota",56528
+2001,"North Dakota",60819
+2002,"North Dakota",66726
+2003,"North Dakota",60907
+2004,"North Dakota",59986
+2005,"North Dakota",53050
+2006,"North Dakota",53336
+2007,"North Dakota",59453
+2008,"North Dakota",63097
+2009,"North Dakota",54564
+2010,"North Dakota",66395
+2011,"North Dakota",72463
+2012,"North Dakota",72740
+2013,"North Dakota",81593
+2014,"North Dakota",86881
+2015,"North Dakota",97725
+2016,"North Dakota",102322
+2017,"North Dakota",109440
+2018,"North Dakota",126325
+2019,"North Dakota",134722
+1997,"Ohio",897693
+1998,"Ohio",811384
+1999,"Ohio",841966
+2000,"Ohio",890962
+2001,"Ohio",804243
+2002,"Ohio",830955
+2003,"Ohio",848388
+2004,"Ohio",825753
+2005,"Ohio",825961
+2006,"Ohio",742359
+2007,"Ohio",806350
+2008,"Ohio",792247
+2009,"Ohio",740925
+2010,"Ohio",784293
+2011,"Ohio",823548
+2012,"Ohio",842959
+2013,"Ohio",912403
+2014,"Ohio",1002345
+2015,"Ohio",966492
+2016,"Ohio",928492
+2017,"Ohio",948324
+2018,"Ohio",1162745
+2019,"Ohio",1179077
+1997,"Oklahoma",567050
+1998,"Oklahoma",575855
+1999,"Oklahoma",538329
+2000,"Oklahoma",538563
+2001,"Oklahoma",491458
+2002,"Oklahoma",508298
+2003,"Oklahoma",540103
+2004,"Oklahoma",538576
+2005,"Oklahoma",582536
+2006,"Oklahoma",624400
+2007,"Oklahoma",658379
+2008,"Oklahoma",687989
+2009,"Oklahoma",659305
+2010,"Oklahoma",675727
+2011,"Oklahoma",655919
+2012,"Oklahoma",691661
+2013,"Oklahoma",658569
+2014,"Oklahoma",642309
+2015,"Oklahoma",679457
+2016,"Oklahoma",701776
+2017,"Oklahoma",664233
+2018,"Oklahoma",807023
+2019,"Oklahoma",835139
+1997,"Oregon",185069
+1998,"Oregon",229403
+1999,"Oregon",235009
+2000,"Oregon",224888
+2001,"Oregon",229665
+2002,"Oregon",202164
+2003,"Oregon",212556
+2004,"Oregon",234997
+2005,"Oregon",232562
+2006,"Oregon",222608
+2007,"Oregon",251927
+2008,"Oregon",268484
+2009,"Oregon",248864
+2010,"Oregon",239325
+2011,"Oregon",199419
+2012,"Oregon",215830
+2013,"Oregon",240418
+2014,"Oregon",220090
+2015,"Oregon",234634
+2016,"Oregon",235912
+2017,"Oregon",247206
+2018,"Oregon",255713
+2019,"Oregon",288976
+1997,"Pennsylvania",706230
+1998,"Pennsylvania",644017
+1999,"Pennsylvania",688740
+2000,"Pennsylvania",702847
+2001,"Pennsylvania",634794
+2002,"Pennsylvania",675583
+2003,"Pennsylvania",689992
+2004,"Pennsylvania",696175
+2005,"Pennsylvania",691591
+2006,"Pennsylvania",659754
+2007,"Pennsylvania",752401
+2008,"Pennsylvania",749884
+2009,"Pennsylvania",809707
+2010,"Pennsylvania",879365
+2011,"Pennsylvania",965742
+2012,"Pennsylvania",1037979
+2013,"Pennsylvania",1121696
+2014,"Pennsylvania",1244371
+2015,"Pennsylvania",1255621
+2016,"Pennsylvania",1301000
+2017,"Pennsylvania",1350245
+2018,"Pennsylvania",1460456
+2019,"Pennsylvania",1612589
+1997,"Rhode Island",117707
+1998,"Rhode Island",130751
+1999,"Rhode Island",118001
+2000,"Rhode Island",88419
+2001,"Rhode Island",95607
+2002,"Rhode Island",87805
+2003,"Rhode Island",78456
+2004,"Rhode Island",72609
+2005,"Rhode Island",80764
+2006,"Rhode Island",77204
+2007,"Rhode Island",87972
+2008,"Rhode Island",89256
+2009,"Rhode Island",92743
+2010,"Rhode Island",94110
+2011,"Rhode Island",100455
+2012,"Rhode Island",95476
+2013,"Rhode Island",85537
+2014,"Rhode Island",88886
+2015,"Rhode Island",93886
+2016,"Rhode Island",85977
+2017,"Rhode Island",92061
+2018,"Rhode Island",101796
+2019,"Rhode Island",99301
+1997,"South Carolina",153917
+1998,"South Carolina",159458
+1999,"South Carolina",162926
+2000,"South Carolina",160436
+2001,"South Carolina",141785
+2002,"South Carolina",184803
+2003,"South Carolina",146641
+2004,"South Carolina",163787
+2005,"South Carolina",172032
+2006,"South Carolina",174806
+2007,"South Carolina",175701
+2008,"South Carolina",170077
+2009,"South Carolina",190928
+2010,"South Carolina",220235
+2011,"South Carolina",229497
+2012,"South Carolina",244850
+2013,"South Carolina",232297
+2014,"South Carolina",230525
+2015,"South Carolina",275751
+2016,"South Carolina",275946
+2017,"South Carolina",278768
+2018,"South Carolina",330362
+2019,"South Carolina",337310
+1997,"South Dakota",36115
+1998,"South Dakota",33042
+1999,"South Dakota",35794
+2000,"South Dakota",37939
+2001,"South Dakota",37077
+2002,"South Dakota",41577
+2003,"South Dakota",43881
+2004,"South Dakota",41679
+2005,"South Dakota",42555
+2006,"South Dakota",40739
+2007,"South Dakota",53938
+2008,"South Dakota",65258
+2009,"South Dakota",66185
+2010,"South Dakota",72563
+2011,"South Dakota",73605
+2012,"South Dakota",70238
+2013,"South Dakota",81986
+2014,"South Dakota",80613
+2015,"South Dakota",79099
+2016,"South Dakota",80513
+2017,"South Dakota",80890
+2018,"South Dakota",89464
+2019,"South Dakota",91362
+1997,"Tennessee",282395
+1998,"Tennessee",279070
+1999,"Tennessee",278841
+2000,"Tennessee",270658
+2001,"Tennessee",255990
+2002,"Tennessee",255515
+2003,"Tennessee",257315
+2004,"Tennessee",231133
+2005,"Tennessee",230338
+2006,"Tennessee",221626
+2007,"Tennessee",221118
+2008,"Tennessee",229935
+2009,"Tennessee",216945
+2010,"Tennessee",257443
+2011,"Tennessee",264231
+2012,"Tennessee",277127
+2013,"Tennessee",279441
+2014,"Tennessee",305633
+2015,"Tennessee",313379
+2016,"Tennessee",326546
+2017,"Tennessee",321644
+2018,"Tennessee",392161
+2019,"Tennessee",402277
+1997,"Texas",4116722
+1998,"Texas",4205459
+1999,"Texas",4009689
+2000,"Texas",4421777
+2001,"Texas",4252152
+2002,"Texas",4303831
+2003,"Texas",4050632
+2004,"Texas",3908243
+2005,"Texas",3503636
+2006,"Texas",3432236
+2007,"Texas",3516706
+2008,"Texas",3546804
+2009,"Texas",3387341
+2010,"Texas",3574398
+2011,"Texas",3693905
+2012,"Texas",3850331
+2013,"Texas",4021851
+2014,"Texas",3928277
+2015,"Texas",4113608
+2016,"Texas",4020915
+2017,"Texas",3867275
+2018,"Texas",4464219
+2019,"Texas",4619800
+1949,"U.S.",4971152
+1950,"U.S.",5766542
+1951,"U.S.",6810162
+1952,"U.S.",7294320
+1953,"U.S.",7639270
+1954,"U.S.",8048504
+1955,"U.S.",8693657
+1956,"U.S.",9288865
+1957,"U.S.",9846139
+1958,"U.S.",10302608
+1959,"U.S.",11321181
+1960,"U.S.",11966537
+1961,"U.S.",12489268
+1962,"U.S.",13266513
+1963,"U.S.",13970229
+1964,"U.S.",14813808
+1965,"U.S.",15279716
+1966,"U.S.",16452403
+1967,"U.S.",17388360
+1968,"U.S.",18632062
+1969,"U.S.",20056240
+1970,"U.S.",21139386
+1971,"U.S.",21793454
+1972,"U.S.",22101451
+1973,"U.S.",22049363
+1974,"U.S.",21223133
+1975,"U.S.",19537593
+1976,"U.S.",19946496
+1977,"U.S.",19520581
+1978,"U.S.",19627478
+1979,"U.S.",20240761
+1980,"U.S.",19877293
+1981,"U.S.",19403858
+1982,"U.S.",18001055
+1983,"U.S.",16834912
+1984,"U.S.",17950527
+1985,"U.S.",17280943
+1986,"U.S.",16221296
+1987,"U.S.",17210809
+1988,"U.S.",18029585
+1989,"U.S.",19118997
+1990,"U.S.",19173556
+1991,"U.S.",19562067
+1992,"U.S.",20228228
+1993,"U.S.",20789842
+1994,"U.S.",21247098
+1995,"U.S.",22206889
+1996,"U.S.",22609080
+1997,"U.S.",22737342
+1998,"U.S.",22245956
+1999,"U.S.",22405151
+2000,"U.S.",23333121
+2001,"U.S.",22238624
+2002,"U.S.",23027021
+2003,"U.S.",22276502
+2004,"U.S.",22402546
+2005,"U.S.",22014434
+2006,"U.S.",21699071
+2007,"U.S.",23103793
+2008,"U.S.",23277008
+2009,"U.S.",22910078
+2010,"U.S.",24086797
+2011,"U.S.",24477425
+2012,"U.S.",25538487
+2013,"U.S.",26155071
+2014,"U.S.",26593375
+2015,"U.S.",27243858
+2016,"U.S.",27444220
+2017,"U.S.",27139699
+2018,"U.S.",30138930
+2019,"U.S.",31099061
+2020,"U.S.",30482049
+1997,"Utah",165253
+1998,"Utah",169776
+1999,"Utah",159889
+2000,"Utah",164557
+2001,"Utah",159299
+2002,"Utah",163379
+2003,"Utah",154125
+2004,"Utah",155891
+2005,"Utah",160275
+2006,"Utah",187399
+2007,"Utah",219700
+2008,"Utah",224188
+2009,"Utah",214220
+2010,"Utah",219213
+2011,"Utah",222227
+2012,"Utah",223039
+2013,"Utah",247285
+2014,"Utah",241737
+2015,"Utah",232612
+2016,"Utah",240114
+2017,"Utah",221834
+2018,"Utah",244058
+2019,"Utah",264046
+1997,"Vermont",8061
+1998,"Vermont",7735
+1999,"Vermont",8033
+2000,"Vermont",10426
+2001,"Vermont",7919
+2002,"Vermont",8367
+2003,"Vermont",8400
+2004,"Vermont",8685
+2005,"Vermont",8372
+2006,"Vermont",8056
+2007,"Vermont",8867
+2008,"Vermont",8624
+2009,"Vermont",8638
+2010,"Vermont",8443
+2011,"Vermont",8611
+2012,"Vermont",8191
+2013,"Vermont",9602
+2014,"Vermont",10677
+2015,"Vermont",11950
+2016,"Vermont",12094
+2017,"Vermont",11926
+2018,"Vermont",13742
+2019,"Vermont",13866
+1997,"Virginia",248960
+1998,"Virginia",260332
+1999,"Virginia",276793
+2000,"Virginia",268770
+2001,"Virginia",237853
+2002,"Virginia",258202
+2003,"Virginia",262970
+2004,"Virginia",277434
+2005,"Virginia",299746
+2006,"Virginia",274175
+2007,"Virginia",319913
+2008,"Virginia",299364
+2009,"Virginia",319134
+2010,"Virginia",375421
+2011,"Virginia",373444
+2012,"Virginia",410106
+2013,"Virginia",418506
+2014,"Virginia",419705
+2015,"Virginia",500477
+2016,"Virginia",543343
+2017,"Virginia",566676
+2018,"Virginia",634162
+2019,"Virginia",684597
+1997,"Washington",256366
+1998,"Washington",290229
+1999,"Washington",287302
+2000,"Washington",286653
+2001,"Washington",312114
+2002,"Washington",233716
+2003,"Washington",249599
+2004,"Washington",262485
+2005,"Washington",264754
+2006,"Washington",263395
+2007,"Washington",272613
+2008,"Washington",298140
+2009,"Washington",310428
+2010,"Washington",285726
+2011,"Washington",264589
+2012,"Washington",264540
+2013,"Washington",318292
+2014,"Washington",306675
+2015,"Washington",307735
+2016,"Washington",301418
+2017,"Washington",324882
+2018,"Washington",307985
+2019,"Washington",345210
+1997,"West Virginia",159504
+1998,"West Virginia",142860
+1999,"West Virginia",139961
+2000,"West Virginia",147854
+2001,"West Virginia",141090
+2002,"West Virginia",146455
+2003,"West Virginia",126986
+2004,"West Virginia",122267
+2005,"West Virginia",117136
+2006,"West Virginia",113084
+2007,"West Virginia",115974
+2008,"West Virginia",111480
+2009,"West Virginia",109652
+2010,"West Virginia",113179
+2011,"West Virginia",115361
+2012,"West Virginia",129753
+2013,"West Virginia",142082
+2014,"West Virginia",165341
+2015,"West Virginia",174165
+2016,"West Virginia",171825
+2017,"West Virginia",184025
+2018,"West Virginia",202934
+2019,"West Virginia",218282
+1997,"Wisconsin",400651
+1998,"Wisconsin",368022
+1999,"Wisconsin",380560
+2000,"Wisconsin",393601
+2001,"Wisconsin",359784
+2002,"Wisconsin",385310
+2003,"Wisconsin",394711
+2004,"Wisconsin",383316
+2005,"Wisconsin",410250
+2006,"Wisconsin",372462
+2007,"Wisconsin",398370
+2008,"Wisconsin",409377
+2009,"Wisconsin",387066
+2010,"Wisconsin",372898
+2011,"Wisconsin",393734
+2012,"Wisconsin",402656
+2013,"Wisconsin",442544
+2014,"Wisconsin",463186
+2015,"Wisconsin",457743
+2016,"Wisconsin",482233
+2017,"Wisconsin",487732
+2018,"Wisconsin",543025
+2019,"Wisconsin",576650
+1997,"Wyoming",100950
+1998,"Wyoming",109188
+1999,"Wyoming",96726
+2000,"Wyoming",101314
+2001,"Wyoming",98569
+2002,"Wyoming",112872
+2003,"Wyoming",115358
+2004,"Wyoming",107060
+2005,"Wyoming",108314
+2006,"Wyoming",108481
+2007,"Wyoming",140912
+2008,"Wyoming",142705
+2009,"Wyoming",142793
+2010,"Wyoming",150106
+2011,"Wyoming",156455
+2012,"Wyoming",153333
+2013,"Wyoming",149820
+2014,"Wyoming",136796
+2015,"Wyoming",119265
+2016,"Wyoming",123351
+2017,"Wyoming",149405
+2018,"Wyoming",165384
+2019,"Wyoming",154836

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="aus_economy" frequency="1" n="58" startobs="1960" endobs="2017" type="time-series">
+<description>Data imported from CSV file 'aus_economy.csv', 2026-10-28 18:25
+</description>
+<variables count="1">
+<variable name="y"
+/>
+</variables>
+<observations count="58" labels="false">
+<obs>10276477 </obs>
+<obs>10483000 </obs>
+<obs>10742000 </obs>
+<obs>10950000 </obs>
+<obs>11167000 </obs>
+<obs>11388000 </obs>
+<obs>11651000 </obs>
+<obs>11799000 </obs>
+<obs>12009000 </obs>
+<obs>12263000 </obs>
+<obs>12507000 </obs>
+<obs>12937000 </obs>
+<obs>13177000 </obs>
+<obs>13380000 </obs>
+<obs>13723000 </obs>
+<obs>13893000 </obs>
+<obs>14033000 </obs>
+<obs>14192000 </obs>
+<obs>14358000 </obs>
+<obs>14514000 </obs>
+<obs>14692000 </obs>
+<obs>14923260 </obs>
+<obs>15184247 </obs>
+<obs>15393472 </obs>
+<obs>15579391 </obs>
+<obs>15788312 </obs>
+<obs>16018350 </obs>
+<obs>16263874 </obs>
+<obs>16532164 </obs>
+<obs>16814416 </obs>
+<obs>17065128 </obs>
+<obs>17284036 </obs>
+<obs>17478635 </obs>
+<obs>17634808 </obs>
+<obs>17805468 </obs>
+<obs>18004882 </obs>
+<obs>18224767 </obs>
+<obs>18423037 </obs>
+<obs>18607584 </obs>
+<obs>18812264 </obs>
+<obs>19028802 </obs>
+<obs>19274701 </obs>
+<obs>19495210 </obs>
+<obs>19720737 </obs>
+<obs>19932722 </obs>
+<obs>20176844 </obs>
+<obs>20450966 </obs>
+<obs>20827622 </obs>
+<obs>21249199 </obs>
+<obs>21691653 </obs>
+<obs>22031750 </obs>
+<obs>22340024 </obs>
+<obs>22733465 </obs>
+<obs>23128129 </obs>
+<obs>23475686 </obs>
+<obs>23815995 </obs>
+<obs>24190907 </obs>
+<obs>24592588 </obs>
+</observations>
+</gretldata>
