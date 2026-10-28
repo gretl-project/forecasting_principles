@@ -1,0 +1,64 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/exponential-smoothing.html#sec-holt
+#
+# Contents:
+#   1. Data: Australian population (millions, annual, 1960-2017)
+#   2. Holt's linear trend method with automatic parameters
+#   3. Forecasts for 2018-2027 and prediction intervals
+#   4. Holt() with the book's parameters
+#
+# Run from directory scripts/replications/. Uses the user-contributed
+# package Holt.
+#
+# Note: The book uses Australian population (not Algeria) for this section,
+# with ETS(Pop ~ error("A") + trend("A") + season("N")). The book reports
+# alpha = 0.9999 and beta = 0.3267, and the forecasts for 2018-2027 below.
+#
+# Note: Holt() estimates alpha, beta and the initial level and trend by
+# minimising the SSE of the one-step forecasts (BFGS, OLS for the initial
+# values). Estimates can differ from the book's ETS fit.
+
+# pkg install Holt # Only needed once, to install the package
+include Holt.gfn
+
+
+### 1. Data: Australian population
+
+open "../../data/gdt/global_economy.gdt"
+smpl Code == "AUS" --restrict --permanent
+series Pop = Population / 1e6
+setinfo Pop -d "Population of Australia (millions)" -n "Population"
+printf "Number of annual observations for Australia: %d\n", $nobs
+
+gnuplot Pop --time-series --with-lines --output=display \
+  {set title "Population of Australia"; set xlabel "Year";
+   set ylabel "Millions"; set grid;}
+
+
+### 2. Holt's linear trend method, automatic parameters
+
+bundle hb = Holt(Pop)
+
+printf "\nHolt, automatic parameters:\n"
+printf "  alpha = %.4f (book: 0.9999)\n", hb.theta[1]
+printf "  beta  = %.4f (book: 0.3267)\n", hb.theta[2]
+printf "  initial level = %.4f, initial trend = %.4f\n", hb.init[1], hb.init[2]
+printf "  training RMSE = %.4f, MAE = %.4f\n", hb.RMSE_train, hb.MAE_train
+
+
+### 3. Forecasts for 2018-2027 and prediction intervals
+### Note: dataset addobs adds ten periods after the data; Holt() then
+### produces out-of-sample forecasts for them (see the Holt manual, section 2).
+
+dataset addobs 10
+bundle hf = Holt(Pop, _(theta={hb.theta[1], hb.theta[2]}))
+
+matrix Hf = hf.H
+print Hf
+
+matrix CI = Holt_ci_matrix(hf)
+print CI
+
+Holt_plot(&hf, 1)
+Holt_plot(&hf, 2)

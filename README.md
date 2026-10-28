@@ -74,6 +74,8 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [8.1 Simple exponential smoothing](https://otexts.com/fpp3/ses.html) -- [Gretl replication file](scripts/replications/chapter_8_1.inp)
 
+[8.2 Methods with trend](https://otexts.com/fpp3/exponential-smoothing.html#sec-holt) -- [Gretl replication file](scripts/replications/chapter_8_2.inp)
+
 ### Chapter 9 ARIMA models
 
 [9.1 Stationarity and differencing](https://otexts.com/fpp3/stationarity.html) -- [Gretl replication file](scripts/replications/chapter_9_1.inp)
