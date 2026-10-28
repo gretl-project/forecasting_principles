@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gretldata SYSTEM "gretldata.dtd">
+
+<gretldata version="1.5" name="www_usage" frequency="special:1" n="100" startobs="1" endobs="100" type="time-series">
+<description>Data imported from CSV file 'www_usage.csv', 2026-10-28 18:07
+</description>
+<variables count="1">
+<variable name="y"
+/>
+</variables>
+<observations count="100" labels="false">
+<obs>88 </obs>
+<obs>84 </obs>
+<obs>85 </obs>
+<obs>85 </obs>
+<obs>84 </obs>
+<obs>85 </obs>
+<obs>83 </obs>
+<obs>85 </obs>
+<obs>88 </obs>
+<obs>89 </obs>
+<obs>91 </obs>
+<obs>99 </obs>
+<obs>104 </obs>
+<obs>112 </obs>
+<obs>126 </obs>
+<obs>138 </obs>
+<obs>146 </obs>
+<obs>151 </obs>
+<obs>150 </obs>
+<obs>148 </obs>
+<obs>147 </obs>
+<obs>149 </obs>
+<obs>143 </obs>
+<obs>132 </obs>
+<obs>131 </obs>
+<obs>139 </obs>
+<obs>147 </obs>
+<obs>150 </obs>
+<obs>148 </obs>
+<obs>145 </obs>
+<obs>140 </obs>
+<obs>134 </obs>
+<obs>131 </obs>
+<obs>131 </obs>
+<obs>129 </obs>
+<obs>126 </obs>
+<obs>126 </obs>
+<obs>132 </obs>
+<obs>137 </obs>
+<obs>140 </obs>
+<obs>142 </obs>
+<obs>150 </obs>
+<obs>159 </obs>
+<obs>167 </obs>
+<obs>170 </obs>
+<obs>171 </obs>
+<obs>172 </obs>
+<obs>172 </obs>
+<obs>174 </obs>
+<obs>175 </obs>
+<obs>172 </obs>
+<obs>172 </obs>
+<obs>174 </obs>
+<obs>174 </obs>
+<obs>169 </obs>
+<obs>165 </obs>
+<obs>156 </obs>
+<obs>142 </obs>
+<obs>131 </obs>
+<obs>121 </obs>
+<obs>112 </obs>
+<obs>104 </obs>
+<obs>102 </obs>
+<obs>99 </obs>
+<obs>99 </obs>
+<obs>95 </obs>
+<obs>88 </obs>
+<obs>84 </obs>
+<obs>84 </obs>
+<obs>87 </obs>
+<obs>89 </obs>
+<obs>88 </obs>
+<obs>85 </obs>
+<obs>86 </obs>
+<obs>89 </obs>
+<obs>91 </obs>
+<obs>91 </obs>
+<obs>94 </obs>
+<obs>101 </obs>
+<obs>110 </obs>
+<obs>121 </obs>
+<obs>135 </obs>
+<obs>145 </obs>
+<obs>149 </obs>
+<obs>156 </obs>
+<obs>165 </obs>
+<obs>171 </obs>
+<obs>175 </obs>
+<obs>177 </obs>
+<obs>182 </obs>
+<obs>193 </obs>
+<obs>204 </obs>
+<obs>208 </obs>
+<obs>210 </obs>
+<obs>215 </obs>
+<obs>222 </obs>
+<obs>228 </obs>
+<obs>226 </obs>
+<obs>222 </obs>
+<obs>220 </obs>
+</observations>
+</gretldata>
