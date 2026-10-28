@@ -11,9 +11,12 @@ set verbose off
 # gives alpha = 0.84 and l_0 = 39.5, obtained by minimising the SSE over
 # t = 1, ..., 58 subject to 0 <= alpha <= 1.
 
-# pkg install ses  # Only needed once, to install the ses package
+# The "ses" package used here is not (yet!) an official user-contributed package.
+# It is available from https://github.com/atecon/SES
+#
+# Only needed once, to install the ses package:
+# pkg install https://raw.githubusercontent.com/atecon/SES/refs/heads/main/src/ses.gfn
 include ses.gfn
-
 
 ### 1. Data: Algeria exports
 
