@@ -1,0 +1,62 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/ses.html
+#
+# Contents:
+#   1. Data: Algeria exports (% of GDP, annual, 1960-2017)
+#   2. Simple exponential smoothing with ses()
+#
+#
+# Note: The book's ETS(Exports ~ error("A") + trend("N") + season("N"))
+# gives alpha = 0.84 and l_0 = 39.5, obtained by minimising the SSE over
+# t = 1, ..., 58 subject to 0 <= alpha <= 1.
+
+# pkg install ses  # Only needed once, to install the ses package
+include ses.gfn
+
+
+### 1. Data: Algeria exports
+
+# Adapt the path to your local copy of the data file
+open "../../data/gdt/global_economy.gdt"
+smpl Country == "Algeria" --restrict --permanent
+setinfo Exports -d "Exports of goods and services (% of GDP)" -n "Exports"
+printf "Number of annual observations for Algeria: %d\n", $nobs
+
+# Five years beyond the data, for the forecasts (as in the book)
+dataset addobs 5
+
+gnuplot Exports --time-series --with-lines --output=display \
+  {set title "Total Algerian exports"; set xlabel "Year";
+   set ylabel "% of GDP"; set grid;}
+
+
+### 2. Simple exponential smoothing
+### Note: ses() estimates alpha and the initial level l_0 jointly by
+### minimising the SSE of the one-step forecasts (as in the book).
+
+bundle S = ses(Exports)
+
+printf "\nSES (ses()):\n"
+printf "  alpha = %.4f (book: 0.84)\n", S.alpha
+printf "  l_0   = %.2f (book: 39.5)\n", S.l0
+printf "  SSE   = %.4f\n", S.SSE
+printf "  RMSE  = %.4f, MAE = %.4f\n", S.RMSE_train, S.MAE_train
+
+# Fitted one-step forecasts and levels, forecasts flat at the last level
+series fitted = S.fcast
+series level = S.level
+setinfo fitted -n "SES fitted"
+setinfo level -n "level"
+
+printf "\nFirst and last values of the fit:\n"
+print Exports fitted level --head
+print Exports fitted level --tail
+
+# 95% and 80% forecast intervals for the five out-of-sample years
+matrix CI = ses_ci_matrix(S)
+printf "\nForecasts with 80%% and 95%% intervals:\n"
+print CI
+
+ses_plot_forecast(S)
+ses_plot_components(S)

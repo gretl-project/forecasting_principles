@@ -70,6 +70,10 @@ The data files used in the replication scripts are available in the `data/` fold
 [7.7 Non-linear regression](https://otexts.com/fpp3/nonlinear-regression.html) -- [Gretl replication file](scripts/replications/chapter_7_7.inp)
 
 
+### Chapter 8 Exponential smoothing
+
+[8.1 Simple exponential smoothing](https://otexts.com/fpp3/ses.html) -- [Gretl replication file](scripts/replications/chapter_8_1.inp)
+
 ### Chapter 9 ARIMA models
 
 [9.1 Stationarity and differencing](https://otexts.com/fpp3/stationarity.html) -- [Gretl replication file](scripts/replications/chapter_9_1.inp)
