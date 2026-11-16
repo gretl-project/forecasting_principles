@@ -4,19 +4,14 @@ set verbose off
 #
 # Contents:
 #   1. Data: Algeria exports (% of GDP, annual, 1960-2017)
-#   2. Simple exponential smoothing with ses()
-#
+#   2. Simple exponential smoothing with ETS()
 #
 # Note: The book's ETS(Exports ~ error("A") + trend("N") + season("N"))
 # gives alpha = 0.84 and l_0 = 39.5, obtained by minimising the SSE over
 # t = 1, ..., 58 subject to 0 <= alpha <= 1.
 
-# The "ses" package used here is not (yet!) an official user-contributed package.
-# It is available from https://github.com/atecon/SES
-#
-# Only needed once, to install the ses package:
-# pkg install https://raw.githubusercontent.com/atecon/SES/refs/heads/main/src/ses.gfn
-include ses.gfn
+# pkg install ETS  # Only needed once, to install the ETS package
+include ETS.gfn
 
 ### 1. Data: Algeria exports
 
@@ -35,20 +30,25 @@ gnuplot Exports --time-series --with-lines --output=display \
 
 
 ### 2. Simple exponential smoothing
-### Note: ses() estimates alpha and the initial level l_0 jointly by
-### minimising the SSE of the one-step forecasts (as in the book).
+### Note: ETS() without options is simple exponential smoothing. It
+### estimates alpha and the initial level l_0 jointly by minimising the
+### SSE of the one-step forecasts (as in the book).
 
-bundle S = ses(Exports)
+# Note: do not name the bundle "S": ETS stores the results in a matrix S
+# inside the bundle, and its virtual series (e.g. Exports_fcast) refer to it.
+bundle sb = ETS(Exports)
 
-printf "\nSES (ses()):\n"
-printf "  alpha = %.4f (book: 0.84)\n", S.alpha
-printf "  l_0   = %.2f (book: 39.5)\n", S.l0
-printf "  SSE   = %.4f\n", S.SSE
-printf "  RMSE  = %.4f, MAE = %.4f\n", S.RMSE_train, S.MAE_train
+printf "\nSES (ETS()):\n"
+printf "  alpha = %.4f (book: 0.84)\n", sb.theta[1]
+printf "  l_0   = %.2f (book: 39.5)\n", sb.init[1]
+# The bundle holds no SSE; recover it from the RMSE over the training range
+scalar ntrain = sb.limits[2] - sb.limits[1] + 1
+printf "  SSE   = %.4f\n", ntrain * sb.RMSE_train^2
+printf "  RMSE  = %.4f, MAE = %.4f\n", sb.RMSE_train, sb.MAE_train
 
 # Fitted one-step forecasts and levels, forecasts flat at the last level
-series fitted = S.fcast
-series level = S.level
+series fitted = sb.Exports_fcast
+series level = sb.Exports_level
 setinfo fitted -n "SES fitted"
 setinfo level -n "level"
 
@@ -57,9 +57,9 @@ print Exports fitted level --head
 print Exports fitted level --tail
 
 # 95% and 80% forecast intervals for the five out-of-sample years
-matrix CI = ses_ci_matrix(S)
+matrix CI = ETS_ci_matrix(sb)
 printf "\nForecasts with 80%% and 95%% intervals:\n"
 print CI
 
-ses_plot_forecast(S)
-ses_plot_components(S)
+ETS_plot(&sb, 1)
+ETS_plot(&sb, 2)
