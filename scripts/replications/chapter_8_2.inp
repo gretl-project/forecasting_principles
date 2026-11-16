@@ -6,21 +6,23 @@ set verbose off
 #   1. Data: Australian population (millions, annual, 1960-2017)
 #   2. Holt's linear trend method with automatic parameters
 #   3. Forecasts for 2018-2027 and prediction intervals
-#   4. Holt() with the book's parameters
+#   4. Example: Internet usage (simplified)
 #
-# Run from directory scripts/replications/. Uses the user-contributed
-# package Holt.
+# Run from directory scripts/replications/. Uses the ETS package.
 #
 # Note: The book uses Australian population (not Algeria) for this section,
 # with ETS(Pop ~ error("A") + trend("A") + season("N")). The book reports
 # alpha = 0.9999 and beta = 0.3267, and the forecasts for 2018-2027 below.
 #
-# Note: Holt() estimates alpha, beta and the initial level and trend by
-# minimising the SSE of the one-step forecasts (BFGS, OLS for the initial
-# values). Estimates can differ from the book's ETS fit.
+# Note: ETS(y, _(trend=1)) is Holt's linear trend method. It estimates
+# alpha, beta and the initial level and trend by minimising the SSE of the
+# one-step forecasts. Estimates can differ slightly from the book's ETS fit.
+#
+# Note: do not name a result bundle "S": ETS stores its results in a matrix S
+# inside the bundle, and the virtual series refer to it.
 
-# pkg install Holt # Only needed once, to install the package
-include Holt.gfn
+# pkg install ETS  # Only needed once, to install the package
+include ETS.gfn
 
 
 ### 1. Data: Australian population
@@ -38,7 +40,7 @@ gnuplot Pop --time-series --with-lines --output=display \
 
 ### 2. Holt's linear trend method, automatic parameters
 
-bundle hb = Holt(Pop)
+bundle hb = ETS(Pop, _(trend=1))
 
 printf "\nHolt, automatic parameters:\n"
 printf "  alpha = %.4f (book: 0.9999)\n", hb.theta[1]
@@ -48,23 +50,23 @@ printf "  training RMSE = %.4f, MAE = %.4f\n", hb.RMSE_train, hb.MAE_train
 
 
 ### 3. Forecasts for 2018-2027 and prediction intervals
-### Note: dataset addobs adds ten periods after the data; Holt() then
-### produces out-of-sample forecasts for them (see the Holt manual, section 2).
+### Note: dataset addobs adds ten periods after the data; ETS() then
+### produces out-of-sample forecasts for them (see the ETS manual, section 4).
 
 dataset addobs 10
-bundle hf = Holt(Pop, _(theta={hb.theta[1], hb.theta[2]}))
+bundle hf = ETS(Pop, _(trend=1, verbose=0))
 
-matrix Hf = hf.H
+matrix Hf = hf.S
 print Hf
 
-matrix CI = Holt_ci_matrix(hf)
+matrix CI = ETS_ci_matrix(hf)
 print CI
 
-Holt_plot(&hf, 1)
-Holt_plot(&hf, 2)
+ETS_plot(&hf, 1)
+ETS_plot(&hf, 2)
 
 
-### 5. Example: Internet usage (simplified)
+### 4. Example: Internet usage (simplified)
 ### Note: full sample, Holt's method only. The book's cross-validation
 ### and damped-trend comparison are not replicated here.
 
@@ -79,16 +81,16 @@ gnuplot y --time-series --with-lines --output=display \
 # Ten minutes beyond the data for the forecasts
 dataset addobs 10
 
-bundle hw = Holt(y)
+bundle hw = ETS(y, _(trend=1))
 
 printf "\nHolt, automatic parameters:\n"
 printf "  alpha = %.4f, beta = %.4f\n", hw.theta[1], hw.theta[2]
 printf "  initial level = %.4f, initial trend = %.4f\n", hw.init[1], hw.init[2]
 printf "  training RMSE = %.4f, MAE = %.4f\n", hw.RMSE_train, hw.MAE_train
 
-matrix CIw = Holt_ci_matrix(hw)
+matrix CIw = ETS_ci_matrix(hw)
 print CIw
 
 # Actual data and forecasts with intervals, then the Holt components
-Holt_plot(&hw, 1)
-Holt_plot(&hw, 2)
+ETS_plot(&hw, 1)
+ETS_plot(&hw, 2)
