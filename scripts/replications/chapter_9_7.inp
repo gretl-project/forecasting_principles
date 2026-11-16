@@ -1,0 +1,140 @@
+set verbose off
+# Replicate
+# https://otexts.com/fpp3/arima.html
+#
+# Contents:
+#   1. Data: Central African Republic exports (% of GDP, annual, 1960-2017)
+#   2. Comparison of four ARIMA models (AICc)
+#   3. Residual diagnostics of ARIMA(3,1,0)
+#   4. Forecasts for 2018-2022 and comparison with a random walk
+#
+# Run from directory scripts/replications/.
+#
+# Note: gretl's arima() uses exact maximum likelihood on the differenced
+# sample (T = 57, 1961-2017). The book is fitted in R, so the log-likelihood,
+# AICc and Ljung-Box values can differ slightly.
+#
+# Note: gretl's AIC counts the innovation variance sigma^2 as a parameter,
+# so k = number of coefficients + 1 (for ARIMA(3,1,0): k = 5).
+
+
+### Helper function
+
+# Corrected AIC (AICc) for a model with k estimated parameters and T
+# observations used in estimation
+function scalar aicc(scalar aic, scalar k, scalar T)
+    return aic + 2*k*(k+1)/(T-k-1)
+end function
+
+
+### 1. Data: Central African Republic exports
+
+open "../../data/gdt/global_economy.gdt"
+smpl Country == "Central African Republic" --restrict --permanent
+setinfo Exports -d "Exports of goods and services (% of GDP)" -n "Exports"
+printf "Number of annual observations: %d\n", $nobs
+
+gnuplot Exports --time-series --with-lines --output=display \
+  {set title "Central African Republic exports"; set xlabel "Year";
+   set ylabel "% of GDP"; set grid;}
+
+# The series declines overall, so one first difference is taken (book)
+series d_Exports = diff(Exports)
+setinfo d_Exports -n "d_Exports"
+corrgm d_Exports 12 --plot=display --silent
+
+
+### 2. Comparison of four ARIMA models
+### Note: the book sorts the models by AICc; here the order is as in the book.
+### Columns: log-likelihood, sigma^2, AIC, AICc, BIC
+
+matrix M = zeros(4, 5)
+
+arima 3 1 0 ; Exports --quiet
+M[1,] = $lnl ~ $sigma^2 ~ $aic ~ aicc($aic, $ncoeff+1, $T) ~ $bic
+
+arima 2 1 0 ; Exports --quiet
+M[2,] = $lnl ~ $sigma^2 ~ $aic ~ aicc($aic, $ncoeff+1, $T) ~ $bic
+
+arima 0 1 3 ; Exports --quiet
+M[3,] = $lnl ~ $sigma^2 ~ $aic ~ aicc($aic, $ncoeff+1, $T) ~ $bic
+
+arima 2 1 2 ; Exports --quiet
+M[4,] = $lnl ~ $sigma^2 ~ $aic ~ aicc($aic, $ncoeff+1, $T) ~ $bic
+
+strings names = defarray("ARIMA(3,1,0) [search]", "ARIMA(2,1,0)", \
+  "ARIMA(0,1,3)", "ARIMA(2,1,2) [stepwise]")
+
+printf "\nModel comparison (AICc = AIC + 2k(k+1)/(T-k-1), k = coefficients + 1, T = 57):\n"
+printf "%-24s %10s %10s %10s %10s %10s\n", "model", "log_lik", "sigma2", "AIC", "AICc", "BIC"
+loop i=1..4 --quiet
+  printf "%-24s %10.2f %10.2f %10.2f %10.2f %10.2f\n", names[i], \
+    M[i,1], M[i,2], M[i,3], M[i,4], M[i,5]
+endloop
+printf "\nBook (R, rounded): ARIMA(3,1,0) log_lik -133, AIC 274, AICc 275, BIC 282;\n"
+printf "ARIMA(2,1,0) -134, 275, 275, 281; ARIMA(0,1,3) -133, 274, 275, 282;\n"
+printf "ARIMA(2,1,2) -132, 274, 275, 284.\n"
+# Note: with the AICc formula above, ARIMA(2,1,0) has the lowest AICc here,
+# whereas the book's AICc puts ARIMA(3,1,0) first. The AIC values also differ
+# from the book's (gretl counts sigma^2 as a parameter, and the likelihood is
+# evaluated in gretl), so the AICc ranking is not reproduced exactly.
+
+
+### 3. Residual diagnostics of ARIMA(3,1,0)
+### Note: modtest --autocorr is not available after arima() (it is an OLS
+### test), so the Ljung-Box test is used for the residual autocorrelation.
+### Dof = lag - number of ARMA parameters (p + q), as in the book.
+
+arima 3 1 0 ; Exports
+series res = $uhat
+setinfo res -n "residuals"
+
+printf "\nARIMA(3,1,0) residual diagnostics:\n"
+scalar Q = ljungbox(res, 10)
+printf "  Ljung-Box Q(10) = %.4f, p-value (dof 7) = %.4f\n", Q, pvalue(X, 7, Q)
+printf "  book: Q = 5.75, p-value = 0.569\n"
+
+corrgm res 12 --plot=display --silent
+
+modtest --normality --silent
+printf "  Doornik-Hansen normality test p-value = %.4f\n", $pvalue
+
+
+### 4. Forecasts for 2018-2022 and comparison with a random walk
+### Note: the book forecasts five periods from ARIMA(3,1,0); it reports no
+### numbers, only the plot. Forecast intervals are taken from gretl's
+### standard errors, as in chapter_9_5.inp.
+
+dataset addobs 5
+
+arima 3 1 0 ; Exports --quiet
+fcast 2018 2022 --out-of-sample
+series fc = $fcast
+series fse = $fcse
+
+arima 0 1 0 ; Exports --quiet
+fcast 2018 2022 --out-of-sample
+series rw_fse = $fcse
+
+printf "\nForecast standard errors, ARIMA(3,1,0) vs random walk ARIMA(0,1,0):\n"
+printf "%8s %12s %12s %12s\n", "year", "forecast", "se ARIMA", "se RW"
+loop i=1..5 --quiet
+  printf "%8s %12.4f %12.4f %12.4f\n", obslabel($nobs-5+i), fc[$nobs-5+i], \
+    fse[$nobs-5+i], rw_fse[$nobs-5+i]
+endloop
+
+# 80% and 95% bands from the t distribution, as in chapter_9_5.inp
+scalar critical_80_pct = critical(t, $T, 0.1)
+scalar critical_95_pct = critical(t, $T, 0.025)
+
+bundle b1 = _(center="fc", width="fse", factor=critical_80_pct, style="fill",
+              color="#DCE70D2D", title="80% interval")
+bundle b2 = _(center="fc", width="fse", factor=critical_95_pct, style="fill",
+              color="#DC1763E6", title="95% interval")
+bundles B = defarray(b1, b2)
+
+smpl full
+gnuplot Exports fc --time-series --with-lines --bands=B --output=display \
+ {set grid; set key outside below;
+  set title "Central African Republic exports: ARIMA(3,1,0) forecasts";
+  set xlabel "Year"; set ylabel "% of GDP";}
