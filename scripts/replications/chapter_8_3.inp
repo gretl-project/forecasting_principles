@@ -56,7 +56,7 @@ gnuplot Trips --time-series --with-lines --output=display \
 
 dataset addobs 12
 
-bundle wm = ETS(Trips, _(seasonal=2))
+bundle wm = ETS(Trips, _(seasonal=2, verbose=0))
 
 printf "\nMultiplicative Holt-Winters:\n"
 printf "  alpha = %.4f, beta = %.4f, gamma = %.4f\n", wm.theta[1], wm.theta[2], wm.theta[3]
@@ -75,7 +75,7 @@ ETS_plot(&wm, 2)
 ### Note: the additive model gives analytic standard errors (last column
 ### of the matrix S, named stderr).
 
-bundle wa = ETS(Trips, _(seasonal=1))
+bundle wa = ETS(Trips, _(seasonal=1, verbose=0))
 
 printf "\nAdditive Holt-Winters:\n"
 printf "  alpha = %.4f, beta = %.4f, gamma = %.4f\n", wa.theta[1], wa.theta[2], wa.theta[3]
