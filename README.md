@@ -101,6 +101,8 @@ The data files used in the replication scripts are available in the `data/` fold
 
 [10.3 Forecasting](https://otexts.com/fpp3/forecasting.html) -- [Gretl replication file](scripts/replications/chapter_10_3.inp)
 
-[10.4 Forecasting](https://otexts.com/fpp3/stochastic-and-deterministic-trends.html) -- [Gretl replication file](scripts/replications/chapter_10_4.inp)
+[10.4 Stochastic and deterministic trends](https://otexts.com/fpp3/stochastic-and-deterministic-trends.html) -- [Gretl replication file](scripts/replications/chapter_10_4.inp)
 
-[10.5 Forecasting](https://otexts.com/fpp3/dhr.html) -- [Gretl replication file](scripts/replications/chapter_10_5.inp)
+[10.5 Dynamic harmonic regression](https://otexts.com/fpp3/dhr.html) -- [Gretl replication file](scripts/replications/chapter_10_5.inp)
+
+[10.6 Lagged predictors](https://otexts.com/fpp3/dynamic-regression.html#lagged-predictors) -- [Gretl replication file](scripts/replications/chapter_10_6.inp)
